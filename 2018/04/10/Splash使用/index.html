@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WSC_ZOU_Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="为什么有splash为了更加有效的制作网页爬虫,由于目前很多的网页通过javascript模式进行交互,简单的爬取网页模式无法胜任javascript页面的生成和ajax网页的爬取,同时通过分析连接请求的方式来落实局部连接数据请求,相对比较复杂,尤其是对带有特定时间戳算法的页面,分析难度较大,效率不高。而通过调用浏览器模拟页面动作模式,需要使用浏览器,无法实现异步和大规模爬取需求。鉴于上述理由Sp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Splash使用">
+<meta property="og:url" content="http://WSCZou.com/2018/04/10/Splash使用/index.html">
+<meta property="og:site_name" content="WSC_ZOU_Blog">
+<meta property="og:description" content="为什么有splash为了更加有效的制作网页爬虫,由于目前很多的网页通过javascript模式进行交互,简单的爬取网页模式无法胜任javascript页面的生成和ajax网页的爬取,同时通过分析连接请求的方式来落实局部连接数据请求,相对比较复杂,尤其是对带有特定时间戳算法的页面,分析难度较大,效率不高。而通过调用浏览器模拟页面动作模式,需要使用浏览器,无法实现异步和大规模爬取需求。鉴于上述理由Sp">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-12T09:37:36.625Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Splash使用">
+<meta name="twitter:description" content="为什么有splash为了更加有效的制作网页爬虫,由于目前很多的网页通过javascript模式进行交互,简单的爬取网页模式无法胜任javascript页面的生成和ajax网页的爬取,同时通过分析连接请求的方式来落实局部连接数据请求,相对比较复杂,尤其是对带有特定时间戳算法的页面,分析难度较大,效率不高。而通过调用浏览器模拟页面动作模式,需要使用浏览器,无法实现异步和大规模爬取需求。鉴于上述理由Sp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://WSCZou.com/2018/04/10/Splash使用/"/>
+
+
+
+
+
+  <title>Splash使用 | WSC_ZOU_Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WSC_ZOU_Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WSCZou.com/2018/04/10/Splash使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WSC_ZOU">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WSC_ZOU_Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Splash使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T11:10:18+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="为什么有splash"><a href="#为什么有splash" class="headerlink" title="为什么有splash"></a>为什么有splash</h2><p>为了更加有效的制作网页爬虫,由于目前很多的网页通过javascript模式进行交互,简单的爬取网页模式无法胜任javascript页面的生成和ajax网页的爬取,同时通过分析连接请求的方式来落实局部连接数据请求,相对比较复杂,尤其是对带有特定时间戳算法的页面,分析难度较大,效率不高。而通过调用浏览器模拟页面动作模式,需要使用浏览器,无法实现异步和大规模爬取需求。鉴于上述理由Splash也就有了用武之地。一个页面渲染服务器,返回渲染后的页面,便于爬取,便于规模应用</p>
+<h2 id="splash-lua脚本"><a href="#splash-lua脚本" class="headerlink" title="splash lua脚本"></a>splash lua脚本</h2><p>Splash是通过Lua脚本来控制了页面的加载过程的，加载过程完全模拟浏览器，最后可返回各种格式的结果，如网页源码和截图等。</p>
+<h2 id="Splash对象属性"><a href="#Splash对象属性" class="headerlink" title="Splash对象属性"></a>Splash对象属性</h2><h3 id="1args"><a href="#1args" class="headerlink" title="1args"></a>1<code>args</code></h3><p>该属性可以获取加载时配置的参数，比如URL</p>
+<h3 id="2-js-enabled"><a href="#2-js-enabled" class="headerlink" title="2.js_enabled"></a>2.<code>js_enabled</code></h3><p>这个属性是Splash的JavaScript执行开关，可以将其配置为<code>true</code>或<code>false</code>来控制是否执行JavaScript代码，默认为<code>true</code></p>
+<h3 id="3-resource-timeout"><a href="#3-resource-timeout" class="headerlink" title="3.resource_timeout"></a>3.<code>resource_timeout</code></h3><p>此属性可以设置加载的超时时间，单位是秒。如果设置为0或<code>nil</code>（类似Python中的<code>None</code>），代表不检测超时</p>
+<h3 id="4-images-enabled"><a href="#4-images-enabled" class="headerlink" title="4.images_enabled"></a>4.<code>images_enabled</code></h3><p>此属性可以设置图片是否加载，默认情况下是加载的。禁用该属性后，可以节省网络流量并提高网页加载速度。但是需要注意的是，禁用图片加载可能会影响JavaScript渲染。因为禁用图片之后，它的外层DOM节点的高度会受影响，进而影响DOM节点的位置。因此，如果JavaScript对图片节点有操作的话，其执行就会受到影响。另外值得注意的是，Splash使用了缓存。如果一开始加载出来了网页图片，然后禁用了图片加载，再重新加载页面，之前加载好的图片可能还会显示出来，这时直接重启Splash即可。</p>
+<h3 id="5-plugins-enabled"><a href="#5-plugins-enabled" class="headerlink" title="5.plugins_enabled"></a>5.<code>plugins_enabled</code></h3><p>此属性可以控制浏览器插件（如Flash插件）是否开启。默认情况下，此属性是<code>false</code>，表示不开启。</p>
+<h3 id="6-scroll-position"><a href="#6-scroll-position" class="headerlink" title="6.scroll_position"></a>6.<code>scroll_position</code></h3><p>通过设置此属性，我们可以控制页面上下或左右滚动。</p>
+<h2 id="Splash对象的方法"><a href="#Splash对象的方法" class="headerlink" title="Splash对象的方法"></a>Splash对象的方法</h2><h3 id="1-go"><a href="#1-go" class="headerlink" title="1.go()"></a>1.<code>go()</code></h3><p>该方法用来请求某个链接，而且它可以模拟GET和POST请求，同时支持传入请求头、表单等数据</p>
+<h3 id="2-wait"><a href="#2-wait" class="headerlink" title="2.wait()"></a>2.<code>wait()</code></h3><p>此方法可以控制页面的等待时间</p>
+<h3 id="3-jsfunc"><a href="#3-jsfunc" class="headerlink" title="3.jsfunc()"></a>3.<code>jsfunc()</code></h3><p>此方法可以直接调用JavaScript定义的方法，但是所调用的方法需要用双中括号包围，这相当于实现了JavaScript方法到Lua脚本的转换。</p>
+<h3 id="4-evaljs"><a href="#4-evaljs" class="headerlink" title="4.evaljs()"></a>4.<code>evaljs()</code></h3><p>此方法可以执行JavaScript代码并返回最后一条JavaScript语句的返回结果</p>
+<h3 id="5-runjs"><a href="#5-runjs" class="headerlink" title="5.runjs()"></a>5.<code>runjs()</code></h3><p>此方法可以执行JavaScript代码，它与<code>evaljs()</code>的功能类似，但是更偏向于执行某些动作或声明某些方法</p>
+<h3 id="6-autoload"><a href="#6-autoload" class="headerlink" title="6.autoload()"></a>6.<code>autoload()</code></h3><p>此方法可以设置每个页面访问时自动加载的对象.但是此方法只负责加载JavaScript代码或库，不执行任何操作。如果要执行操作，可以调用<code>evaljs()</code>或<code>runjs()</code>方法。</p>
+<h3 id="7-call-later"><a href="#7-call-later" class="headerlink" title="7.call_later()"></a>7.<code>call_later()</code></h3><p>此方法可以通过设置定时任务和延迟时间来实现任务延时执行，并且可以在执行前通过<code>cancel()</code>方法重新执行定时任务。</p>
+<h3 id="8-http-get"><a href="#8-http-get" class="headerlink" title="8.http_get()"></a>8.<code>http_get()</code></h3><p>此方法可以模拟发送HTTP的GET请求</p>
+<h3 id="9-http-post"><a href="#9-http-post" class="headerlink" title="9.http_post()"></a>9.<code>http_post()</code></h3><p>和<code>http_get()</code>方法类似，此方法用来模拟发送POST请求，不过多了一个参数<code>body</code></p>
+<h3 id="10-set-content"><a href="#10-set-content" class="headerlink" title="10.set_content()"></a>10.<code>set_content()</code></h3><p>此方法用来设置页面的内容</p>
+<h3 id="11-html"><a href="#11-html" class="headerlink" title="11.html()"></a>11.<code>html()</code></h3><p>此方法用来获取网页的源代码，它是非常简单又常用的方法</p>
+<h3 id="12-png"><a href="#12-png" class="headerlink" title="12.png()"></a>12.<code>png()</code></h3><p>此方法用来获取PNG格式的网页截图</p>
+<h3 id="13-jpeg"><a href="#13-jpeg" class="headerlink" title="13.jpeg()"></a>13.<code>jpeg()</code></h3><p>此方法用来获取JPEG格式的网页截图</p>
+<h3 id="14-har"><a href="#14-har" class="headerlink" title="14.har()"></a>14.<code>har()</code></h3><p>此方法用来获取页面加载过程描述</p>
+<h3 id="15-url"><a href="#15-url" class="headerlink" title="15.url()"></a>15.<code>url()</code></h3><p>此方法可以获取当前正在访问的URL</p>
+<h3 id="16-get-cookies"><a href="#16-get-cookies" class="headerlink" title="16.get_cookies()"></a>16.<code>get_cookies()</code></h3><p>此方法可以获取当前页面的Cookies</p>
+<h3 id="17-add-cookie"><a href="#17-add-cookie" class="headerlink" title="17.add_cookie()"></a>17.<code>add_cookie()</code></h3><p>此方法可以为当前页面添加Cookie</p>
+<h3 id="18-clear-cookies"><a href="#18-clear-cookies" class="headerlink" title="18.clear_cookies()"></a>18.<code>clear_cookies()</code></h3><p>此方法可以清除所有的Cookies</p>
+<h3 id="19-get-viewport-size"><a href="#19-get-viewport-size" class="headerlink" title="19.get_viewport_size()"></a>19.<code>get_viewport_size()</code></h3><p>此方法可以获取当前浏览器页面的大小，即宽高</p>
+<h3 id="20-set-viewport-size"><a href="#20-set-viewport-size" class="headerlink" title="20.set_viewport_size()"></a>20.<code>set_viewport_size()</code></h3><p>此方法可以设置当前浏览器页面的大小，即宽高</p>
+<h3 id="21-set-viewport-full"><a href="#21-set-viewport-full" class="headerlink" title="21.set_viewport_full()"></a>21.<code>set_viewport_full()</code></h3><p>此方法可以设置浏览器全屏显示</p>
+<h3 id="22-set-user-agent"><a href="#22-set-user-agent" class="headerlink" title="22.set_user_agent()"></a>22.<code>set_user_agent()</code></h3><p>此方法可以设置浏览器的<code>User-Agent</code></p>
+<h3 id="23-set-custom-headers"><a href="#23-set-custom-headers" class="headerlink" title="23.set_custom_headers()"></a>23.<code>set_custom_headers()</code></h3><p>此方法可以设置请求头</p>
+<h3 id="24-select"><a href="#24-select" class="headerlink" title="24.select()"></a>24.<code>select()</code></h3><p>该方法可以选中符合条件的第一个节点，如果有多个节点符合条件，则只会返回一个，其参数是CSS选择器。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span><span class="params">(splash)</span></span></span><br><span class="line">  splash:go(<span class="string">"https://www.baidu.com/"</span>)</span><br><span class="line">  <span class="built_in">input</span> = splash:<span class="built_in">select</span>(<span class="string">"#kw"</span>)</span><br><span class="line">  <span class="built_in">input</span>:send_text(<span class="string">'Splash'</span>)</span><br><span class="line">  splash:wait(<span class="number">3</span>)</span><br><span class="line">  <span class="keyword">return</span> splash:png()</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>这里我们首先访问了百度，然后选中了搜索框，随后调用了<code>send_text()</code>方法填写了文本，然后返回网页截图我们成功在输入框中输入了Splash</p>
+<h3 id="25-select-all"><a href="#25-select-all" class="headerlink" title="25.select_all()"></a>25.<code>select_all()</code></h3><p>此方法可以选中所有符合条件的节点，其参数是CSS选择器</p>
+<h3 id="26-mouse-click"><a href="#26-mouse-click" class="headerlink" title="26.mouse_click()"></a>26.<code>mouse_click()</code></h3><p>此方法可以模拟鼠标点击操作，传入的参数为坐标值<code>x</code>和<code>y</code>。此外，也可以直接选中某个节点，然后调用此方法</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span><span class="params">(splash)</span></span></span><br><span class="line">  splash:go(<span class="string">"https://www.baidu.com/"</span>)</span><br><span class="line">  <span class="built_in">input</span> = splash:<span class="built_in">select</span>(<span class="string">"#kw"</span>)</span><br><span class="line">  <span class="built_in">input</span>:send_text(<span class="string">'Splash'</span>)</span><br><span class="line">  submit = splash:<span class="built_in">select</span>(<span class="string">'#su'</span>)</span><br><span class="line">  submit:mouse_click()</span><br><span class="line">  splash:wait(<span class="number">3</span>)</span><br><span class="line">  <span class="keyword">return</span> splash:png()</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>这里我们首先选中页面的输入框，输入了文本，然后选中“提交”按钮，调用了<code>mouse_click()</code>方法提交查询，然后页面等待三秒，返回截图，这里我们成功获取了查询后的页面内容，模拟了百度搜索操作。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/09/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/13/review单片机/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">WSC_ZOU</p>
+              <p class="site-description motion-element" itemprop="description">A Learner</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么有splash"><span class="nav-number">1.</span> <span class="nav-text">为什么有splash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#splash-lua脚本"><span class="nav-number">2.</span> <span class="nav-text">splash lua脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Splash对象属性"><span class="nav-number">3.</span> <span class="nav-text">Splash对象属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1args"><span class="nav-number">3.1.</span> <span class="nav-text">1args</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-js-enabled"><span class="nav-number">3.2.</span> <span class="nav-text">2.js_enabled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-resource-timeout"><span class="nav-number">3.3.</span> <span class="nav-text">3.resource_timeout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-images-enabled"><span class="nav-number">3.4.</span> <span class="nav-text">4.images_enabled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-plugins-enabled"><span class="nav-number">3.5.</span> <span class="nav-text">5.plugins_enabled</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-scroll-position"><span class="nav-number">3.6.</span> <span class="nav-text">6.scroll_position</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Splash对象的方法"><span class="nav-number">4.</span> <span class="nav-text">Splash对象的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-go"><span class="nav-number">4.1.</span> <span class="nav-text">1.go()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-wait"><span class="nav-number">4.2.</span> <span class="nav-text">2.wait()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-jsfunc"><span class="nav-number">4.3.</span> <span class="nav-text">3.jsfunc()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-evaljs"><span class="nav-number">4.4.</span> <span class="nav-text">4.evaljs()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-runjs"><span class="nav-number">4.5.</span> <span class="nav-text">5.runjs()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-autoload"><span class="nav-number">4.6.</span> <span class="nav-text">6.autoload()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-call-later"><span class="nav-number">4.7.</span> <span class="nav-text">7.call_later()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-http-get"><span class="nav-number">4.8.</span> <span class="nav-text">8.http_get()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-http-post"><span class="nav-number">4.9.</span> <span class="nav-text">9.http_post()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-set-content"><span class="nav-number">4.10.</span> <span class="nav-text">10.set_content()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-html"><span class="nav-number">4.11.</span> <span class="nav-text">11.html()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-png"><span class="nav-number">4.12.</span> <span class="nav-text">12.png()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-jpeg"><span class="nav-number">4.13.</span> <span class="nav-text">13.jpeg()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-har"><span class="nav-number">4.14.</span> <span class="nav-text">14.har()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-url"><span class="nav-number">4.15.</span> <span class="nav-text">15.url()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-get-cookies"><span class="nav-number">4.16.</span> <span class="nav-text">16.get_cookies()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-add-cookie"><span class="nav-number">4.17.</span> <span class="nav-text">17.add_cookie()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-clear-cookies"><span class="nav-number">4.18.</span> <span class="nav-text">18.clear_cookies()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-get-viewport-size"><span class="nav-number">4.19.</span> <span class="nav-text">19.get_viewport_size()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-set-viewport-size"><span class="nav-number">4.20.</span> <span class="nav-text">20.set_viewport_size()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-set-viewport-full"><span class="nav-number">4.21.</span> <span class="nav-text">21.set_viewport_full()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-set-user-agent"><span class="nav-number">4.22.</span> <span class="nav-text">22.set_user_agent()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-set-custom-headers"><span class="nav-number">4.23.</span> <span class="nav-text">23.set_custom_headers()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-select"><span class="nav-number">4.24.</span> <span class="nav-text">24.select()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-select-all"><span class="nav-number">4.25.</span> <span class="nav-text">25.select_all()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-mouse-click"><span class="nav-number">4.26.</span> <span class="nav-text">26.mouse_click()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WSC_ZOU</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
