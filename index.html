@@ -254,6 +254,417 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WSCZou.com/2018/05/28/数据分析入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WSC_ZOU">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WSC_ZOU_Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/28/数据分析入门/" itemprop="url">数据分析入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T09:33:26+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h1><h2 id="Tab补全"><a href="#Tab补全" class="headerlink" title="Tab补全"></a>Tab补全</h2><p>从外观上，IPython shell和标准的Python解释器只是看起来不同。IPython shell的进步之一是其它IDE和交互计算分析环境都有的tab补全功能。在shell中输入表达式，按下Tab，会搜索已输入变量（对象、函数等等）的命名空间：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [1]: an_apple = 27</span><br><span class="line"></span><br><span class="line">In [2]: an_example = 42</span><br><span class="line"></span><br><span class="line">In [3]: an&lt;Tab&gt;</span><br><span class="line">an_apple    and         an_example  any</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，IPython呈现除了之前两个定义的变量和Python的关键字和内建的函数<code>any</code>。当然，你也可以补全任何对象的方法和属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [3]: b = [1, 2, 3]</span><br><span class="line"></span><br><span class="line">In [4]: b.&lt;Tab&gt;</span><br><span class="line">b.append  b.count   b.insert  b.reverse</span><br><span class="line">b.clear   b.extend  b.pop     b.sort</span><br><span class="line">b.copy    b.index   b.remove</span><br></pre></td></tr></table></figure>
+<p>同样也适用于模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [1]: import datetime</span><br><span class="line"></span><br><span class="line">In [2]: datetime.&lt;Tab&gt;</span><br><span class="line">datetime.date          datetime.MAXYEAR       datetime.timedelta</span><br><span class="line">datetime.datetime      datetime.MINYEAR       datetime.timezone</span><br><span class="line">datetime.datetime_CAPI datetime.time          datetime.tzinfo</span><br></pre></td></tr></table></figure>
+<p>在Jupyter notebook和新版的IPython（5.0及以上），自动补全功能是下拉框的形式。</p>
+<blockquote>
+<p>笔记：注意，默认情况下，IPython会隐藏下划线开头的方法和属性，比如魔术方法和内部的“私有”方法和属性，以避免混乱的显示（和让新手迷惑！）这些也可以tab补全，但是你必须首先键入一个下划线才能看到它们。如果你喜欢总是在tab补全中看到这样的方法，你可以IPython配置中进行设置。可以在IPython文档中查找方法。</p>
+</blockquote>
+<p>除了补全命名、对象和模块属性，Tab还可以补全其它的。当输入看似文件路径时（即使是Python字符串），按下Tab也可以补全电脑上对应的文件信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [7]: datasets/movielens/&lt;Tab&gt;</span><br><span class="line">datasets/movielens/movies.dat    datasets/movielens/README</span><br><span class="line">datasets/movielens/ratings.dat   datasets/movielens/users.dat</span><br><span class="line"></span><br><span class="line">In [7]: path = &apos;datasets/movielens/&lt;Tab&gt;</span><br><span class="line">datasets/movielens/movies.dat    datasets/movielens/README</span><br><span class="line">datasets/movielens/ratings.dat   datasets/movielens/users.dat</span><br></pre></td></tr></table></figure>
+<p>结合<code>%run</code>，tab补全可以节省许多键盘操作。</p>
+<p>另外，tab补全可以补全函数的关键词参数（包括等于号=）。见图2-4。</p>
+<p><img src="//upload-images.jianshu.io/upload_images/7178691-8188b0386238c16a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/579" alt="img"></p>
+<p>图2-4 Jupyter notebook中自动补全函数关键词</p>
+<p>我们来仔细看看函数。</p>
+<h2 id="自省"><a href="#自省" class="headerlink" title="自省"></a>自省</h2><p>在变量前后使用问号？，可以显示对象的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">In [8]: b = [1, 2, 3]</span><br><span class="line"></span><br><span class="line">In [9]: b?</span><br><span class="line">Type:       list</span><br><span class="line">String Form:[1, 2, 3]</span><br><span class="line">Length:     3</span><br><span class="line">Docstring:</span><br><span class="line">list() -&gt; new empty list</span><br><span class="line">list(iterable) -&gt; new list initialized from iterable&apos;s items</span><br><span class="line"></span><br><span class="line">In [10]: print?</span><br><span class="line">Docstring:</span><br><span class="line">print(value, ..., sep=&apos; &apos;, end=&apos;\n&apos;, file=sys.stdout, flush=False)</span><br><span class="line"></span><br><span class="line">Prints the values to a stream, or to sys.stdout by default.</span><br><span class="line">Optional keyword arguments:</span><br><span class="line">file:  a file-like object (stream); defaults to the current sys.stdout.</span><br><span class="line">sep:   string inserted between values, default a space.</span><br><span class="line">end:   string appended after the last value, default a newline.</span><br><span class="line">flush: whether to forcibly flush the stream.</span><br><span class="line">Type:      builtin_function_or_method</span><br></pre></td></tr></table></figure>
+<p>这可以作为对象的自省。如果对象是一个函数或实例方法，定义过的文档字符串，也会显示出信息。假设我们写了一个如下的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def add_numbers(a, b):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Add two numbers together</span><br><span class="line"></span><br><span class="line">    Returns</span><br><span class="line">    -------</span><br><span class="line">    the_sum : type of arguments</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    return a + b</span><br></pre></td></tr></table></figure>
+<p>然后使用?符号，就可以显示如下的文档字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [11]: add_numbers?</span><br><span class="line">Signature: add_numbers(a, b)</span><br><span class="line">Docstring:</span><br><span class="line">Add two numbers together</span><br><span class="line"></span><br><span class="line">Returns</span><br><span class="line">-------</span><br><span class="line">the_sum : type of arguments</span><br><span class="line">File:      &lt;ipython-input-9-6a548a216e27&gt;</span><br><span class="line">Type:      function</span><br></pre></td></tr></table></figure>
+<p>使用??会显示函数的源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">In [12]: add_numbers??</span><br><span class="line">Signature: add_numbers(a, b)</span><br><span class="line">Source:</span><br><span class="line">def add_numbers(a, b):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Add two numbers together</span><br><span class="line"></span><br><span class="line">    Returns</span><br><span class="line">    -------</span><br><span class="line">    the_sum : type of arguments</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    return a + b</span><br><span class="line">File:      &lt;ipython-input-9-6a548a216e27&gt;</span><br><span class="line">Type:      function</span><br></pre></td></tr></table></figure>
+<p>?还有一个用途，就是像Unix或Windows命令行一样搜索IPython的命名空间。字符与通配符结合可以匹配所有的名字。例如，我们可以获得所有包含load的顶级NumPy命名空间：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [13]: np.*load*?</span><br><span class="line">np.__loader__</span><br><span class="line">np.load</span><br><span class="line">np.loads</span><br><span class="line">np.loadtxt</span><br><span class="line">np.pkgload</span><br></pre></td></tr></table></figure>
+<h2 id="run命令"><a href="#run命令" class="headerlink" title="%run命令"></a>%run命令</h2><p>你可以用<code>%run</code>命令运行所有的Python程序。假设有一个文件<code>ipython_script_test.py</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def f(x, y, z):</span><br><span class="line">    return (x + y) / z</span><br><span class="line"></span><br><span class="line">a = 5</span><br><span class="line">b = 6</span><br><span class="line">c = 7.5</span><br><span class="line"></span><br><span class="line">result = f(a, b, c)</span><br></pre></td></tr></table></figure>
+<p>可以如下运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In [14]: %run ipython_script_test.py</span><br></pre></td></tr></table></figure>
+<p>这段脚本运行在空的命名空间（没有import和其它定义的变量），因此结果和普通的运行方式<code>python script.py</code>相同。文件中所有定义的变量（import、函数和全局变量，除非抛出异常），都可以在IPython shell中随后访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [15]: c</span><br><span class="line">Out [15]: 7.5</span><br><span class="line"></span><br><span class="line">In [16]: result</span><br><span class="line">Out[16]: 1.4666666666666666</span><br></pre></td></tr></table></figure>
+<p>如果一个Python脚本需要命令行参数（在<code>sys.argv</code>中查找），可以在文件路径之后传递，就像在命令行上运行一样。</p>
+<blockquote>
+<p>笔记：如果想让一个脚本访问IPython已经定义过的变量，可以使用<code>%run -i</code>。</p>
+</blockquote>
+<p>在Jupyter notebook中，你也可以使用<code>%load</code>，它将脚本导入到一个代码格中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; %load ipython_script_test.py</span><br><span class="line"></span><br><span class="line">    def f(x, y, z):</span><br><span class="line">        return (x + y) / z</span><br><span class="line">    a = 5</span><br><span class="line">    b = 6</span><br><span class="line">    c = 7.5</span><br><span class="line"></span><br><span class="line">    result = f(a, b, c)</span><br></pre></td></tr></table></figure>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间`"></a>命名空间`</h2><p>python<code>使用命名空间记录变量。</code>python<code>中的命名空间就像是一个</code>dict<code>，</code>key<code>是变量的名字，</code>value`是变量的值。</p>
+<p><code>python</code>中，每个函数都有一个自己的命名空间，叫做<code>local namespace</code>，它记录了函数的变量。</p>
+<p><code>python</code>中，每个<code>module</code>有一个自己的命名空间，叫做<code>global namespace</code>，它记录了<code>module</code>的变量，包括 <code>functions, classes</code>和其它<code>imported modules</code>，还有 <code>module</code>级别的 变量和常量。</p>
+<p>还有一个<code>build-in</code> 命名空间，可以被任意模块访问，这个<code>build-in</code>命名空间中包含了<code>build-in function</code> 和 <code>exceptions</code>。</p>
+<h1 id="NumPy基础：数组和矢量计算"><a href="#NumPy基础：数组和矢量计算" class="headerlink" title="NumPy基础：数组和矢量计算"></a>NumPy基础：数组和矢量计算</h1><p>NumPy之于数值计算特别重要的原因之一，是因为它可以高效处理大数组的数据。这是因为：</p>
+<ul>
+<li>NumPy是在一个连续的内存块中存储数据，独立于其他Python内置对象。<strong>NumPy的C语言编写的算法库可以操作内存</strong>，而不必进行类型检查或其它前期工作。比起Python的内置序列，NumPy数组使用的内存更少。</li>
+<li>NumPy可以在整个数组上执行复杂的计算，而不需要Python的for循环。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WSCZou.com/2018/05/27/数据结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WSC_ZOU">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WSC_ZOU_Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/27/数据结构/" itemprop="url">数据结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-27T15:19:10+08:00">
+                2018-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一-串"><a href="#一-串" class="headerlink" title="一.串"></a>一.串</h2><p>1.计算子串的个数：</p>
+<p>字串： n（n+1）/2 + 1</p>
+<p>非空子串：n（n+1）/2</p>
+<p>非空真子串：n（n+1）/2 - 1</p>
+<p>2.index函数</p>
+<p>3.编写一个程序，求两个字符串S和T的一个最长公共子串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">typedef struct&#123;</span><br><span class="line">	char *ch;</span><br><span class="line">	int length;</span><br><span class="line">&#125;Hstring;</span><br><span class="line"></span><br><span class="line">Status MaxComString(Hstring S,Hstring T,int &amp;length)&#123;</span><br><span class="line"></span><br><span class="line">	index=0;</span><br><span class="line">	length=0;</span><br><span class="line">	i=0;</span><br><span class="line"></span><br><span class="line">	//令i作为扫描字符串S的指针</span><br><span class="line">	while(i&lt;S.length)&#123;</span><br><span class="line">		j=0;</span><br><span class="line">		//令j作为扫描字符串T的指针</span><br><span class="line">		while(j&lt;T.length)&#123;</span><br><span class="line">			if(s.ch[i]==T.ch[j])&#123;</span><br><span class="line">				//找一个子串，其在字符串S中的序号为i，长度为length1</span><br><span class="line">				length1=i;</span><br><span class="line">				for(k=1;S.ch[i+k]==T.ch[j+k];k++)length1++;</span><br><span class="line">				if(length1&gt;length)&#123;</span><br><span class="line">					//将较大长度值赋给index与length</span><br><span class="line">					index=i;</span><br><span class="line">					length=length1;</span><br><span class="line">				&#125;</span><br><span class="line">				j=j+length1;//继续扫描字符串T中第j=length1个字符之后的字符</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				j++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;//while</span><br><span class="line">		i++;</span><br><span class="line">	&#125;//while</span><br><span class="line">	printf(&quot;最长公共子串:&quot;);</span><br><span class="line">	for(i=0;i&lt;length;i++)printf(&quot;%c&quot;,S.ch[index+i]);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WSCZou.com/2018/05/26/机器学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WSC_ZOU">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WSC_ZOU_Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/26/机器学习/" itemprop="url">机器学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-26T10:15:11+08:00">
+                2018-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://WSCZou.com/2018/04/19/python仔细学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -911,6 +1322,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">False</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
 <h2 id="if-嵌套"><a href="#if-嵌套" class="headerlink" title="if 嵌套"></a>if 嵌套</h2><p>在嵌套 if 语句中，可以把 if…elif…else 结构放在另外一个 if…elif…else 结构中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if 表达式1:</span><br><span class="line">    语句</span><br><span class="line">    if 表达式2:</span><br><span class="line">        语句</span><br><span class="line">    elif 表达式3:</span><br><span class="line">        语句</span><br><span class="line">    else:</span><br><span class="line">        语句</span><br><span class="line">elif 表达式4:</span><br><span class="line">    语句</span><br><span class="line">else:</span><br><span class="line">    语句</span><br></pre></td></tr></table></figure>
+<h2 id="三元表达式"><a href="#三元表达式" class="headerlink" title="三元表达式"></a>三元表达式</h2><p>Python中的三元表达式可以将if-else语句放到一行里。语法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value = true-expr if condition else false-expr</span><br></pre></td></tr></table></figure>
+<p><code>true-expr</code>或<code>false-expr</code>可以是任何Python代码。它和下面的代码效果相同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if condition:</span><br><span class="line">    value = true-expr</span><br><span class="line">else:</span><br><span class="line">    value = false-expr</span><br></pre></td></tr></table></figure>
+<p>下面是一个更具体的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [126]: x = 5</span><br><span class="line"></span><br><span class="line">In [127]: &apos;Non-negative&apos; if x &gt;= 0 else &apos;Negative&apos;</span><br><span class="line">Out[127]: &apos;Non-negative&apos;</span><br></pre></td></tr></table></figure>
+<p>和if-else一样，只有一个表达式会被执行。因此，三元表达式中的if和else可以包含大量的计算，但只有True的分支会被执行。</p>
+<p>虽然使用三元表达式可以压缩代码，但会降低代码可读性。</p>
 <h1 id="Python3-循环语句"><a href="#Python3-循环语句" class="headerlink" title="Python3 循环语句"></a>Python3 循环语句</h1><h2 id="while-循环使用-else-语句"><a href="#while-循环使用-else-语句" class="headerlink" title="while 循环使用 else 语句"></a>while 循环使用 else 语句</h2><p>在 while … else 在条件语句为 false 时执行 else 的语句块：</p>
 <h2 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h2><p>Python for循环可以遍历任何序列的项目，如一个列表或者一个字符串</p>
 <h2 id="range-函数"><a href="#range-函数" class="headerlink" title="range()函数"></a>range()函数</h2><p>如果你需要遍历数字序列，可以使用内置range()函数。它会生成数列，例如:</p>
@@ -929,8 +1348,8 @@
 <p>执行以上脚本输出结果为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2  是质数</span><br><span class="line">3  是质数</span><br><span class="line">4 等于 2 * 2</span><br><span class="line">5  是质数</span><br><span class="line">6 等于 2 * 3</span><br><span class="line">7  是质数</span><br><span class="line">8 等于 2 * 4</span><br><span class="line">9 等于 3 * 3</span><br></pre></td></tr></table></figure>
 <h2 id="pass-语句"><a href="#pass-语句" class="headerlink" title="pass 语句"></a>pass 语句</h2><p>Python pass是空语句，是为了保持程序结构的完整性。</p>
-<p>pass 不做任何事情，一般用做占位语句</p>
-<h1 id="Python3-迭代器与生成器"><a href="#Python3-迭代器与生成器" class="headerlink" title="Python3 迭代器与生成器"></a>Python3 迭代器与生成器</h1><h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>迭代是Python最强大的功能之一，是访问集合元素的一种方式。</p>
+<p>pass 不做任何事情，一般用做占位语句Python3 迭代器与生成器</p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>迭代是Python最强大的功能之一，是访问集合元素的一种方式。</p>
 <p>迭代器是一个可以记住遍历的位置的对象。</p>
 <p>迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。</p>
 <p>迭代器有两个基本的方法：<strong>iter()</strong> 和 <strong>next()</strong>。</p>
@@ -968,10 +1387,20 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def 函数名（参数列表）:</span><br><span class="line">    函数体</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><p>在 python 中，类型属于对象，变量是没有类型的：</p>
+<h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><p><strong>当你将对象作为参数传递给函数时，新的局域变量创建了对原始对象的引用，而不是复制</strong>。如果在函数里绑定一个新对象到一个变量，这个变动不会反映到上一层。因此可以改变可变参数的内容。假设有以下函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def append_element(some_list, element):</span><br><span class="line">    some_list.append(element)</span><br></pre></td></tr></table></figure>
+<p>然后有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [27]: data = [1, 2, 3]</span><br><span class="line"></span><br><span class="line">In [28]: append_element(data, 4)</span><br><span class="line"></span><br><span class="line">In [29]: data</span><br><span class="line">Out[29]: [1, 2, 3, 4]</span><br></pre></td></tr></table></figure>
+<p>在 python 中，类型属于对象，变量是没有类型的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=[1,2,3]</span><br><span class="line"></span><br><span class="line">a=&quot;Runoob&quot;</span><br></pre></td></tr></table></figure>
 <p>以上代码中，<strong>[1,2,3]</strong> 是 List 类型，<strong>“Runoob”</strong> 是 String 类型，而变量 a 是没有类型，她仅仅是一个对象的引用（一个指针），可以是指向 List 类型对象，也可以是指向 String 类型对象。</p>
-<h3 id="重点-warning-可更改-mutable-与不可更改-immutable-对象"><a href="#重点-warning-可更改-mutable-与不可更改-immutable-对象" class="headerlink" title="(重点:warning:)可更改(mutable)与不可更改(immutable)对象"></a>(重点:warning:)可更改(mutable)与不可更改(immutable)对象</h3><p>:point_down:</p>
+<h2 id="鸭子类型"><a href="#鸭子类型" class="headerlink" title="鸭子类型"></a>鸭子类型</h2><p>经常地，你可能不关心对象的类型，只关心对象是否有某些方法或用途。这通常被称为“鸭子类型”，来自“走起来像鸭子、叫起来像鸭子，那么它就是鸭子”的说法。例如，你可以通过验证一个对象是否遵循迭代协议，判断它是可迭代的。对于许多对象，这意味着它有一个<code>__iter__</code>魔术方法，其它更好的判断方法是使用<code>iter</code>函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def isiterable(obj):</span><br><span class="line">    try:</span><br><span class="line">        iter(obj)</span><br><span class="line">        return True</span><br><span class="line">    except TypeError: # not iterable</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
+<p>这个函数会返回字符串以及大多数Python集合类型为<code>True</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [29]: isiterable(&apos;a string&apos;)</span><br><span class="line">Out[29]: True</span><br><span class="line"></span><br><span class="line">In [30]: isiterable([1, 2, 3])</span><br><span class="line">Out[30]: True</span><br><span class="line"></span><br><span class="line">In [31]: isiterable(5)</span><br><span class="line">Out[31]: False</span><br></pre></td></tr></table></figure>
+<p>我总是用这个功能编写可以接受多种输入类型的函数。常见的例子是编写一个函数可以接受任意类型的序列（list、tuple、ndarray）或是迭代器。你可先检验对象是否是列表（或是NUmPy数组），如果不是的话，将其转变成列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if not isinstance(x, list) and isiterable(x):</span><br><span class="line">    x = list(x)</span><br></pre></td></tr></table></figure>
+<h2 id="重点-warning-可更改-mutable-与不可更改-immutable-对象"><a href="#重点-warning-可更改-mutable-与不可更改-immutable-对象" class="headerlink" title="(重点:warning:)可更改(mutable)与不可更改(immutable)对象"></a>(重点:warning:)可更改(mutable)与不可更改(immutable)对象</h2><p>:point_down:</p>
 <p>在 python 中，strings, tuples, 和 numbers 是不可更改的对象，而 list,dict 等则是可以修改的对象。</p>
 <ul>
 <li><strong>不可变类型：</strong>变量赋值 <strong>a=5</strong> 后再赋值 <strong>a=10</strong>，这里实际是新生成一个 int 值对象 10，再让 a 指向它，而 5 被丢弃，不是改变a的值，相当于新生成了a。</li>
@@ -1045,6 +1474,25 @@
 <p>以上程序执行，报错信息如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;test.py&quot;, line 7, in &lt;module&gt;</span><br><span class="line">    test()</span><br><span class="line">  File &quot;test.py&quot;, line 5, in test</span><br><span class="line">    a = a + 1</span><br><span class="line">UnboundLocalError: local variable &apos;a&apos; referenced before assignment</span><br></pre></td></tr></table></figure>
 <p>错误信息为局部作用域引用错误，因为 test 函数中的 a 使用的是局部，未定义，无法修改。</p>
+<h1 id="Python标准库：内置函数"><a href="#Python标准库：内置函数" class="headerlink" title="Python标准库：内置函数"></a>Python标准库：内置函数</h1><h2 id="any-iterable"><a href="#any-iterable" class="headerlink" title="any(iterable)"></a>any(iterable)</h2><p>如果可迭代的对象的所有元素中只要有一个元素为True就返回True，否则返回False。或者可迭代对象为空，也返回False。<strong>这个函数主要用来判断列表、元组、字典等对象是否有元素为True，提高计算速度</strong>，与之等效的代码如下：</p>
+<p>def any(iterable):</p>
+<p>​    for element in iterable:</p>
+<p>​        if element:</p>
+<p>​            return True</p>
+<p>​    return False</p>
+<p>例子：</p>
+<p><strong>[python]</strong> <a href="https://blog.csdn.net/caimouse/article/details/40652697#" target="_blank" rel="noopener">view plain</a> <a href="https://blog.csdn.net/caimouse/article/details/40652697#" target="_blank" rel="noopener">copy</a></p>
+<ol>
+<li>#any()函数  </li>
+<li>a = []  </li>
+<li>b = {}  </li>
+<li>c = (1, 3, 4)  </li>
+<li>d = (None, 1, 3)  </li>
+<li>​</li>
+<li>print(‘a:’, any(a), ‘b:’, any(b), ‘c:’, any(c), ‘d:’, any(d))  </li>
+</ol>
+<p>输出结果如下：</p>
+<p>a: False b: False c: True d: True</p>
 
           
         
@@ -1545,7 +1993,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
