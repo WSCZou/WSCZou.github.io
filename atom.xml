@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://WSCZou.com/"/>
-  <updated>2018-06-15T08:08:37.374Z</updated>
+  <updated>2018-06-20T10:36:40.366Z</updated>
   <id>http://WSCZou.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://WSCZou.com/2018/06/11/%E9%AB%98%E6%95%B0/"/>
     <id>http://WSCZou.com/2018/06/11/高数/</id>
     <published>2018-06-11T08:29:19.000Z</published>
-    <updated>2018-06-15T08:08:37.374Z</updated>
+    <updated>2018-06-20T10:36:40.366Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="微分方程"><a href="#微分方程" class="headerlink" title="微分方程"></a>微分方程</h1><p>通解不一定是所有解（lnc的例子）</p><h2 id="变量可分离"><a href="#变量可分离" class="headerlink" title="变量可分离"></a>变量可分离</h2><h2 id="齐次："><a href="#齐次：" class="headerlink" title="齐次："></a>齐次：</h2><p>把y看成自变量</p><p>设x\y=u时记得结果回代</p><h2 id="一阶线性公式法"><a href="#一阶线性公式法" class="headerlink" title="一阶线性公式法"></a>一阶线性公式法</h2><h2 id="二阶常系数线性齐次方程"><a href="#二阶常系数线性齐次方程" class="headerlink" title="二阶常系数线性齐次方程"></a>二阶常系数线性齐次方程</h2><p>三角函数 特征方程а（e的次方数）+ui=r1(or r2) k=1，Pm()cosux+Qn(x)sinux m,n选两者最大的次数作为一般方程次数</p><h2 id="y通-y齐通-y非齐特"><a href="#y通-y齐通-y非齐特" class="headerlink" title="y通=y齐通+y非齐特"></a>y通=y齐通+y非齐特</h2><h1 id="多元微分学"><a href="#多元微分学" class="headerlink" title="多元微分学"></a>多元微分学</h1><h2 id="链式求导规则"><a href="#链式求导规则" class="headerlink" title="链式求导规则"></a>链式求导规则</h2><h2 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h2><h2 id="极最值"><a href="#极最值" class="headerlink" title="极最值"></a>极最值</h2><p>（无条件极值（大同小异只适用于二元），条件极（最）值）</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="微分方程"><a href="#微分方程" class="headerlink" title="微分方程"></a>微分方程</h1><p>通解不一定是所有解（lnc的例子）</p><h2 id="变量可分离"><a href="#变量可分离" class="headerlink" title="变量可分离"></a>变量可分离</h2><h2 id="齐次："><a href="#齐次：" class="headerlink" title="齐次："></a>齐次：</h2><p>把y看成自变量</p><p>设x\y=u时记得结果回代</p><h2 id="一阶线性公式法"><a href="#一阶线性公式法" class="headerlink" title="一阶线性公式法"></a>一阶线性公式法</h2><h2 id="二阶常系数线性齐次方程"><a href="#二阶常系数线性齐次方程" class="headerlink" title="二阶常系数线性齐次方程"></a>二阶常系数线性齐次方程</h2><p>三角函数 特征方程а（e的次方数）+ui=r1(or r2) k=1，Pm()cosux+Qn(x)sinux m,n选两者最大的次数作为一般方程次数</p><h2 id="y通-y齐通-y非齐特"><a href="#y通-y齐通-y非齐特" class="headerlink" title="y通=y齐通+y非齐特"></a>y通=y齐通+y非齐特</h2><h1 id="多元微分学"><a href="#多元微分学" class="headerlink" title="多元微分学"></a>多元微分学</h1><h2 id="链式求导规则"><a href="#链式求导规则" class="headerlink" title="链式求导规则"></a>链式求导规则</h2><h2 id="偏导数"><a href="#偏导数" class="headerlink" title="偏导数"></a>偏导数</h2><h2 id="极最值"><a href="#极最值" class="headerlink" title="极最值"></a>极最值</h2><p>（无条件极值（大同小异只适用于二元），条件极（最）值）</p><h1 id="平面及方程"><a href="#平面及方程" class="headerlink" title="平面及方程"></a>平面及方程</h1><p>3x-7y+5z-12=0的平面法向量为(3,-7,5)</p><p>方程中只有x或y或z表示与之垂直的平面</p><p>方程中缺少一个变量则与之平行</p><p><img src="C:\Users\12143\Pictures\Saved Pictures\TIM图片20180620132008.png" alt="TIM图片20180620132008"></p><p><img src="C:\Users\12143\Pictures\Saved Pictures\TIM图片20180620132127.png" alt="TIM图片20180620132127"></p><p>两平面的叉乘为相交直线的方向向量<img src="C:\Users\12143\Pictures\Saved Pictures\TIM图片20180620133802.png" alt="TIM图片20180620133802"></p>]]></content>
     
     <summary type="html">
     
