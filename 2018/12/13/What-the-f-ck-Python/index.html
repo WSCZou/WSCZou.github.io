@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WSC_ZOU_Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What the f*ck Python">
+<meta property="og:url" content="http://WSCZou.com/2018/12/13/What-the-f-ck-Python/index.html">
+<meta property="og:site_name" content="WSC_ZOU_Blog">
+<meta property="og:description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
+<meta property="og:updated_time" content="2018-12-20T12:06:50.129Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What the f*ck Python">
+<meta name="twitter:description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
+<meta name="twitter:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://WSCZou.com/2018/12/13/What-the-f-ck-Python/"/>
+
+
+
+
+
+  <title>What the f*ck Python | WSC_ZOU_Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WSC_ZOU_Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://WSCZou.com/2018/12/13/What-the-f-ck-Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WSC_ZOU">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WSC_ZOU_Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">What the f*ck Python</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T20:56:05+08:00">
+                2018-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="What-the-f-ck-Python-snake"><a href="#What-the-f-ck-Python-snake" class="headerlink" title="What the f*ck Python :snake:"></a>What the f*ck Python :snake:</h1><h2 id="——-一些Python的特性"><a href="#——-一些Python的特性" class="headerlink" title="—— 一些Python的特性"></a>—— 一些Python的特性</h2><p>​                                                        参考(<a href="https://github.com/leisurelicht/wtfpython-cn" target="_blank" rel="noopener">https://github.com/leisurelicht/wtfpython-cn</a>)</p>
+<hr>
+<p>:sunglasses:start your Journey：</p>
+<blockquote>
+<p>Strings can be tricky sometimes/微妙的字符串*</p>
+<p>1.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; a = <span class="string">"some_string"</span></span><br><span class="line">&gt; &gt;&gt;&gt; id(a)</span><br><span class="line">&gt; <span class="number">140420665652016</span></span><br><span class="line">&gt; &gt;&gt;&gt; id(<span class="string">"some"</span> + <span class="string">"_"</span> + <span class="string">"string"</span>) <span class="comment"># 注意两个的id值是相同的.</span></span><br><span class="line">&gt; <span class="number">140420665652016</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>2.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; a = <span class="string">"wtf"</span></span><br><span class="line">&gt; &gt;&gt;&gt; b = <span class="string">"wtf"</span></span><br><span class="line">&gt; &gt;&gt;&gt; a <span class="keyword">is</span> b</span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt;&gt;&gt; a = <span class="string">"wtf!"</span></span><br><span class="line">&gt; &gt;&gt;&gt; b = <span class="string">"wtf!"</span></span><br><span class="line">&gt; &gt;&gt;&gt; a <span class="keyword">is</span> b</span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt;&gt;&gt; a, b = <span class="string">"wtf!"</span>, <span class="string">"wtf!"</span></span><br><span class="line">&gt; &gt;&gt;&gt; a <span class="keyword">is</span> b</span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>3.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; <span class="string">'a'</span> * <span class="number">20</span> <span class="keyword">is</span> <span class="string">'aaaaaaaaaaaaaaaaaaaa'</span></span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt; &gt;&gt;&gt; <span class="string">'a'</span> * <span class="number">21</span> <span class="keyword">is</span> <span class="string">'aaaaaaaaaaaaaaaaaaaaa'</span></span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>:bulb:<strong>提示</strong></p>
+<ul>
+<li>这些行为是由于 Cpython 在编译优化时, 某些情况下会尝试使用已经存在的不可变对象而不是每次都创建一个新对象. (这种行为被称作字符串的驻留[string interning])</li>
+<li>发生驻留之后, 许多变量可能指向内存中的相同字符串对象. (从而节省内存)</li>
+<li>在上面的代码中, 字符串是隐式驻留的. 何时发生隐式驻留则取决于具体的实现. 这里有一些方法可以用来猜测字符串是否会被驻留:<ul>
+<li>所有长度为 0 和长度为 1 的字符串都被驻留.</li>
+<li>字符串在编译时被实现 (<code>&#39;wtf&#39;</code> 将被驻留, 但是 <code>&#39;&#39;.join([&#39;w&#39;, &#39;t&#39;, &#39;f&#39;]</code> 将不会被驻留)</li>
+<li>字符串中只包含字母，数字或下划线时将会驻留. 所以 <code>&#39;wtf!&#39;</code> 由于包含 <code>!</code> 而未被驻留. 可以在<a href="https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19" target="_blank" rel="noopener">这里</a>找到 CPython 对此规则的实现.</li>
+<li><img src="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png" alt="img"></li>
+<li>当在同一行将 <code>a</code> 和 <code>b</code> 的值设置为 <code>&quot;wtf!&quot;</code> 的时候, Python 解释器会创建一个新对象, 然后同时引用第二个变量. 如果你在不同的行上进行赋值操作, 它就不会“知道”已经有一个 <code>wtf！</code> 对象 (因为 <code>&quot;wtf!&quot;</code> 不是按照上面提到的方式被隐式驻留的). 它是一种编译器优化, 特别适用于交互式环境.</li>
+<li>常量折叠(constant folding) 是 Python 中的一种 <a href="https://en.wikipedia.org/wiki/Peephole_optimization" target="_blank" rel="noopener">窥孔优化(peephole optimization)</a> 技术. 这意味着在编译时表达式 <code>&#39;a&#39;*20</code>会被替换为 <code>&#39;aaaaaaaaaaaaaaaaaaaa&#39;</code> 以减少运行时的时钟周期. 只有长度小于 20 的字符串才会发生常量折叠. (为啥? 想象一下由于表达式 <code>&#39;a&#39;*10**10</code> 而生成的 <code>.pyc</code> 文件的大小). 相关的源码实现在<a href="https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288" target="_blank" rel="noopener">这里</a>.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Time for some hash brownies!/是时候来点蛋糕了!​ ​ </p>
+<ul>
+<li>hash brownie指一种含有大麻成分的蛋糕, 所以这里是句双关</li>
+</ul>
+<p>1.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; some_dict = &#123;&#125;</span><br><span class="line">&gt; some_dict[<span class="number">5.5</span>] = <span class="string">"Ruby"</span></span><br><span class="line">&gt; some_dict[<span class="number">5.0</span>] = <span class="string">"JavaScript"</span></span><br><span class="line">&gt; some_dict[<span class="number">5</span>] = <span class="string">"Python"</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; some_dict[<span class="number">5.5</span>]</span><br><span class="line">&gt; <span class="string">"Ruby"</span></span><br><span class="line">&gt; &gt;&gt;&gt; some_dict[<span class="number">5.0</span>]</span><br><span class="line">&gt; <span class="string">"Python"</span></span><br><span class="line">&gt; &gt;&gt;&gt; some_dict[<span class="number">5</span>]</span><br><span class="line">&gt; <span class="string">"Python"</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<h4 id="💡-提示"><a href="#💡-提示" class="headerlink" title="💡 提示:"></a>💡 提示:</h4><ul>
+<li><p>Python 字典通过检查键值是否相等和比较哈希值来确定两个键是否相同.</p>
+</li>
+<li><p>具有相同值的不可变对象在Python中始终具有相同的哈希值.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;   &gt;&gt;&gt; <span class="number">5</span> == <span class="number">5.0</span></span><br><span class="line">&gt;   <span class="keyword">True</span></span><br><span class="line">&gt;   &gt;&gt;&gt; hash(<span class="number">5</span>) == hash(<span class="number">5.0</span>)</span><br><span class="line">&gt;   <span class="keyword">True</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>  注意:</p>
+<p>  具有不同值的对象也可能具有相同的哈希值（哈希冲突）.</p>
+<ul>
+<li><p>当执行 <code>some_dict[5] = &quot;Python&quot;</code> 语句时, 因为Python将 <code>5</code> 和 <code>5.0</code> 识别为 <code>some_dict</code> 的同一个键, 所以已有值 “JavaScript” 就被 “Python” 覆盖了.</p>
+</li>
+<li><p>这个 StackOverflow的 <a href="https://stackoverflow.com/a/32211042/4354153" target="_blank" rel="noopener">回答</a> 漂亮的解释了这背后的基本原理.</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Return return everywhere!/到处返回!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">def</span> <span class="title">some_func</span><span class="params">()</span>:</span></span><br><span class="line">&gt; 	<span class="keyword">try</span>:</span><br><span class="line">&gt; 		<span class="keyword">return</span> <span class="string">'from_try'</span></span><br><span class="line">&gt; 	<span class="keyword">finally</span>:</span><br><span class="line">&gt; 		<span class="keyword">return</span> <span class="string">'from_finally'</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>Output:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt;some_func()</span><br><span class="line">&gt; <span class="string">'from_finally'</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<h4 id="💡-说明"><a href="#💡-说明" class="headerlink" title="💡 说明:"></a>💡 说明:</h4><ul>
+<li>当在 “try…finally” 语句的 <code>try</code> 中执行 <code>return</code>, <code>break</code> 或 <code>continue</code> 后, <code>finally</code> 子句依然会执行.</li>
+<li>函数的返回值由最后执行的 <code>return</code> 语句决定. 由于 <code>finally</code> 子句一定会执行, 所以 <code>finally</code> 子句中的 <code>return</code> 将始终是最后执行的语句.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Deep down, we’re all the same./本质上，我们都一样.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">WTF</span>:</span></span><br><span class="line">&gt; 	<span class="keyword">pass</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>Output:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; WTF() == WTF() <span class="comment"># 两个不同的对象应该不相等</span></span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt; &gt;&gt;&gt; WTF() <span class="keyword">is</span> WTF() <span class="comment"># 也不相同</span></span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt; &gt;&gt;&gt; hash(WTF()) == hash(WTF()) <span class="comment"># 哈希值也应该不同</span></span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt; &gt;&gt;&gt; id(WTF()) == id(WTF())</span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<h4 id="💡-说明-1"><a href="#💡-说明-1" class="headerlink" title="💡 说明:"></a>💡 说明:</h4><ul>
+<li><p>当调用 <code>id</code> 函数时, Python 创建了一个 <code>WTF</code> 类的对象并传给 <code>id</code> 函数. 然后 <code>id</code> 函数获取其id值 (也就是内存地址), 然后丢弃该对象. 该对象就被销毁了.</p>
+</li>
+<li><p>当我们连续两次进行这个操作时, Python会将相同的内存地址分配给第二个对象. 因为 (在CPython中) <code>id</code> 函数使用对象的内存地址作为对象的id值, 所以两个对象的id值是相同的.</p>
+</li>
+<li><p>综上, 对象的id值仅仅在对象的生命周期内唯一. 在对象被销毁之后, 或被创建之前, 其他对象可以具有相同的id值.</p>
+</li>
+<li><p>那为什么 <code>is</code> 操作的结果为 <code>False</code> 呢? 让我们看看这段代码.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;   <span class="class"><span class="keyword">class</span> <span class="title">WTF</span><span class="params">(object)</span>:</span></span><br><span class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span> print(<span class="string">"I"</span>)</span><br><span class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span> print(<span class="string">"D"</span>)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>  <strong>Output:</strong></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;   &gt;&gt;&gt; WTF() <span class="keyword">is</span> WTF()</span><br><span class="line">&gt;   I</span><br><span class="line">&gt;   I</span><br><span class="line">&gt;   D</span><br><span class="line">&gt;   D</span><br><span class="line">&gt;   <span class="keyword">False</span></span><br><span class="line">&gt;   &gt;&gt;&gt; id(WTF()) == id(WTF())</span><br><span class="line">&gt;   I</span><br><span class="line">&gt;   D</span><br><span class="line">&gt;   I</span><br><span class="line">&gt;   D</span><br><span class="line">&gt;   <span class="keyword">True</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>  正如你所看到的, 对象销毁的顺序是造成所有不同之处的原因.</p>
+<p>  如果看完还是云里雾里：请看 <a href="https://www.jb51.net/article/60360.htm" target="_blank" rel="noopener">https://www.jb51.net/article/60360.htm</a></p>
+</blockquote>
+<hr>
+<h3 id="gt-For-what-为什么"><a href="#gt-For-what-为什么" class="headerlink" title="&gt; For what?/为什么?"></a>&gt; For what?/为什么?</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">some_string = <span class="string">"wtf"</span></span><br><span class="line">some_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i, some_dict[i] <span class="keyword">in</span> enumerate(some_string):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_dict <span class="comment"># 创建了索引字典.</span></span><br><span class="line">&#123;<span class="number">0</span>: <span class="string">'w'</span>, <span class="number">1</span>: <span class="string">'t'</span>, <span class="number">2</span>: <span class="string">'f'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-2"><a href="#💡-说明-2" class="headerlink" title="💡 说明:"></a>💡 说明:</h4><ul>
+<li><p><a href="https://docs.python.org/3/reference/grammar.html" target="_blank" rel="noopener">Python 语法</a> （如果对英文文档吃力的化推荐看 <a href="https://docspy3zh.readthedocs.io/en/latest/reference/compound_stmts.html#for" target="_blank" rel="noopener">for语句</a>）中对 <code>for</code> 的定义是:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for_stmt: <span class="string">'for'</span> exprlist <span class="string">'in'</span> testlist <span class="string">':'</span> suite [<span class="string">'else'</span> <span class="string">':'</span> suite]</span><br></pre></td></tr></table></figure>
+<p>其中 <code>exprlist</code> 指分配目标. 这意味着对可迭代对象中的<strong>每一项都会执行</strong>类似 <code>{exprlist} = {next_value}</code> 的操作.</p>
+<p>一个有趣的例子说明了这一点:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    print(i)</span><br><span class="line">    i = <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>你可曾觉得这个循环只会运行一次?</p>
+<p><strong>💡 说明:</strong></p>
+<ul>
+<li>由于循环在Python中工作方式, 赋值语句 <code>i = 10</code> 并不会影响迭代循环, 在每次迭代开始之前, 迭代器(这里指 <code>range(4)</code>) 生成的下一个元素就被解包并赋值给目标列表的变量(这里指 <code>i</code>)了.</li>
+</ul>
+</li>
+<li><p>在每一次的迭代中, <code>enumerate(some_string)</code> 函数就生成一个新值 <code>i</code> (计数器增加) 并从 <code>some_string</code> 中获取一个字符. 然后将字典 <code>some_dict</code> 键 <code>i</code> (刚刚分配的) 的值设为该字符. 本例中循环的展开可以简化为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>i, some_dict[i] = (<span class="number">0</span>, <span class="string">'w'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>i, some_dict[i] = (<span class="number">1</span>, <span class="string">'t'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>i, some_dict[i] = (<span class="number">2</span>, <span class="string">'f'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_dict</span><br></pre></td></tr></table></figure>
+<h3 id="gt-Evaluation-time-discrepancy-执行时机差异"><a href="#gt-Evaluation-time-discrepancy-执行时机差异" class="headerlink" title="&gt; Evaluation time discrepancy/执行时机差异"></a>&gt; Evaluation time discrepancy/执行时机差异</h3><p>1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = [1, 8, 15]</span><br><span class="line">g = (x for x in array if array.count(x) &gt; 0)</span><br><span class="line">array = [2, 8, 22]</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(list(g))</span><br><span class="line">[8]</span><br></pre></td></tr></table></figure>
+<p>2.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">array_1 = [1,2,3,4]</span><br><span class="line">g1 = (x for x in array_1)</span><br><span class="line">array_1 = [1,2,3,4,5]</span><br><span class="line"></span><br><span class="line">array_2 = [1,2,3,4]</span><br><span class="line">g2 = (x for x in array_2)</span><br><span class="line">array_2[:] = [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(list(g1))</span><br><span class="line">[1,2,3,4]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; print(list(g2))</span><br><span class="line">[1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-3"><a href="#💡-说明-3" class="headerlink" title="💡 说明"></a>💡 说明</h4><ul>
+<li><p>在<a href="https://wiki.python.org/moin/Generators" target="_blank" rel="noopener">生成器</a>表达式中, <code>in</code> 子句在声明时执行, 而条件子句则是在运行时执行.</p>
+<p>对上面一句的解释：</p>
+<p>​    在第一个例子中，<code>x for x in array</code>写出来的时候就执行了，而后面的 <code>if array.count(x) &gt; 0</code> 则是在 <code>array = [2, 8, 22]</code> 写完后 执行整个代码块时执行.</p>
+</li>
+<li><p>所以在运行前, <code>array</code> 已经被重新赋值为 <code>[2, 8, 22]</code>, 因此对于之前的 <code>1</code>, <code>8</code> 和 <code>15</code>, 只有 <code>count(8)</code> 的结果是大于 <code>0</code> 的, 所以生成器只会生成 <code>8</code>.</p>
+</li>
+<li><p>第二部分中 <code>g1</code> 和 <code>g2</code> 的输出差异则是由于变量 <code>array_1</code> 和 <code>array_2</code> 被重新赋值的方式导致的.</p>
+</li>
+<li><p>在第一种情况下, <code>array_1</code> 被绑定到新对象 <code>[1,2,3,4,5]</code>, 因为 <code>in</code> 子句是在声明时被执行的， 所以它仍然引用旧对象 <code>[1,2,3,4]</code>(并没有被销毁).</p>
+</li>
+<li><p>在第二种情况下, 对 <code>array_2</code> 的切片赋值将相同的旧对象 <code>[1,2,3,4]</code> 原地更新为 <code>[1,2,3,4,5]</code>. 因此 <code>g2</code> 和 <code>array_2</code> 仍然引用同一个对象(这个对象现在已经更新为 <code>[1,2,3,4,5]</code>).</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/22/week1/" rel="next" title="week1">
+                <i class="fa fa-chevron-left"></i> week1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">WSC_ZOU</p>
+              <p class="site-description motion-element" itemprop="description">A Learner</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-the-f-ck-Python-snake"><span class="nav-number">1.</span> <span class="nav-text">What the f*ck Python :snake:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#——-一些Python的特性"><span class="nav-number">1.1.</span> <span class="nav-text">—— 一些Python的特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-提示"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">💡 提示:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-说明"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">💡 说明:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-说明-1"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">💡 说明:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gt-For-what-为什么"><span class="nav-number">1.1.1.</span> <span class="nav-text">&gt; For what?/为什么?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-说明-2"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">💡 说明:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gt-Evaluation-time-discrepancy-执行时机差异"><span class="nav-number">1.1.2.</span> <span class="nav-text">&gt; Evaluation time discrepancy/执行时机差异</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-说明-3"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">💡 说明</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WSC_ZOU</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
