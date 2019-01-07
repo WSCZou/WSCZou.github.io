@@ -1,87 +1,11 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="utf-8">
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="WSC_ZOU_Blog" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
+  <title>What the f*ck Python | WSC_ZOU_Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
 <meta property="og:type" content="article">
 <meta property="og:title" content="What the f*ck Python">
 <meta property="og:url" content="http://WSCZou.com/2018/12/13/What-the-f-ck-Python/index.html">
@@ -89,239 +13,73 @@
 <meta property="og:description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
-<meta property="og:updated_time" content="2018-12-20T12:06:50.129Z">
+<meta property="og:updated_time" content="2018-12-20T12:28:00.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
 <meta name="twitter:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://WSCZou.com/2018/12/13/What-the-f-ck-Python/"/>
-
-
-
-
-
-  <title>What the f*ck Python | WSC_ZOU_Blog</title>
   
-
-
-
-
-
-
-
-
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
   
     
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+      <body>
     
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WSC_ZOU_Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
-      
+      <div id="container" class="container">
+        <article id="post-What-the-f-ck-Python" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">NickName</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a>&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <a href="/">Home</a>
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+        <a href="/archives">Archives</a>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="/about">About</a>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
+      </ul>
     </ul>
-  
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
 
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
+  <hr/>
+  <div class="article-inner">
     
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://WSCZou.com/2018/12/13/What-the-f-ck-Python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WSC_ZOU">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WSC_ZOU_Blog">
-    </span>
-
     
-      <header class="post-header">
-
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">What the f*ck Python</h1>
-        
+  
+    <h1 class="article-title" itemprop="name">
+      What the f*ck Python
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T20:56:05+08:00">
-                2018-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
       </header>
     
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
+    <div class="article-entry typo" itemprop="articleBody">
       
         <h1 id="What-the-f-ck-Python-snake"><a href="#What-the-f-ck-Python-snake" class="headerlink" title="What the f*ck Python :snake:"></a>What the f*ck Python :snake:</h1><h2 id="——-一些Python的特性"><a href="#——-一些Python的特性" class="headerlink" title="—— 一些Python的特性"></a>—— 一些Python的特性</h2><p>​                                                        参考(<a href="https://github.com/leisurelicht/wtfpython-cn" target="_blank" rel="noopener">https://github.com/leisurelicht/wtfpython-cn</a>)</p>
 <hr>
@@ -355,6 +113,7 @@
 </li>
 </ul>
 </blockquote>
+<hr>
 <blockquote>
 <p>Time for some hash brownies!/是时候来点蛋糕了!​ ​ </p>
 <ul>
@@ -400,6 +159,7 @@
 <li>函数的返回值由最后执行的 <code>return</code> 语句决定. 由于 <code>finally</code> 子句一定会执行, 所以 <code>finally</code> 子句中的 <code>return</code> 将始终是最后执行的语句.</li>
 </ul>
 </blockquote>
+<hr>
 <blockquote>
 <p>Deep down, we’re all the same./本质上，我们都一样.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">WTF</span>:</span></span><br><span class="line">&gt; 	<span class="keyword">pass</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
@@ -449,14 +209,17 @@
 </li>
 <li><p>在每一次的迭代中, <code>enumerate(some_string)</code> 函数就生成一个新值 <code>i</code> (计数器增加) 并从 <code>some_string</code> 中获取一个字符. 然后将字典 <code>some_dict</code> 键 <code>i</code> (刚刚分配的) 的值设为该字符. 本例中循环的展开可以简化为:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>i, some_dict[i] = (<span class="number">0</span>, <span class="string">'w'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>i, some_dict[i] = (<span class="number">1</span>, <span class="string">'t'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>i, some_dict[i] = (<span class="number">2</span>, <span class="string">'f'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_dict</span><br></pre></td></tr></table></figure>
-<h3 id="gt-Evaluation-time-discrepancy-执行时机差异"><a href="#gt-Evaluation-time-discrepancy-执行时机差异" class="headerlink" title="&gt; Evaluation time discrepancy/执行时机差异"></a>&gt; Evaluation time discrepancy/执行时机差异</h3><p>1.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = [1, 8, 15]</span><br><span class="line">g = (x for x in array if array.count(x) &gt; 0)</span><br><span class="line">array = [2, 8, 22]</span><br></pre></td></tr></table></figure>
-<p><strong>Output:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(list(g))</span><br><span class="line">[8]</span><br></pre></td></tr></table></figure>
-<p>2.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">array_1 = [1,2,3,4]</span><br><span class="line">g1 = (x for x in array_1)</span><br><span class="line">array_1 = [1,2,3,4,5]</span><br><span class="line"></span><br><span class="line">array_2 = [1,2,3,4]</span><br><span class="line">g2 = (x for x in array_2)</span><br><span class="line">array_2[:] = [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
-<p><strong>Output:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(list(g1))</span><br><span class="line">[1,2,3,4]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; print(list(g2))</span><br><span class="line">[1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+<hr>
+</li>
+</ul>
+<h3 id="gt-Evaluation-time-discrepancy-执行时机差异"><a href="#gt-Evaluation-time-discrepancy-执行时机差异" class="headerlink" title="&gt; Evaluation time discrepancy/执行时机差异"></a>&gt; Evaluation time discrepancy/执行时机差异</h3><p>  1.</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = [<span class="number">1</span>, <span class="number">8</span>, <span class="number">15</span>]</span><br><span class="line">g = (x <span class="keyword">for</span> x <span class="keyword">in</span> array <span class="keyword">if</span> array.count(x) &gt; <span class="number">0</span>)</span><br><span class="line">array = [<span class="number">2</span>, <span class="number">8</span>, <span class="number">22</span>]</span><br></pre></td></tr></table></figure>
+<p>  <strong>Output:</strong></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(list(g))</span><br><span class="line">[<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
+<p>  2.</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">array_1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">g1 = (x <span class="keyword">for</span> x <span class="keyword">in</span> array_1)</span><br><span class="line">array_1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">array_2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">g2 = (x <span class="keyword">for</span> x <span class="keyword">in</span> array_2)</span><br><span class="line">array_2[:] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<p>  <strong>Output:</strong></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(list(g1))</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(list(g2))</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
 <h4 id="💡-说明-3"><a href="#💡-说明-3" class="headerlink" title="💡 说明"></a>💡 说明</h4><ul>
 <li><p>在<a href="https://wiki.python.org/moin/Generators" target="_blank" rel="noopener">生成器</a>表达式中, <code>in</code> 子句在声明时执行, 而条件子句则是在运行时执行.</p>
 <p>对上面一句的解释：</p>
@@ -469,216 +232,97 @@
 <li><p>在第一种情况下, <code>array_1</code> 被绑定到新对象 <code>[1,2,3,4,5]</code>, 因为 <code>in</code> 子句是在声明时被执行的， 所以它仍然引用旧对象 <code>[1,2,3,4]</code>(并没有被销毁).</p>
 </li>
 <li><p>在第二种情况下, 对 <code>array_2</code> 的切片赋值将相同的旧对象 <code>[1,2,3,4]</code> 原地更新为 <code>[1,2,3,4,5]</code>. 因此 <code>g2</code> 和 <code>array_2</code> 仍然引用同一个对象(这个对象现在已经更新为 <code>[1,2,3,4,5]</code>).</p>
+<hr>
 </li>
 </ul>
-</li>
-</ul>
+<pre><code>### &gt; `is` is not what it is!/出人意料的`is`!
 
+下面是一个在互联网上非常有名的例子.
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">256</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">256</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">257</span>; b = <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+
+#### 💡 说明:
+
+**is 和 == 的区别**
+
+- `is` 运算符检查两个运算对象是否引用自同一对象 (即, 它检查两个预算对象是否相同).
+
+- `==` 运算符比较两个运算对象的值是否相等.
+
+- 因此
+
+
+
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">is</span></span><br></pre></td></tr></table></figure>
+
+
+
+  代表引用相同,
+
+
+
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">==</span><br></pre></td></tr></table></figure>
+
+
+
+  代表值相等. 下面的例子可以很好的说明这点,
+
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>[] == []</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[] <span class="keyword">is</span> [] <span class="comment"># 这两个空列表位于不同的内存地址.</span></span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+
+**256 是一个已经存在的对象, 而 257 不是**
+
+当你启动Python 的时候, `-5` 到 `256` 的数值就已经被分配好了. 这些数字因为经常使用所以适合被提前准备好.
+
+引用自 &lt;https://docs.python.org/3/c-api/long.html&gt;
+
+&gt; 当前的实现为-5到256之间的所有整数保留一个整数对象数组, 当你创建了一个该范围内的整数时, 你只需要返回现有对象的引用. 所以改变1的值是有可能的. 我怀疑这种行为在Python中是未定义行为. :-)
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">256</span>)</span><br><span class="line"><span class="number">10922528</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">256</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">256</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">10922528</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">10922528</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">257</span>)</span><br><span class="line"><span class="number">140084850247312</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(x)</span><br><span class="line"><span class="number">140084850247440</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(y)</span><br><span class="line"><span class="number">140084850247344</span></span><br></pre></td></tr></table></figure>
+
+这里解释器并没有智能到能在执行 `y = 257` 时意识到我们已经创建了一个整数 `257`, 所以它在内存中又新建了另一个对象.
+
+**当 a 和 b 在同一行中使用相同的值初始化时，会指向同一个对象.**
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b = <span class="number">257</span>, <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">140640774013296</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">140640774013296</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">140640774013392</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">140640774013488</span></span><br></pre></td></tr></table></figure>
+
+- 当 a 和 b 在同一行中被设置为 `257` 时, Python 解释器会创建一个新对象, 然后同时引用第二个变量. 如果你在不同的行上进行, 它就不会 &quot;知道&quot; 已经存在一个 `257` 对象了.
+- 这是一种特别为交互式环境做的编译器优化. 当你在实时解释器中输入两行的时候, 他们会单独编译, 因此也会单独进行优化. 如果你在 `.py` 文件中尝试这个例子, 则不会看到相同的行为, 因为文件是一次性编译的.
+</code></pre>
+      
       
     </div>
-    
-    
-    
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2018/12/13/What-the-f-ck-Python/" class="article-date">
+  <time datetime="2018-12-13T12:56:05.000Z" itemprop="datePublished">2018-12-13</time>
+</a>
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/09/22/week1/" rel="next" title="week1">
-                <i class="fa fa-chevron-left"></i> week1
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
+        </li>
+        
+        
+        <hr/>
+      </ul>
     </footer>
   </div>
   
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
     
-    <div class="sidebar-inner">
+<nav id="article-nav" class="article-nav">
+  
+    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+  
+  
+    <a href="/2018/09/22/week1/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">week1</div>
+    </a>
+  
+</nav>
 
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">WSC_ZOU</p>
-              <p class="site-description motion-element" itemprop="description">A Learner</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-the-f-ck-Python-snake"><span class="nav-number">1.</span> <span class="nav-text">What the f*ck Python :snake:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#——-一些Python的特性"><span class="nav-number">1.1.</span> <span class="nav-text">—— 一些Python的特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-提示"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">💡 提示:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-说明"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">💡 说明:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-说明-1"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">💡 说明:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gt-For-what-为什么"><span class="nav-number">1.1.1.</span> <span class="nav-text">&gt; For what?/为什么?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-说明-2"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">💡 说明:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gt-Evaluation-time-discrepancy-执行时机差异"><span class="nav-number">1.1.2.</span> <span class="nav-text">&gt; Evaluation time discrepancy/执行时机差异</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#💡-说明-3"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">💡 说明</span></a></li></ol></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">WSC_ZOU</span>
 
   
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
-        
+</article>
 
 
 
@@ -686,159 +330,46 @@
 
 
 
-        
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> Fusce eget urna vitae velit <em>eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque</em> penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Post</p>
+
+
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
+      
 
-    
 
-  </div>
 
-  
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
 
 
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
 
 
-  
 
 
 
 
 
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-</body>
+    </div>
+  </body>
 </html>
