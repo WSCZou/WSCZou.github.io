@@ -5,18 +5,18 @@
   
   <title>数据挖掘 | WSC_ZOU_Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线性回归算法12#线性回归from sklearn.linear_model import LinearRegression 12#训练集交叉验证，得到平均值from sklearn.model_selection import KFold 补充知识：训练集、验证集、测试集如果给定的样本数据充足，我们通常使用均匀随机抽样的方式将数据集划分成3个部分——训练集、验证集和测试集，这三个集合不能有交集，">
+  <meta name="description" content="线性回归算法 12#线性回归from sklearn.linear_model import LinearRegression 12#训练集交叉验证，得到平均值from sklearn.model_selection import KFold 补充知识：训练集、验证集、测试集 如果给定的样本数据充足，我们通常使用均匀随机抽样的方式将数据集划分成3个部分——训练集、验证集和测试集，这三个集合不能有交">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据挖掘">
 <meta property="og:url" content="http://WSCZou.com/2018/09/08/数据挖掘/index.html">
 <meta property="og:site_name" content="WSC_ZOU_Blog">
-<meta property="og:description" content="线性回归算法12#线性回归from sklearn.linear_model import LinearRegression 12#训练集交叉验证，得到平均值from sklearn.model_selection import KFold 补充知识：训练集、验证集、测试集如果给定的样本数据充足，我们通常使用均匀随机抽样的方式将数据集划分成3个部分——训练集、验证集和测试集，这三个集合不能有交集，">
+<meta property="og:description" content="线性回归算法 12#线性回归from sklearn.linear_model import LinearRegression 12#训练集交叉验证，得到平均值from sklearn.model_selection import KFold 补充知识：训练集、验证集、测试集 如果给定的样本数据充足，我们通常使用均匀随机抽样的方式将数据集划分成3个部分——训练集、验证集和测试集，这三个集合不能有交">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20171109144308208?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1d2VpeXV4aWFuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:updated_time" content="2018-09-15T02:46:16.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘">
-<meta name="twitter:description" content="线性回归算法12#线性回归from sklearn.linear_model import LinearRegression 12#训练集交叉验证，得到平均值from sklearn.model_selection import KFold 补充知识：训练集、验证集、测试集如果给定的样本数据充足，我们通常使用均匀随机抽样的方式将数据集划分成3个部分——训练集、验证集和测试集，这三个集合不能有交集，">
+<meta name="twitter:description" content="线性回归算法 12#线性回归from sklearn.linear_model import LinearRegression 12#训练集交叉验证，得到平均值from sklearn.model_selection import KFold 补充知识：训练集、验证集、测试集 如果给定的样本数据充足，我们通常使用均匀随机抽样的方式将数据集划分成3个部分——训练集、验证集和测试集，这三个集合不能有交">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20171109144308208?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1d2VpeXV4aWFuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
   
@@ -81,16 +81,20 @@
     
     <div class="article-entry typo" itemprop="articleBody">
       
-        <h1 id="线性回归算法"><a href="#线性回归算法" class="headerlink" title="线性回归算法"></a>线性回归算法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#线性回归</span></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br></pre></td></tr></table></figure>
+        <h1>线性回归算法</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#线性回归</span></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#训练集交叉验证，得到平均值</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br></pre></td></tr></table></figure>
-<h2 id="补充知识：训练集、验证集、测试集"><a href="#补充知识：训练集、验证集、测试集" class="headerlink" title="补充知识：训练集、验证集、测试集"></a>补充知识：训练集、验证集、测试集</h2><p>如果给定的样本数据充足，我们通常使用均匀随机抽样的方式将数据集划分成3个部分——训练集、验证集和测试集，这三个集合不能有交集，常见的比例是8:1:1。需要注意的是，通常都会给定训练集和测试集，而不会给验证集。这时候验证集该从哪里得到呢？一般的做法是，从训练集中均匀随机抽样一部分样本作为验证集。</p>
-<p>交叉验证（Cross validation)，交叉验证用于防止模型过于复杂而引起的过拟合.有时亦称循环估计， 是一种统计学上将数据样本切割成较小子集的实用方法。<strong>之所以出现交叉验证，主要是因为训练集较小。无法直接像前面那样只分出训练集，验证集，测试就可以了（简单交叉验证）。  需要说明的是，在实际情况下，人们不是很喜欢用交叉验证，主要是因为它会耗费较多的计算资源。一般直接把训练集按照50%-90%的比例分成训练集和验证集。但这也是根据具体情况来定的：如果超参数数量多，你可能就想用更大的验证集，而验证集的数量不够，那么最好还是用交叉验证吧。至于分成几份比较好，一般都是分成3、5和10份。</strong> </p>
-<h2 id="K折交叉验证"><a href="#K折交叉验证" class="headerlink" title="K折交叉验证"></a>K折交叉验证</h2><ol>
+<h2 id="补充知识：训练集-验证集-测试集">补充知识：训练集、验证集、测试集</h2>
+<p>如果给定的样本数据充足，我们通常使用均匀随机抽样的方式将数据集划分成3个部分——训练集、验证集和测试集，这三个集合不能有交集，常见的比例是8:1:1。需要注意的是，通常都会给定训练集和测试集，而不会给验证集。这时候验证集该从哪里得到呢？一般的做法是，从训练集中均匀随机抽样一部分样本作为验证集。</p>
+<p>交叉验证（Cross validation)，交叉验证用于防止模型过于复杂而引起的过拟合.有时亦称循环估计， 是一种统计学上将数据样本切割成较小子集的实用方法。<strong>之所以出现交叉验证，主要是因为训练集较小。无法直接像前面那样只分出训练集，验证集，测试就可以了（简单交叉验证）。  需要说明的是，在实际情况下，人们不是很喜欢用交叉验证，主要是因为它会耗费较多的计算资源。一般直接把训练集按照50%-90%的比例分成训练集和验证集。但这也是根据具体情况来定的：如果超参数数量多，你可能就想用更大的验证集，而验证集的数量不够，那么最好还是用交叉验证吧。至于分成几份比较好，一般都是分成3、5和10份。</strong></p>
+<h2 id="k折交叉验证">K折交叉验证</h2>
+<ol>
 <li>将数据集平均分割成K个等份</li>
 <li>使用1份数据作为测试数据，其余作为训练数据</li>
 <li>计算测试准确率</li>
 <li>使用不同的测试集，重复2、3步骤</li>
-<li>对测试准确率做平均，作为对未知数据预测准确率的估计<br><img src="https://img-blog.csdn.net/20171109144308208?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1d2VpeXV4aWFuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"> </li>
+<li>对测试准确率做平均，作为对未知数据预测准确率的估计<br>
+<img src="https://img-blog.csdn.net/20171109144308208?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl1d2VpeXV4aWFuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#样本平均分成3份，3折交叉验证  </span></span><br><span class="line">kf = KFold(n_splits=<span class="number">3</span>,shuffle=<span class="keyword">False</span>,random_state=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 <p>参数说明：</p>
@@ -99,9 +103,11 @@
 <p>①若为Falses时，其效果等同于random_state等于整数，每次划分的结果相同</p>
 <p>②若为True时，每次划分的结果都不一样，表示经过洗牌，随机取样的</p>
 <p>random_state：随机种子数</p>
-<h1 id="随机森林算法"><a href="#随机森林算法" class="headerlink" title="随机森林算法"></a>随机森林算法</h1><p>1.随机森林原理：  随机森林由Leo Breiman（2001）提出的一种分类算法，它通过自助法（bootstrap）重采样技术，从原始训练样本集N中有放回地重复随机抽取n个样本生成新的训练样本集合训练决策树，然后按以上步骤生成m棵决策树组成随机森林，新数据的分类结果按分类树投票多少形成的分数而定。其实质是对决策树算法的一种改进，将多个决策树合并在一起，每棵树的建立依赖于独立抽取的样本。  单棵树的分类能力可能很小，但在随机产生大量的决策树后，一个测试样本可以通过每一棵树的分类结果经统计后选择最可能的分类。  </p>
-<p>随机森林大致过程如下：  1）从样本集中有放回随机采样选出n个样本；  2）从所有特征中随机选择k个特征，对选出的样本利用这些特征建立决策树（一般是CART，也可是别的或混合）；  3）重复以上两步m次，即生成m棵决策树，形成随机森林；  4）对于新数据，经过每棵树决策，最后投票确认分到哪一类。  </p>
-<h1 id="特征处理"><a href="#特征处理" class="headerlink" title="特征处理"></a>特征处理</h1><p>一般用pd.factorize()和pd.get_dummies()</p>
+<h1>随机森林算法</h1>
+<p>1.随机森林原理：  随机森林由Leo Breiman（2001）提出的一种分类算法，它通过自助法（bootstrap）重采样技术，从原始训练样本集N中有放回地重复随机抽取n个样本生成新的训练样本集合训练决策树，然后按以上步骤生成m棵决策树组成随机森林，新数据的分类结果按分类树投票多少形成的分数而定。其实质是对决策树算法的一种改进，将多个决策树合并在一起，每棵树的建立依赖于独立抽取的样本。  单棵树的分类能力可能很小，但在随机产生大量的决策树后，一个测试样本可以通过每一棵树的分类结果经统计后选择最可能的分类。</p>
+<p>随机森林大致过程如下：  1）从样本集中有放回随机采样选出n个样本；  2）从所有特征中随机选择k个特征，对选出的样本利用这些特征建立决策树（一般是CART，也可是别的或混合）；  3）重复以上两步m次，即生成m棵决策树，形成随机森林；  4）对于新数据，经过每棵树决策，最后投票确认分到哪一类。</p>
+<h1>特征处理</h1>
+<p>一般用pd.factorize()和pd.get_dummies()</p>
 
       
       

@@ -5,17 +5,17 @@
   
   <title>数据结构 | WSC_ZOU_Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一.串1.计算子串的个数： 字串： n（n+1）/2 + 1 非空子串：n（n+1）/2 非空真子串：n（n+1）/2 - 1 2.index函数 3.编写一个程序，求两个字符串S和T的一个最长公共子串 123456789101112131415161718192021222324252627282930313233343536typedef struct&amp;#123;	char *ch;	int">
+  <meta name="description" content="一.串 1.计算子串的个数： 字串： n（n+1）/2 + 1 非空子串：n（n+1）/2 非空真子串：n（n+1）/2 - 1 2.index函数 3.编写一个程序，求两个字符串S和T的一个最长公共子串 123456789101112131415161718192021222324252627282930313233343536typedef struct&amp;#123;	char *ch;	int">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构">
 <meta property="og:url" content="http://WSCZou.com/2018/05/27/数据结构/index.html">
 <meta property="og:site_name" content="WSC_ZOU_Blog">
-<meta property="og:description" content="一.串1.计算子串的个数： 字串： n（n+1）/2 + 1 非空子串：n（n+1）/2 非空真子串：n（n+1）/2 - 1 2.index函数 3.编写一个程序，求两个字符串S和T的一个最长公共子串 123456789101112131415161718192021222324252627282930313233343536typedef struct&amp;#123;	char *ch;	int">
+<meta property="og:description" content="一.串 1.计算子串的个数： 字串： n（n+1）/2 + 1 非空子串：n（n+1）/2 非空真子串：n（n+1）/2 - 1 2.index函数 3.编写一个程序，求两个字符串S和T的一个最长公共子串 123456789101112131415161718192021222324252627282930313233343536typedef struct&amp;#123;	char *ch;	int">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-06-27T11:56:01.310Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构">
-<meta name="twitter:description" content="一.串1.计算子串的个数： 字串： n（n+1）/2 + 1 非空子串：n（n+1）/2 非空真子串：n（n+1）/2 - 1 2.index函数 3.编写一个程序，求两个字符串S和T的一个最长公共子串 123456789101112131415161718192021222324252627282930313233343536typedef struct&amp;#123;	char *ch;	int">
+<meta name="twitter:description" content="一.串 1.计算子串的个数： 字串： n（n+1）/2 + 1 非空子串：n（n+1）/2 非空真子串：n（n+1）/2 - 1 2.index函数 3.编写一个程序，求两个字符串S和T的一个最长公共子串 123456789101112131415161718192021222324252627282930313233343536typedef struct&amp;#123;	char *ch;	int">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -79,15 +79,17 @@
     
     <div class="article-entry typo" itemprop="articleBody">
       
-        <h2 id="一-串"><a href="#一-串" class="headerlink" title="一.串"></a>一.串</h2><p>1.计算子串的个数：</p>
+        <h2 id="一-串">一.串</h2>
+<p>1.计算子串的个数：</p>
 <p>字串： n（n+1）/2 + 1</p>
 <p>非空子串：n（n+1）/2</p>
 <p>非空真子串：n（n+1）/2 - 1</p>
 <p>2.index函数</p>
 <p>3.编写一个程序，求两个字符串S和T的一个最长公共子串</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">	<span class="keyword">char</span> *ch;</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">&#125;Hstring;</span><br><span class="line"></span><br><span class="line"><span class="function">Status <span class="title">MaxComString</span><span class="params">(Hstring S,Hstring T,<span class="keyword">int</span> &amp;length)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	index=<span class="number">0</span>;</span><br><span class="line">	length=<span class="number">0</span>;</span><br><span class="line">	i=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//令i作为扫描字符串S的指针</span></span><br><span class="line">	<span class="keyword">while</span>(i&lt;S.length)&#123;</span><br><span class="line">		j=<span class="number">0</span>;</span><br><span class="line">		<span class="comment">//令j作为扫描字符串T的指针</span></span><br><span class="line">		<span class="keyword">while</span>(j&lt;T.length)&#123;</span><br><span class="line">			<span class="keyword">if</span>(s.ch[i]==T.ch[j])&#123;</span><br><span class="line">				<span class="comment">//找一个子串，其在字符串S中的序号为i，长度为length1</span></span><br><span class="line">				length1=i;</span><br><span class="line">				<span class="keyword">for</span>(k=<span class="number">1</span>;S.ch[i+k]==T.ch[j+k];k++)length1++;</span><br><span class="line">				<span class="keyword">if</span>(length1&gt;length)&#123;</span><br><span class="line">					<span class="comment">//将较大长度值赋给index与length</span></span><br><span class="line">					index=i;</span><br><span class="line">					length=length1;</span><br><span class="line">				&#125;</span><br><span class="line">				j=j+length1;<span class="comment">//继续扫描字符串T中第j=length1个字符之后的字符</span></span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				j++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="comment">//while</span></span><br><span class="line">		i++;</span><br><span class="line">	&#125;<span class="comment">//while</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"最长公共子串:"</span>);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;length;i++)<span class="built_in">printf</span>(<span class="string">"%c"</span>,S.ch[index+i]);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="二-图"><a href="#二-图" class="headerlink" title="二.图"></a>二.图</h1><p>极大和极小不是指一个意思,不要弄混了,极大连通子图是讨论连通分量的,极小连通子图是讨论生成树的. </p>
-<p>完全图是一个简单的无向图，其中每对不同的顶点之间都恰连有一条边相连。完整的有向图又是一个有向图，其中每对不同的顶点通过一对唯一的边缘（每个方向一个）连接。n个端点的完全图有n个端点以及n(n − 1) / 2条边，以Kn表示 </p>
+<h1>二.图</h1>
+<p>极大和极小不是指一个意思,不要弄混了,极大连通子图是讨论连通分量的,极小连通子图是讨论生成树的.</p>
+<p>完全图是一个简单的无向图，其中每对不同的顶点之间都恰连有一条边相连。完整的有向图又是一个有向图，其中每对不同的顶点通过一对唯一的边缘（每个方向一个）连接。n个端点的完全图有n个端点以及n(n − 1) / 2条边，以Kn表示</p>
 
       
       

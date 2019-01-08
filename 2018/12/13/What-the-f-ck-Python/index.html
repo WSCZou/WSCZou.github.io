@@ -5,18 +5,18 @@
   
   <title>What the f*ck Python | WSC_ZOU_Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
+  <meta name="description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey：  Strings can be tricky sometimes/微妙的字符串*    123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="What the f*ck Python">
 <meta property="og:url" content="http://WSCZou.com/2018/12/13/What-the-f-ck-Python/index.html">
 <meta property="og:site_name" content="WSC_ZOU_Blog">
-<meta property="og:description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
+<meta property="og:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey：  Strings can be tricky sometimes/微妙的字符串*    123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;s">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:updated_time" content="2018-12-20T12:28:00.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
-<meta name="twitter:description" content="What the f*ck Python :snake:—— 一些Python的特性​                                                        参考(https://github.com/leisurelicht/wtfpython-cn)  :sunglasses:start your Journey：  Strings can be tri">
+<meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey：  Strings can be tricky sometimes/微妙的字符串*    123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;s">
 <meta name="twitter:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
   
   
@@ -81,45 +81,56 @@
     
     <div class="article-entry typo" itemprop="articleBody">
       
-        <h1 id="What-the-f-ck-Python-snake"><a href="#What-the-f-ck-Python-snake" class="headerlink" title="What the f*ck Python :snake:"></a>What the f*ck Python :snake:</h1><h2 id="——-一些Python的特性"><a href="#——-一些Python的特性" class="headerlink" title="—— 一些Python的特性"></a>—— 一些Python的特性</h2><p>​                                                        参考(<a href="https://github.com/leisurelicht/wtfpython-cn" target="_blank" rel="noopener">https://github.com/leisurelicht/wtfpython-cn</a>)</p>
+        <h1>What the f*ck Python 🐍</h1>
+<h2 id="一些python的特性">—— 一些Python的特性</h2>
+<p>​														参考(<a href="https://github.com/leisurelicht/wtfpython-cn" target="_blank" rel="noopener">https://github.com/leisurelicht/wtfpython-cn</a>)</p>
 <hr>
-<p>:sunglasses:start your Journey：</p>
+<p>😎start your Journey：</p>
 <blockquote>
 <p>Strings can be tricky sometimes/微妙的字符串*</p>
-<p>1.</p>
+<ol>
+<li></li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; a = <span class="string">"some_string"</span></span><br><span class="line">&gt; &gt;&gt;&gt; id(a)</span><br><span class="line">&gt; <span class="number">140420665652016</span></span><br><span class="line">&gt; &gt;&gt;&gt; id(<span class="string">"some"</span> + <span class="string">"_"</span> + <span class="string">"string"</span>) <span class="comment"># 注意两个的id值是相同的.</span></span><br><span class="line">&gt; <span class="number">140420665652016</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<p>2.</p>
+<ol start="2">
+<li></li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; a = <span class="string">"wtf"</span></span><br><span class="line">&gt; &gt;&gt;&gt; b = <span class="string">"wtf"</span></span><br><span class="line">&gt; &gt;&gt;&gt; a <span class="keyword">is</span> b</span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt;&gt;&gt; a = <span class="string">"wtf!"</span></span><br><span class="line">&gt; &gt;&gt;&gt; b = <span class="string">"wtf!"</span></span><br><span class="line">&gt; &gt;&gt;&gt; a <span class="keyword">is</span> b</span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt;&gt;&gt; a, b = <span class="string">"wtf!"</span>, <span class="string">"wtf!"</span></span><br><span class="line">&gt; &gt;&gt;&gt; a <span class="keyword">is</span> b</span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<p>3.</p>
+<ol start="3">
+<li></li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; <span class="string">'a'</span> * <span class="number">20</span> <span class="keyword">is</span> <span class="string">'aaaaaaaaaaaaaaaaaaaa'</span></span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt; &gt;&gt;&gt; <span class="string">'a'</span> * <span class="number">21</span> <span class="keyword">is</span> <span class="string">'aaaaaaaaaaaaaaaaaaaaa'</span></span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<p>:bulb:<strong>提示</strong></p>
+<p>💡<strong>提示</strong></p>
 <ul>
 <li>这些行为是由于 Cpython 在编译优化时, 某些情况下会尝试使用已经存在的不可变对象而不是每次都创建一个新对象. (这种行为被称作字符串的驻留[string interning])</li>
 <li>发生驻留之后, 许多变量可能指向内存中的相同字符串对象. (从而节省内存)</li>
-<li>在上面的代码中, 字符串是隐式驻留的. 何时发生隐式驻留则取决于具体的实现. 这里有一些方法可以用来猜测字符串是否会被驻留:<ul>
+<li>在上面的代码中, 字符串是隐式驻留的. 何时发生隐式驻留则取决于具体的实现. 这里有一些方法可以用来猜测字符串是否会被驻留:
+<ul>
 <li>所有长度为 0 和长度为 1 的字符串都被驻留.</li>
-<li>字符串在编译时被实现 (<code>&#39;wtf&#39;</code> 将被驻留, 但是 <code>&#39;&#39;.join([&#39;w&#39;, &#39;t&#39;, &#39;f&#39;]</code> 将不会被驻留)</li>
-<li>字符串中只包含字母，数字或下划线时将会驻留. 所以 <code>&#39;wtf!&#39;</code> 由于包含 <code>!</code> 而未被驻留. 可以在<a href="https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19" target="_blank" rel="noopener">这里</a>找到 CPython 对此规则的实现.</li>
+<li>字符串在编译时被实现 (<code>'wtf'</code> 将被驻留, 但是 <code>''.join(['w', 't', 'f']</code> 将不会被驻留)</li>
+<li>字符串中只包含字母，数字或下划线时将会驻留. 所以 <code>'wtf!'</code> 由于包含 <code>!</code> 而未被驻留. 可以在<a href="https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19" target="_blank" rel="noopener">这里</a>找到 CPython 对此规则的实现.</li>
 <li><img src="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png" alt="img"></li>
 <li>当在同一行将 <code>a</code> 和 <code>b</code> 的值设置为 <code>&quot;wtf!&quot;</code> 的时候, Python 解释器会创建一个新对象, 然后同时引用第二个变量. 如果你在不同的行上进行赋值操作, 它就不会“知道”已经有一个 <code>wtf！</code> 对象 (因为 <code>&quot;wtf!&quot;</code> 不是按照上面提到的方式被隐式驻留的). 它是一种编译器优化, 特别适用于交互式环境.</li>
-<li>常量折叠(constant folding) 是 Python 中的一种 <a href="https://en.wikipedia.org/wiki/Peephole_optimization" target="_blank" rel="noopener">窥孔优化(peephole optimization)</a> 技术. 这意味着在编译时表达式 <code>&#39;a&#39;*20</code>会被替换为 <code>&#39;aaaaaaaaaaaaaaaaaaaa&#39;</code> 以减少运行时的时钟周期. 只有长度小于 20 的字符串才会发生常量折叠. (为啥? 想象一下由于表达式 <code>&#39;a&#39;*10**10</code> 而生成的 <code>.pyc</code> 文件的大小). 相关的源码实现在<a href="https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288" target="_blank" rel="noopener">这里</a>.</li>
+<li>常量折叠(constant folding) 是 Python 中的一种 <a href="https://en.wikipedia.org/wiki/Peephole_optimization" target="_blank" rel="noopener">窥孔优化(peephole optimization)</a> 技术. 这意味着在编译时表达式 <code>'a'*20</code>会被替换为 <code>'aaaaaaaaaaaaaaaaaaaa'</code> 以减少运行时的时钟周期. 只有长度小于 20 的字符串才会发生常量折叠. (为啥? 想象一下由于表达式 <code>'a'*10**10</code> 而生成的 <code>.pyc</code> 文件的大小). 相关的源码实现在<a href="https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288" target="_blank" rel="noopener">这里</a>.</li>
 </ul>
 </li>
 </ul>
 </blockquote>
 <hr>
 <blockquote>
-<p>Time for some hash brownies!/是时候来点蛋糕了!​ ​ </p>
+<p>Time for some hash brownies!/是时候来点蛋糕了!​ ​</p>
 <ul>
 <li>hash brownie指一种含有大麻成分的蛋糕, 所以这里是句双关</li>
 </ul>
-<p>1.</p>
+<ol>
+<li></li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; some_dict = &#123;&#125;</span><br><span class="line">&gt; some_dict[<span class="number">5.5</span>] = <span class="string">"Ruby"</span></span><br><span class="line">&gt; some_dict[<span class="number">5.0</span>] = <span class="string">"JavaScript"</span></span><br><span class="line">&gt; some_dict[<span class="number">5</span>] = <span class="string">"Python"</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
@@ -127,21 +138,26 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; some_dict[<span class="number">5.5</span>]</span><br><span class="line">&gt; <span class="string">"Ruby"</span></span><br><span class="line">&gt; &gt;&gt;&gt; some_dict[<span class="number">5.0</span>]</span><br><span class="line">&gt; <span class="string">"Python"</span></span><br><span class="line">&gt; &gt;&gt;&gt; some_dict[<span class="number">5</span>]</span><br><span class="line">&gt; <span class="string">"Python"</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<h4 id="💡-提示"><a href="#💡-提示" class="headerlink" title="💡 提示:"></a>💡 提示:</h4><ul>
-<li><p>Python 字典通过检查键值是否相等和比较哈希值来确定两个键是否相同.</p>
+<h4 id="💡-提示">💡 提示:</h4>
+<ul>
+<li>
+<p>Python 字典通过检查键值是否相等和比较哈希值来确定两个键是否相同.</p>
 </li>
-<li><p>具有相同值的不可变对象在Python中始终具有相同的哈希值.</p>
+<li>
+<p>具有相同值的不可变对象在Python中始终具有相同的哈希值.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;   &gt;&gt;&gt; <span class="number">5</span> == <span class="number">5.0</span></span><br><span class="line">&gt;   <span class="keyword">True</span></span><br><span class="line">&gt;   &gt;&gt;&gt; hash(<span class="number">5</span>) == hash(<span class="number">5.0</span>)</span><br><span class="line">&gt;   <span class="keyword">True</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </blockquote>
 <blockquote>
-<p>  注意:</p>
-<p>  具有不同值的对象也可能具有相同的哈希值（哈希冲突）.</p>
+<p>注意:</p>
+<p>具有不同值的对象也可能具有相同的哈希值（哈希冲突）.</p>
 <ul>
-<li><p>当执行 <code>some_dict[5] = &quot;Python&quot;</code> 语句时, 因为Python将 <code>5</code> 和 <code>5.0</code> 识别为 <code>some_dict</code> 的同一个键, 所以已有值 “JavaScript” 就被 “Python” 覆盖了.</p>
+<li>
+<p>当执行 <code>some_dict[5] = &quot;Python&quot;</code> 语句时, 因为Python将 <code>5</code> 和 <code>5.0</code> 识别为 <code>some_dict</code> 的同一个键, 所以已有值 “JavaScript” 就被 “Python” 覆盖了.</p>
 </li>
-<li><p>这个 StackOverflow的 <a href="https://stackoverflow.com/a/32211042/4354153" target="_blank" rel="noopener">回答</a> 漂亮的解释了这背后的基本原理.</p>
+<li>
+<p>这个 StackOverflow的 <a href="https://stackoverflow.com/a/32211042/4354153" target="_blank" rel="noopener">回答</a> 漂亮的解释了这背后的基本原理.</p>
 </li>
 </ul>
 </blockquote>
@@ -154,7 +170,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt;some_func()</span><br><span class="line">&gt; <span class="string">'from_finally'</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<h4 id="💡-说明"><a href="#💡-说明" class="headerlink" title="💡 说明:"></a>💡 说明:</h4><ul>
+<h4 id="💡-说明">💡 说明:</h4>
+<ul>
 <li>当在 “try…finally” 语句的 <code>try</code> 中执行 <code>return</code>, <code>break</code> 或 <code>continue</code> 后, <code>finally</code> 子句依然会执行.</li>
 <li>函数的返回值由最后执行的 <code>return</code> 语句决定. 由于 <code>finally</code> 子句一定会执行, 所以 <code>finally</code> 子句中的 <code>return</code> 将始终是最后执行的语句.</li>
 </ul>
@@ -169,32 +186,40 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; WTF() == WTF() <span class="comment"># 两个不同的对象应该不相等</span></span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt; &gt;&gt;&gt; WTF() <span class="keyword">is</span> WTF() <span class="comment"># 也不相同</span></span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt; &gt;&gt;&gt; hash(WTF()) == hash(WTF()) <span class="comment"># 哈希值也应该不同</span></span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt; &gt;&gt;&gt; id(WTF()) == id(WTF())</span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<h4 id="💡-说明-1"><a href="#💡-说明-1" class="headerlink" title="💡 说明:"></a>💡 说明:</h4><ul>
-<li><p>当调用 <code>id</code> 函数时, Python 创建了一个 <code>WTF</code> 类的对象并传给 <code>id</code> 函数. 然后 <code>id</code> 函数获取其id值 (也就是内存地址), 然后丢弃该对象. 该对象就被销毁了.</p>
+<h4 id="💡-说明-v2">💡 说明:</h4>
+<ul>
+<li>
+<p>当调用 <code>id</code> 函数时, Python 创建了一个 <code>WTF</code> 类的对象并传给 <code>id</code> 函数. 然后 <code>id</code> 函数获取其id值 (也就是内存地址), 然后丢弃该对象. 该对象就被销毁了.</p>
 </li>
-<li><p>当我们连续两次进行这个操作时, Python会将相同的内存地址分配给第二个对象. 因为 (在CPython中) <code>id</code> 函数使用对象的内存地址作为对象的id值, 所以两个对象的id值是相同的.</p>
+<li>
+<p>当我们连续两次进行这个操作时, Python会将相同的内存地址分配给第二个对象. 因为 (在CPython中) <code>id</code> 函数使用对象的内存地址作为对象的id值, 所以两个对象的id值是相同的.</p>
 </li>
-<li><p>综上, 对象的id值仅仅在对象的生命周期内唯一. 在对象被销毁之后, 或被创建之前, 其他对象可以具有相同的id值.</p>
+<li>
+<p>综上, 对象的id值仅仅在对象的生命周期内唯一. 在对象被销毁之后, 或被创建之前, 其他对象可以具有相同的id值.</p>
 </li>
-<li><p>那为什么 <code>is</code> 操作的结果为 <code>False</code> 呢? 让我们看看这段代码.</p>
+<li>
+<p>那为什么 <code>is</code> 操作的结果为 <code>False</code> 呢? 让我们看看这段代码.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;   <span class="class"><span class="keyword">class</span> <span class="title">WTF</span><span class="params">(object)</span>:</span></span><br><span class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span> print(<span class="string">"I"</span>)</span><br><span class="line">&gt;     <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span> print(<span class="string">"D"</span>)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </blockquote>
 <blockquote>
-<p>  <strong>Output:</strong></p>
+<p><strong>Output:</strong></p>
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;   &gt;&gt;&gt; WTF() <span class="keyword">is</span> WTF()</span><br><span class="line">&gt;   I</span><br><span class="line">&gt;   I</span><br><span class="line">&gt;   D</span><br><span class="line">&gt;   D</span><br><span class="line">&gt;   <span class="keyword">False</span></span><br><span class="line">&gt;   &gt;&gt;&gt; id(WTF()) == id(WTF())</span><br><span class="line">&gt;   I</span><br><span class="line">&gt;   D</span><br><span class="line">&gt;   I</span><br><span class="line">&gt;   D</span><br><span class="line">&gt;   <span class="keyword">True</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<p>  正如你所看到的, 对象销毁的顺序是造成所有不同之处的原因.</p>
-<p>  如果看完还是云里雾里：请看 <a href="https://www.jb51.net/article/60360.htm" target="_blank" rel="noopener">https://www.jb51.net/article/60360.htm</a></p>
+<p>正如你所看到的, 对象销毁的顺序是造成所有不同之处的原因.</p>
+<p>如果看完还是云里雾里：请看 <a href="https://www.jb51.net/article/60360.htm" target="_blank" rel="noopener">https://www.jb51.net/article/60360.htm</a></p>
 </blockquote>
 <hr>
-<h3 id="gt-For-what-为什么"><a href="#gt-For-what-为什么" class="headerlink" title="&gt; For what?/为什么?"></a>&gt; For what?/为什么?</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">some_string = <span class="string">"wtf"</span></span><br><span class="line">some_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i, some_dict[i] <span class="keyword">in</span> enumerate(some_string):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h3 id="for-what-为什么">&gt; For what?/为什么?</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">some_string = <span class="string">"wtf"</span></span><br><span class="line">some_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i, some_dict[i] <span class="keyword">in</span> enumerate(some_string):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <p><strong>Output:</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_dict <span class="comment"># 创建了索引字典.</span></span><br><span class="line">&#123;<span class="number">0</span>: <span class="string">'w'</span>, <span class="number">1</span>: <span class="string">'t'</span>, <span class="number">2</span>: <span class="string">'f'</span>&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="💡-说明-2"><a href="#💡-说明-2" class="headerlink" title="💡 说明:"></a>💡 说明:</h4><ul>
-<li><p><a href="https://docs.python.org/3/reference/grammar.html" target="_blank" rel="noopener">Python 语法</a> （如果对英文文档吃力的化推荐看 <a href="https://docspy3zh.readthedocs.io/en/latest/reference/compound_stmts.html#for" target="_blank" rel="noopener">for语句</a>）中对 <code>for</code> 的定义是:</p>
+<h4 id="💡-说明-v3">💡 说明:</h4>
+<ul>
+<li>
+<p><a href="https://docs.python.org/3/reference/grammar.html" target="_blank" rel="noopener">Python 语法</a> （如果对英文文档吃力的化推荐看 <a href="https://docspy3zh.readthedocs.io/en/latest/reference/compound_stmts.html#for" target="_blank" rel="noopener">for语句</a>）中对 <code>for</code> 的定义是:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for_stmt: <span class="string">'for'</span> exprlist <span class="string">'in'</span> testlist <span class="string">':'</span> suite [<span class="string">'else'</span> <span class="string">':'</span> suite]</span><br></pre></td></tr></table></figure>
 <p>其中 <code>exprlist</code> 指分配目标. 这意味着对可迭代对象中的<strong>每一项都会执行</strong>类似 <code>{exprlist} = {next_value}</code> 的操作.</p>
 <p>一个有趣的例子说明了这一点:</p>
@@ -207,31 +232,43 @@
 <li>由于循环在Python中工作方式, 赋值语句 <code>i = 10</code> 并不会影响迭代循环, 在每次迭代开始之前, 迭代器(这里指 <code>range(4)</code>) 生成的下一个元素就被解包并赋值给目标列表的变量(这里指 <code>i</code>)了.</li>
 </ul>
 </li>
-<li><p>在每一次的迭代中, <code>enumerate(some_string)</code> 函数就生成一个新值 <code>i</code> (计数器增加) 并从 <code>some_string</code> 中获取一个字符. 然后将字典 <code>some_dict</code> 键 <code>i</code> (刚刚分配的) 的值设为该字符. 本例中循环的展开可以简化为:</p>
+<li>
+<p>在每一次的迭代中, <code>enumerate(some_string)</code> 函数就生成一个新值 <code>i</code> (计数器增加) 并从 <code>some_string</code> 中获取一个字符. 然后将字典 <code>some_dict</code> 键 <code>i</code> (刚刚分配的) 的值设为该字符. 本例中循环的展开可以简化为:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>i, some_dict[i] = (<span class="number">0</span>, <span class="string">'w'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>i, some_dict[i] = (<span class="number">1</span>, <span class="string">'t'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>i, some_dict[i] = (<span class="number">2</span>, <span class="string">'f'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_dict</span><br></pre></td></tr></table></figure>
 <hr>
 </li>
 </ul>
-<h3 id="gt-Evaluation-time-discrepancy-执行时机差异"><a href="#gt-Evaluation-time-discrepancy-执行时机差异" class="headerlink" title="&gt; Evaluation time discrepancy/执行时机差异"></a>&gt; Evaluation time discrepancy/执行时机差异</h3><p>  1.</p>
+<h3 id="evaluation-time-discrepancy-执行时机差异">&gt; Evaluation time discrepancy/执行时机差异</h3>
+<ol>
+<li></li>
+</ol>
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = [<span class="number">1</span>, <span class="number">8</span>, <span class="number">15</span>]</span><br><span class="line">g = (x <span class="keyword">for</span> x <span class="keyword">in</span> array <span class="keyword">if</span> array.count(x) &gt; <span class="number">0</span>)</span><br><span class="line">array = [<span class="number">2</span>, <span class="number">8</span>, <span class="number">22</span>]</span><br></pre></td></tr></table></figure>
-<p>  <strong>Output:</strong></p>
+<p><strong>Output:</strong></p>
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(list(g))</span><br><span class="line">[<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
-<p>  2.</p>
+<ol start="2">
+<li></li>
+</ol>
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">array_1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">g1 = (x <span class="keyword">for</span> x <span class="keyword">in</span> array_1)</span><br><span class="line">array_1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">array_2 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">g2 = (x <span class="keyword">for</span> x <span class="keyword">in</span> array_2)</span><br><span class="line">array_2[:] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-<p>  <strong>Output:</strong></p>
+<p><strong>Output:</strong></p>
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(list(g1))</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(list(g2))</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-<h4 id="💡-说明-3"><a href="#💡-说明-3" class="headerlink" title="💡 说明"></a>💡 说明</h4><ul>
-<li><p>在<a href="https://wiki.python.org/moin/Generators" target="_blank" rel="noopener">生成器</a>表达式中, <code>in</code> 子句在声明时执行, 而条件子句则是在运行时执行.</p>
+<h4 id="💡-说明-v4">💡 说明</h4>
+<ul>
+<li>
+<p>在<a href="https://wiki.python.org/moin/Generators" target="_blank" rel="noopener">生成器</a>表达式中, <code>in</code> 子句在声明时执行, 而条件子句则是在运行时执行.</p>
 <p>对上面一句的解释：</p>
-<p>​    在第一个例子中，<code>x for x in array</code>写出来的时候就执行了，而后面的 <code>if array.count(x) &gt; 0</code> 则是在 <code>array = [2, 8, 22]</code> 写完后 执行整个代码块时执行.</p>
+<p>​	在第一个例子中，<code>x for x in array</code>写出来的时候就执行了，而后面的 <code>if array.count(x) &gt; 0</code> 则是在 <code>array = [2, 8, 22]</code> 写完后 执行整个代码块时执行.</p>
 </li>
-<li><p>所以在运行前, <code>array</code> 已经被重新赋值为 <code>[2, 8, 22]</code>, 因此对于之前的 <code>1</code>, <code>8</code> 和 <code>15</code>, 只有 <code>count(8)</code> 的结果是大于 <code>0</code> 的, 所以生成器只会生成 <code>8</code>.</p>
+<li>
+<p>所以在运行前, <code>array</code> 已经被重新赋值为 <code>[2, 8, 22]</code>, 因此对于之前的 <code>1</code>, <code>8</code> 和 <code>15</code>, 只有 <code>count(8)</code> 的结果是大于 <code>0</code> 的, 所以生成器只会生成 <code>8</code>.</p>
 </li>
-<li><p>第二部分中 <code>g1</code> 和 <code>g2</code> 的输出差异则是由于变量 <code>array_1</code> 和 <code>array_2</code> 被重新赋值的方式导致的.</p>
+<li>
+<p>第二部分中 <code>g1</code> 和 <code>g2</code> 的输出差异则是由于变量 <code>array_1</code> 和 <code>array_2</code> 被重新赋值的方式导致的.</p>
 </li>
-<li><p>在第一种情况下, <code>array_1</code> 被绑定到新对象 <code>[1,2,3,4,5]</code>, 因为 <code>in</code> 子句是在声明时被执行的， 所以它仍然引用旧对象 <code>[1,2,3,4]</code>(并没有被销毁).</p>
+<li>
+<p>在第一种情况下, <code>array_1</code> 被绑定到新对象 <code>[1,2,3,4,5]</code>, 因为 <code>in</code> 子句是在声明时被执行的， 所以它仍然引用旧对象 <code>[1,2,3,4]</code>(并没有被销毁).</p>
 </li>
-<li><p>在第二种情况下, 对 <code>array_2</code> 的切片赋值将相同的旧对象 <code>[1,2,3,4]</code> 原地更新为 <code>[1,2,3,4,5]</code>. 因此 <code>g2</code> 和 <code>array_2</code> 仍然引用同一个对象(这个对象现在已经更新为 <code>[1,2,3,4,5]</code>).</p>
+<li>
+<p>在第二种情况下, 对 <code>array_2</code> 的切片赋值将相同的旧对象 <code>[1,2,3,4]</code> 原地更新为 <code>[1,2,3,4,5]</code>. 因此 <code>g2</code> 和 <code>array_2</code> 仍然引用同一个对象(这个对象现在已经更新为 <code>[1,2,3,4,5]</code>).</p>
 <hr>
 </li>
 </ul>
@@ -251,19 +288,19 @@
 
 - 因此
 
-
+   
 
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">is</span></span><br></pre></td></tr></table></figure>
 
-
+   
 
   代表引用相同,
 
-
+   
 
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">==</span><br></pre></td></tr></table></figure>
 
-
+   
 
   代表值相等. 下面的例子可以很好的说明这点,
 
@@ -286,8 +323,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a, b = <span class="number">257</span>, <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">140640774013296</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">140640774013296</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">257</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</span><br><span class="line"><span class="number">140640774013392</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</span><br><span class="line"><span class="number">140640774013488</span></span><br></pre></td></tr></table></figure>
 
 - 当 a 和 b 在同一行中被设置为 `257` 时, Python 解释器会创建一个新对象, 然后同时引用第二个变量. 如果你在不同的行上进行, 它就不会 &quot;知道&quot; 已经存在一个 `257` 对象了.
-- 这是一种特别为交互式环境做的编译器优化. 当你在实时解释器中输入两行的时候, 他们会单独编译, 因此也会单独进行优化. 如果你在 `.py` 文件中尝试这个例子, 则不会看到相同的行为, 因为文件是一次性编译的.
-</code></pre>
+- 这是一种特别为交互式环境做的编译器优化. 当你在实时解释器中输入两行的时候, 他们会单独编译, 因此也会单独进行优化. 如果你在 `.py` 文件中尝试这个例子, 则不会看到相同的行为, 因为文件是一次性编译的.</code></pre>
+
       
       
     </div>
