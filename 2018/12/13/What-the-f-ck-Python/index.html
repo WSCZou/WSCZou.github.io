@@ -5,20 +5,20 @@
   
   <title>What the f*ck Python | WSC_ZOU_Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey：  Strings can be tricky sometimes/微妙的字符串*    123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;s">
+  <meta name="description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
 <meta property="og:type" content="article">
 <meta property="og:title" content="What the f*ck Python">
 <meta property="og:url" content="http://WSCZou.com/2018/12/13/What-the-f-ck-Python/index.html">
 <meta property="og:site_name" content="WSC_ZOU_Blog">
-<meta property="og:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey：  Strings can be tricky sometimes/微妙的字符串*    123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;s">
+<meta property="og:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
-<meta property="og:updated_time" content="2019-01-08T11:19:39.927Z">
+<meta property="og:updated_time" content="2019-01-09T07:29:38.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
-<meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey：  Strings can be tricky sometimes/微妙的字符串*    123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;s">
+<meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
 <meta name="twitter:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
   
   
@@ -88,23 +88,14 @@
 <p>​														参考(<a href="https://github.com/leisurelicht/wtfpython-cn" target="_blank" rel="noopener">https://github.com/leisurelicht/wtfpython-cn</a>)</p>
 <hr>
 <p>😎start your Journey：</p>
-<blockquote>
 <p>Strings can be tricky sometimes/微妙的字符串*</p>
-<ol>
-<li></li>
-</ol>
+<blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; a = <span class="string">"some_string"</span></span><br><span class="line">&gt; &gt;&gt;&gt; id(a)</span><br><span class="line">&gt; <span class="number">140420665652016</span></span><br><span class="line">&gt; &gt;&gt;&gt; id(<span class="string">"some"</span> + <span class="string">"_"</span> + <span class="string">"string"</span>) <span class="comment"># 注意两个的id值是相同的.</span></span><br><span class="line">&gt; <span class="number">140420665652016</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<ol start="2">
-<li></li>
-</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; a = <span class="string">"wtf"</span></span><br><span class="line">&gt; &gt;&gt;&gt; b = <span class="string">"wtf"</span></span><br><span class="line">&gt; &gt;&gt;&gt; a <span class="keyword">is</span> b</span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt;&gt;&gt; a = <span class="string">"wtf!"</span></span><br><span class="line">&gt; &gt;&gt;&gt; b = <span class="string">"wtf!"</span></span><br><span class="line">&gt; &gt;&gt;&gt; a <span class="keyword">is</span> b</span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt;&gt;&gt; a, b = <span class="string">"wtf!"</span>, <span class="string">"wtf!"</span></span><br><span class="line">&gt; &gt;&gt;&gt; a <span class="keyword">is</span> b</span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<ol start="3">
-<li></li>
-</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; &gt;&gt;&gt; <span class="string">'a'</span> * <span class="number">20</span> <span class="keyword">is</span> <span class="string">'aaaaaaaaaaaaaaaaaaaa'</span></span><br><span class="line">&gt; <span class="keyword">True</span></span><br><span class="line">&gt; &gt;&gt;&gt; <span class="string">'a'</span> * <span class="number">21</span> <span class="keyword">is</span> <span class="string">'aaaaaaaaaaaaaaaaaaaaa'</span></span><br><span class="line">&gt; <span class="keyword">False</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
@@ -125,8 +116,8 @@
 </ul>
 </blockquote>
 <hr>
+<p>**&gt;Time for some hash brownies!/是时候来点蛋糕了!​ **</p>
 <blockquote>
-<p>Time for some hash brownies!/是时候来点蛋糕了!​ ​</p>
 <ul>
 <li>hash brownie指一种含有大麻成分的蛋糕, 所以这里是句双关</li>
 </ul>
@@ -179,8 +170,8 @@
 </ul>
 </blockquote>
 <hr>
+<p><strong>&gt;Deep down, we’re all the same./本质上，我们都一样.</strong></p>
 <blockquote>
-<p>Deep down, we’re all the same./本质上，我们都一样.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">WTF</span>:</span></span><br><span class="line">&gt; 	<span class="keyword">pass</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
@@ -296,6 +287,43 @@
 <p><a href="https://github.com/leisurelicht/wtfpython-cn/blob/master/images/tic-tac-toe/after_board_initialized.png" target="_blank" rel="noopener"><img src="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png" alt="image"></a></p>
 <p>我们可以通过不使用变量 <code>row</code> 生成 <code>board</code> 来避免这种情况. (<a href="https://github.com/satwikkansal/wtfpython/issues/68" target="_blank" rel="noopener">这个</a>issue提出了这个需求.)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>board = [[<span class="string">''</span>]*<span class="number">3</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>board[<span class="number">0</span>][<span class="number">0</span>] = <span class="string">"X"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>board</span><br><span class="line">[[<span class="string">'X'</span>, <span class="string">''</span>, <span class="string">''</span>], [<span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>], [<span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>]]</span><br></pre></td></tr></table></figure>
+<h3 id="the-sticky-output-function-麻烦的输出">&gt; The sticky output function/麻烦的输出</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">funcs = []</span><br><span class="line">results = []</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">some_func</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    funcs.append(some_func)</span><br><span class="line">    results.append(some_func()) <span class="comment"># 注意这里函数被执行了</span></span><br><span class="line"></span><br><span class="line">funcs_results = [func() <span class="keyword">for</span> func <span class="keyword">in</span> funcs]</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>results</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>funcs_results</span><br><span class="line">[<span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+<p>即使每次在迭代中将 <code>some_func</code> 加入 <code>funcs</code> 前的 <code>x</code> 值都不相同, 所有的函数还是都返回6.</p>
+<p>// 再换个例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>powers_of_x = [<span class="keyword">lambda</span> x: x**i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[f(<span class="number">2</span>) <span class="keyword">for</span> f <span class="keyword">in</span> powers_of_x]</span><br><span class="line">[<span class="number">512</span>, <span class="number">512</span>, <span class="number">512</span>, <span class="number">512</span>, <span class="number">512</span>, <span class="number">512</span>, <span class="number">512</span>, <span class="number">512</span>, <span class="number">512</span>, <span class="number">512</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v6">💡 说明:</h4>
+<ul>
+<li>
+<p>当在循环内部定义一个函数时, 如果该函数在其主体中使用了循环变量, 则闭包函数将与循环变量绑定, 而不是它的值. 因此, 所有的函数都是使用最后分配给变量的值来进行计算的.</p>
+</li>
+<li>
+<p>Python调用函数加括号和不加括号的区别：</p>
+<p>一、不带括号时，调用的是这个函数本身 ，是整个函数体，是一个函数对象，不须等该函数执行完成</p>
+<p>二、带括号（参数或者无参），调用的是函数的执行结果，须等该函数执行完成的结果</p>
+</li>
+</ul>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span>  <span class="title">bracket</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 不带括号调用的结果：&lt;function bracket at 0x0000000004DD0B38&gt;,a是整个函数体，是一个函数对象，不须等该函数执行完成</span></span><br><span class="line">    a = bracket</span><br><span class="line">    <span class="keyword">print</span> (a)</span><br><span class="line">    <span class="comment"># 带括号调用的结果：6 ,b是函数执行后返回的值6,须等该函数执行完成的结果</span></span><br><span class="line">    b = bracket(<span class="number">6</span>)</span><br><span class="line">    <span class="keyword">print</span> (b)</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;function bracket at <span class="number">0x0000016B43B4C7B8</span>&gt;</span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>可以通过将循环变量作为命名变量传递给函数来获得预期的结果. <strong>为什么这样可行?</strong> 因为这会在函数内再次定义一个局部变量.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">funcs = []s</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">some_func</span><span class="params">(x=x)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    funcs.append(some_func)</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>funcs_results = [func() <span class="keyword">for</span> func <span class="keyword">in</span> funcs]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>funcs_results</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h3 id="is-not-is-not-is-not-is-not-不是-is-not">&gt; <code>is not ...</code> is not <code>is (not ...)</code>/<code>is not ...</code> 不是 <code>is (not ...)</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'something'</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'something'</span> <span class="keyword">is</span> (<span class="keyword">not</span> <span class="keyword">None</span>)</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v7">💡 说明:</h4>
+<ul>
+<li><code>is not</code> 是个单独的二元运算符, 与分别使用 <code>is</code> 和 <code>not</code> 不同.</li>
+<li>如果操作符两侧的变量指向同一个对象, 则 <code>is not</code> 的结果为 <code>False</code>, 否则结果为 <code>True</code>.</li>
+</ul>
 
       
       
@@ -319,7 +347,14 @@
     
 <nav id="article-nav" class="article-nav">
   
-    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+    <a href="/2019/01/09/python-动态生成变量名以及动态获取变量的变量名/" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          python--动态生成变量名以及动态获取变量的变量名
+        
+      </div>
+    </a>
   
   
     <a href="/2018/09/22/week1/" id="article-nav-older" class="article-nav-link-wrap older">

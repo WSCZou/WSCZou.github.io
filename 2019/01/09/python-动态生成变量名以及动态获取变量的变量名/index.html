@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  
+  <title>python--动态生成变量名以及动态获取变量的变量名 | WSC_ZOU_Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言： 因为看了闭包函数将与循环变量绑定所以想到如何解除绑定，然后就找到了今天要说的这个问题 python 动态生成变量名 locals函数 代码之前，先介绍一个函数： locals() 函数会以字典类型返回当前位置的全部局部变量。 菜鸟上的例子: 123456&amp;gt;&amp;gt;&amp;gt;def runoob(arg):    # 两个局部变量：arg、z...     z = 1...     pr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python--动态生成变量名以及动态获取变量的变量名">
+<meta property="og:url" content="http://WSCZou.com/2019/01/09/python-动态生成变量名以及动态获取变量的变量名/index.html">
+<meta property="og:site_name" content="WSC_ZOU_Blog">
+<meta property="og:description" content="前言： 因为看了闭包函数将与循环变量绑定所以想到如何解除绑定，然后就找到了今天要说的这个问题 python 动态生成变量名 locals函数 代码之前，先介绍一个函数： locals() 函数会以字典类型返回当前位置的全部局部变量。 菜鸟上的例子: 123456&amp;gt;&amp;gt;&amp;gt;def runoob(arg):    # 两个局部变量：arg、z...     z = 1...     pr">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-09T07:18:14.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python--动态生成变量名以及动态获取变量的变量名">
+<meta name="twitter:description" content="前言： 因为看了闭包函数将与循环变量绑定所以想到如何解除绑定，然后就找到了今天要说的这个问题 python 动态生成变量名 locals函数 代码之前，先介绍一个函数： locals() 函数会以字典类型返回当前位置的全部局部变量。 菜鸟上的例子: 123456&amp;gt;&amp;gt;&amp;gt;def runoob(arg):    # 两个局部变量：arg、z...     z = 1...     pr">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-python-动态生成变量名以及动态获取变量的变量名" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">WSC_Zou</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a>&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python--动态生成变量名以及动态获取变量的变量名
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>前言：</p>
+<p>因为看了闭包函数将与循环变量绑定所以想到如何解除绑定，然后就找到了今天要说的这个问题</p>
+<h2 id="python-动态生成变量名">python 动态生成变量名</h2>
+<p>locals函数<br>
+代码之前，先介绍一个函数：<br>
+locals() 函数会以字典类型返回当前位置的全部局部变量。<br>
+菜鸟上的例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="function"><span class="keyword">def</span> <span class="title">runoob</span><span class="params">(arg)</span>:</span>    <span class="comment"># 两个局部变量：arg、z</span></span><br><span class="line"><span class="meta">... </span>    z = <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">print</span> (locals())</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>runoob(<span class="number">4</span>)</span><br><span class="line">&#123;<span class="string">'z'</span>: <span class="number">1</span>, <span class="string">'arg'</span>: <span class="number">4</span>&#125;      <span class="comment"># 返回一个名字/值对的字典</span></span><br></pre></td></tr></table></figure>
+<p>下面来实现 目标：需求：<br>
+必须现在需要动态创建16个list，每个list的名字不一样，但是是有规律可循，比如第一个list的名字叫： arriage_list_0=[]，第二个叫arriage_list_1=[]………依次类推，但是我又不想手动的去写16个这样的名字，太累了，而且增加了代码的冗余性，灵活性也不强，所以有没有一种方法是能动态创建list名称的呢？答案是有的！而与之对应，既然要对上面的列表动态操作，肯定是少不了动态去解析list名称。所以下面开始介绍方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_list_pre</span><span class="params">()</span>:</span></span><br><span class="line">    prepare_list = locals()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</span><br><span class="line">        prepare_list[<span class="string">'list_'</span> + str(i)] = []</span><br><span class="line">        prepare_list[<span class="string">'list_'</span> + str(i)].append((<span class="string">'我是第'</span> + str(i)) + <span class="string">'个list'</span>)</span><br><span class="line">    print(prepare_list[<span class="string">'list_0'</span>])</span><br><span class="line">    print(prepare_list[<span class="string">'list_1'</span>])</span><br><span class="line">    print(prepare_list[<span class="string">'list_2'</span>])</span><br><span class="line">    print(prepare_list[<span class="string">'list_3'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    test_list_pre()</span><br></pre></td></tr></table></figure>
+<p><strong>output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'我是第0个list'</span>]</span><br><span class="line">[<span class="string">'我是第1个list'</span>]</span><br><span class="line">[<span class="string">'我是第2个list'</span>]</span><br><span class="line">[<span class="string">'我是第3个list'</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="python-动态获取变量的变量名">python 动态获取变量的变量名</h2>
+<p>需求目标：如果有了上面的动态命名list，那么当动态获取变量的变量名，就需要如下的操作：<br>
+利用python原生的inspect库来实现：<br>
+核心代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> inspect</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_variable_name</span><span class="params">(variable)</span>:</span></span><br><span class="line">    callers_local_vars = inspect.currentframe().f_back.f_locals.items()</span><br><span class="line">    <span class="keyword">return</span> [var_name <span class="keyword">for</span> var_name, var_val <span class="keyword">in</span> callers_local_vars <span class="keyword">if</span> var_val <span class="keyword">is</span> variable]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> inspect</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_variable_name</span><span class="params">(variable)</span>:</span></span><br><span class="line">    callers_local_vars = inspect.currentframe().f_back.f_locals.items()</span><br><span class="line">    <span class="keyword">return</span> [var_name <span class="keyword">for</span> var_name, var_val <span class="keyword">in</span> callers_local_vars <span class="keyword">if</span> var_val <span class="keyword">is</span> variable]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    prepare_list = locals()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">16</span>):</span><br><span class="line">        prepare_list[<span class="string">'list_'</span> + str(i)] = []</span><br><span class="line">        prepare_list[<span class="string">'list_'</span> + str(i)].append((<span class="string">'我是第'</span> + str(i)) + <span class="string">'个list'</span>)</span><br><span class="line">    a = get_variable_name(prepare_list[<span class="string">'list_0'</span>]).pop()</span><br><span class="line">    b = get_variable_name(prepare_list[<span class="string">'list_1'</span>]).pop()</span><br><span class="line">    print(a)</span><br><span class="line">    print(b)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">list_0</span><br><span class="line">list_1</span><br></pre></td></tr></table></figure>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/01/09/python-动态生成变量名以及动态获取变量的变量名/" class="article-date">
+  <time datetime="2019-01-09T06:43:29.000Z" itemprop="datePublished">2019-01-09</time>
+</a>
+
+        </li>
+        
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+  
+  
+    <a href="/2018/12/13/What-the-f-ck-Python/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">What the f*ck Python</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>writing…</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
