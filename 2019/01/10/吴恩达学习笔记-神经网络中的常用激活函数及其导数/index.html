@@ -12,23 +12,23 @@
 <meta property="og:site_name" content="WSC_ZOU_Blog">
 <meta property="og:description" content="前言： 激活函数的作用： 激活函数是非线性的，所以激活函数保证了神经网络的非线性。 一.常用的几种激活函数： sigmoid函数，tanh函数，ReLU函数 1.sigmoid函数 在逻辑回归中我们介绍过sigmoid函数，该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (0,1)(0,1) 之间。sigmoid函数的公式以及图形如下：   对于sigmoid函数的求导推导为：  si">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="c:%5CUsers%5C12143%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1547088390849.png">
+<meta property="og:image" content="http://wsczou.com/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%AF%BC%E6%95%B0/sigmoid_1.jpg">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816153629046-1282691739.jpg">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816150209571-870317113.jpg">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816151654004-1572592250.jpg">
-<meta property="og:image" content="d:%5Cblog%5Csource%5Cimages%5Csigmoid_1.jpg">
-<meta property="og:image" content="d:%5Cblog%5Csource%5Cimages%5Csigmoid_2.jpg">
-<meta property="og:image" content="d:%5Cblog%5Csource%5Cimages%5Csigmoid_3.jpg">
+<meta property="og:image" content="http://wsczou.com/2019/01/10/吴恩达学习笔记-神经网络中的常用激活函数及其导数/D:%5Cblog%5Csource%5Cimages%5Csigmoid_1.jpg">
+<meta property="og:image" content="http://wsczou.com/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%AF%BC%E6%95%B0/sigmoid_2.jpg">
+<meta property="og:image" content="http://wsczou.com/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%AF%BC%E6%95%B0/sigmoid_3.jpg">
 <meta property="og:image" content="https://pic4.zhimg.com/80/v2-14446800dfe23df62433be9038beda37_hd.jpg">
 <meta property="og:image" content="https://pic4.zhimg.com/80/v2-48616a2fcd3127ad2b095e276ab0c013_hd.jpg">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816154358758-421761003.jpg">
-<meta property="og:image" content="d:%5Cblog%5Csource%5Cimages%5CReLU_1.jpg">
+<meta property="og:image" content="http://wsczou.com/2019/01/10/吴恩达学习笔记-神经网络中的常用激活函数及其导数/D:%5Cblog%5Csource%5Cimages%5CReLU_1.jpg">
 <meta property="og:image" content="https://pic4.zhimg.com/80/v2-ca375d9699ba6ed8820ceb83d06b74f3_hd.jpg">
-<meta property="og:updated_time" content="2019-01-10T03:24:12.221Z">
+<meta property="og:updated_time" content="2019-01-10T12:50:56.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达学习笔记--神经网络中的常用激活函数及其导数">
 <meta name="twitter:description" content="前言： 激活函数的作用： 激活函数是非线性的，所以激活函数保证了神经网络的非线性。 一.常用的几种激活函数： sigmoid函数，tanh函数，ReLU函数 1.sigmoid函数 在逻辑回归中我们介绍过sigmoid函数，该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (0,1)(0,1) 之间。sigmoid函数的公式以及图形如下：   对于sigmoid函数的求导推导为：  si">
-<meta name="twitter:image" content="c:%5CUsers%5C12143%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1547088390849.png">
+<meta name="twitter:image" content="http://wsczou.com/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%AF%BC%E6%95%B0/sigmoid_1.jpg">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -99,7 +99,7 @@
 <p>sigmoid函数，tanh函数，ReLU函数</p>
 <p><strong>1.sigmoid函数</strong></p>
 <p>在逻辑回归中我们介绍过sigmoid函数，该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (0,1)(0,1) 之间。sigmoid函数的公式以及图形如下：</p>
-<p><img src="C:%5CUsers%5C12143%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1547088390849.png" alt="1547088390849"></p>
+<p><img src="/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%AF%BC%E6%95%B0/sigmoid_1.jpg" alt="1547088390849"></p>
 <p><img src="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816153629046-1282691739.jpg" alt="img"></p>
 <p>对于sigmoid函数的<strong>求导推导</strong>为：</p>
 <p><img src="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816150209571-870317113.jpg" alt="img"></p>
@@ -107,11 +107,11 @@
 <p>（1）当 zz 值<strong>非常大</strong>或者<strong>非常小</strong>时，通过上图我们可以看到，sigmoid函数的<strong>导数</strong> g′(z)g′(z) 将接近 00 。这会导致权重 WW 的<strong>梯度</strong>将接近 00 ，使得<strong>梯度更新十分缓慢</strong>，即<strong>梯度消失</strong>。下面我们举例来说明一下，假设我们使用如下一个只有一层隐藏层的简单网络：</p>
 <p><img src="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816151654004-1572592250.jpg" alt="img"></p>
 <p>对于隐藏层第一个节点进行计算，假设该点实际值为 a ，激活值为 a[1]。于是在这个节点处的代价函数为（以一个样本为例）：</p>
-<p><img src="D:%5Cblog%5Csource%5Cimages%5Csigmoid_1.jpg" alt="sigmoid_1"></p>
+<p><img src="/2019/01/10/吴恩达学习笔记-神经网络中的常用激活函数及其导数/D:%5Cblog%5Csource%5Cimages%5Csigmoid_1.jpg" alt="sigmoid_1"></p>
 <p>而激活值 a[1] 的计算过程为：</p>
-<p><img src="D:%5Cblog%5Csource%5Cimages%5Csigmoid_2.jpg" alt="sigmoid_2"></p>
+<p><img src="/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%AF%BC%E6%95%B0/sigmoid_2.jpg" alt="sigmoid_2"></p>
 <p>于是对权重 w11 求梯度为：</p>
-<p><img src="D:%5Cblog%5Csource%5Cimages%5Csigmoid_3.jpg" alt="sigmoid_3"></p>
+<p><img src="/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%AF%BC%E6%95%B0/sigmoid_3.jpg" alt="sigmoid_3"></p>
 <p>（2）<strong>函数的输出不是以0为均值</strong>，这就导致一个后果：若Sigmoid函数的输出全部为正数，那么传入下一层神经网络的值永远大于0，这时参数无论怎么更新梯度都为正</p>
 <p><strong>2.tanh函数</strong></p>
 <p>该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (−1,1)(−1,1) 之间，其公式与图形为：</p>
@@ -124,7 +124,7 @@
 <p>同sigmoid函数的第一个缺点一样，当 z <strong>很大或很小</strong>时，g′(z)接近于 0，会导致梯度很小，权重更新非常缓慢，即<strong>梯度消失问题</strong>。</p>
 <p><strong>3.ReLU函数</strong></p>
 <p>其弥补了sigmoid函数以及tanh函数的<strong>梯度消失问题</strong>。ReLU函数的公式以及图形如下：</p>
-<p><img src="D:%5Cblog%5Csource%5Cimages%5CReLU_1.jpg" alt="ReLU_1"></p>
+<p><img src="/2019/01/10/吴恩达学习笔记-神经网络中的常用激活函数及其导数/D:%5Cblog%5Csource%5Cimages%5CReLU_1.jpg" alt="ReLU_1"></p>
 <p><img src="https://pic4.zhimg.com/80/v2-ca375d9699ba6ed8820ceb83d06b74f3_hd.jpg" alt="img"></p>
 <p>从ReLU的函数图像我们可以发现，函数原点左侧的部分，输出值为0，斜率为0；函数原点右侧是斜率为1的直线，且输出值就是输入值。相比于上述的Sigmoid和tanh两种激活函数，ReLU激活函数完美的解决了梯度消失的问题，因为它的线性的、非饱和的。此外，它的计算也更加简单，只需要设置一个特定的阈值就可以计算激活值，这样极大的提高了运算的速度。所以近年来，ReLU激活函数的应用越来越广泛。</p>
 <p>ReLU函数  <strong>缺点</strong>：</p>
