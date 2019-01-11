@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  
+  <title>吴恩达学习笔记-神经网络中的常用激活函数及其导数 | WSC_ZOU_Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言： 激活函数的作用： 激活函数是非线性的，所以激活函数保证了神经网络的非线性。 一.常用的几种激活函数： sigmoid函数，tanh函数，ReLU函数 1.sigmoid函数 在逻辑回归中我们介绍过sigmoid函数，该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (0,1)(0,1) 之间。sigmoid函数的公式以及图形如下：   对于sigmoid函数的求导推导为：  si">
+<meta property="og:type" content="article">
+<meta property="og:title" content="吴恩达学习笔记-神经网络中的常用激活函数及其导数">
+<meta property="og:url" content="http://WSCZou.com/2019/01/11/吴恩达学习笔记-神经网络中的常用激活函数及其导数/index.html">
+<meta property="og:site_name" content="WSC_ZOU_Blog">
+<meta property="og:description" content="前言： 激活函数的作用： 激活函数是非线性的，所以激活函数保证了神经网络的非线性。 一.常用的几种激活函数： sigmoid函数，tanh函数，ReLU函数 1.sigmoid函数 在逻辑回归中我们介绍过sigmoid函数，该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (0,1)(0,1) 之间。sigmoid函数的公式以及图形如下：   对于sigmoid函数的求导推导为：  si">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_4.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_8.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_6.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_7.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_1.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_2.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_3.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/tanh.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_5.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/tanh_2.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/ReLU_1.jpg?raw=true">
+<meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/tanh_3.jpg?raw=true">
+<meta property="og:updated_time" content="2019-01-11T10:29:17.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="吴恩达学习笔记-神经网络中的常用激活函数及其导数">
+<meta name="twitter:description" content="前言： 激活函数的作用： 激活函数是非线性的，所以激活函数保证了神经网络的非线性。 一.常用的几种激活函数： sigmoid函数，tanh函数，ReLU函数 1.sigmoid函数 在逻辑回归中我们介绍过sigmoid函数，该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (0,1)(0,1) 之间。sigmoid函数的公式以及图形如下：   对于sigmoid函数的求导推导为：  si">
+<meta name="twitter:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_4.jpg?raw=true">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-吴恩达学习笔记-神经网络中的常用激活函数及其导数" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">WSC_Zou</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a>&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      吴恩达学习笔记-神经网络中的常用激活函数及其导数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p><strong>前言：</strong></p>
+<p>激活函数的作用：</p>
+<p>激活函数是非线性的，所以激活函数保证了神经网络的非线性。</p>
+<p><strong>一.常用的几种激活函数：</strong></p>
+<p>sigmoid函数，tanh函数，ReLU函数</p>
+<p><strong>1.sigmoid函数</strong></p>
+<p>在逻辑回归中我们介绍过sigmoid函数，该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (0,1)(0,1) 之间。sigmoid函数的公式以及图形如下：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_4.jpg?raw=true" alt="sigmoid_4.jpg"></p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_8.jpg?raw=true" alt="sigmoid_8.jpg"></p>
+<p>对于sigmoid函数的<strong>求导推导</strong>为：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_6.jpg?raw=true" alt="sigmoid_6.jpg"></p>
+<p>sigmoid其实并不被经常使用，缺点如下：</p>
+<p>（1）当 zz 值<strong>非常大</strong>或者<strong>非常小</strong>时，通过上图我们可以看到，sigmoid函数的<strong>导数</strong> g′(z)g′(z) 将接近 00 。这会导致权重 WW 的<strong>梯度</strong>将接近 00 ，使得<strong>梯度更新十分缓慢</strong>，即<strong>梯度消失</strong>。下面我们举例来说明一下，假设我们使用如下一个只有一层隐藏层的简单网络：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_7.jpg?raw=true" alt="sigmoid_7.jpg"></p>
+<p>对于隐藏层第一个节点进行计算，假设该点实际值为 a ，激活值为 a[1]。于是在这个节点处的代价函数为（以一个样本为例）：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_1.jpg?raw=true" alt="sigmoid_1.jpg"></p>
+<p>而激活值 a[1] 的计算过程为：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_2.jpg?raw=true" alt="sigmoid_2.jpg"></p>
+<p>于是对权重 w11 求梯度为：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_3.jpg?raw=true" alt="sigmoid_3.jpg"></p>
+<p>（2）<strong>函数的输出不是以0为均值</strong>，这就导致一个后果：若Sigmoid函数的输出全部为正数，那么传入下一层神经网络的值永远大于0，这时参数无论怎么更新梯度都为正</p>
+<p><strong>2.tanh函数</strong></p>
+<p>该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (−1,1)(−1,1) 之间，其公式与图形为：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/tanh.jpg?raw=true" alt="tanh.jpg"></p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_5.jpg?raw=true" alt="sigmoid_5.jpg"></p>
+<p>tanh函数在 00 附近很短一段区域内可看做线性的。由于tanh函数<strong>均值</strong>为 0 ，因此弥补了sigmoid函数均值为 0.5的缺点。</p>
+<p>对于tanh函数的<strong>求导推导</strong>为：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/tanh_2.jpg?raw=true" alt="tanh_2.jpg"></p>
+<p>tanh 函数的<strong>缺点</strong>：</p>
+<p>同sigmoid函数的第一个缺点一样，当 z <strong>很大或很小</strong>时，g′(z)接近于 0，会导致梯度很小，权重更新非常缓慢，即<strong>梯度消失问题</strong>。</p>
+<p><strong>3.ReLU函数</strong></p>
+<p>其弥补了sigmoid函数以及tanh函数的<strong>梯度消失问题</strong>。ReLU函数的公式以及图形如下：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/ReLU_1.jpg?raw=true" alt="ReLU_1.jpg"></p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/tanh_3.jpg?raw=true" alt="tanh_3.jpg"></p>
+<p>从ReLU的函数图像我们可以发现，函数原点左侧的部分，输出值为0，斜率为0；函数原点右侧是斜率为1的直线，且输出值就是输入值。相比于上述的Sigmoid和tanh两种激活函数，ReLU激活函数完美的解决了梯度消失的问题，因为它的线性的、非饱和的。此外，它的计算也更加简单，只需要设置一个特定的阈值就可以计算激活值，这样极大的提高了运算的速度。所以近年来，ReLU激活函数的应用越来越广泛。</p>
+<p>ReLU函数  <strong>缺点</strong>：</p>
+<p>训练的时候不适合大梯度的输入数据，因为在参数更新之后，ReLU的神经元不会再任何数据节点被激活，这就会导致梯度永远为0。比如：输入的数据小于0时，梯度就会为0，这就导致了负的梯度被置0，而且今后也可能不会被任何数据所激活，也就是说ReLU的神经元“坏死”了。</p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/01/11/吴恩达学习笔记-神经网络中的常用激活函数及其导数/" class="article-date">
+  <time datetime="2019-01-11T08:46:06.000Z" itemprop="datePublished">2019-01-11</time>
+</a>
+
+        </li>
+        
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+  
+  
+    <a href="/2019/01/11/吴恩达学习笔记-softmax函数/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">吴恩达学习笔记-softmax函数</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>writing…</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

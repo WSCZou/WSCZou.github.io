@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://WSCZou.com/"/>
-  <updated>2019-01-11T08:39:10.586Z</updated>
+  <updated>2019-01-11T10:29:17.200Z</updated>
   <id>http://WSCZou.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>吴恩达学习笔记-神经网络中的常用激活函数及其导数</title>
+    <link href="http://WSCZou.com/2019/01/11/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%AF%BC%E6%95%B0/"/>
+    <id>http://WSCZou.com/2019/01/11/吴恩达学习笔记-神经网络中的常用激活函数及其导数/</id>
+    <published>2019-01-11T08:46:06.000Z</published>
+    <updated>2019-01-11T10:29:17.200Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>前言：</strong></p><p>激活函数的作用：</p><p>激活函数是非线性的，所以激活函数保证了神经网络的非线性。</p><p><strong>一.常用的几种激活函数：</strong></p><p>sigmoid函数，tanh函数，ReLU函数</p><p><strong>1.sigmoid函数</strong></p><p>在逻辑回归中我们介绍过sigmoid函数，该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (0,1)(0,1) 之间。sigmoid函数的公式以及图形如下：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_4.jpg?raw=true" alt="sigmoid_4.jpg"></p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_8.jpg?raw=true" alt="sigmoid_8.jpg"></p><p>对于sigmoid函数的<strong>求导推导</strong>为：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_6.jpg?raw=true" alt="sigmoid_6.jpg"></p><p>sigmoid其实并不被经常使用，缺点如下：</p><p>（1）当 zz 值<strong>非常大</strong>或者<strong>非常小</strong>时，通过上图我们可以看到，sigmoid函数的<strong>导数</strong> g′(z)g′(z) 将接近 00 。这会导致权重 WW 的<strong>梯度</strong>将接近 00 ，使得<strong>梯度更新十分缓慢</strong>，即<strong>梯度消失</strong>。下面我们举例来说明一下，假设我们使用如下一个只有一层隐藏层的简单网络：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_7.jpg?raw=true" alt="sigmoid_7.jpg"></p><p>对于隐藏层第一个节点进行计算，假设该点实际值为 a ，激活值为 a[1]。于是在这个节点处的代价函数为（以一个样本为例）：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_1.jpg?raw=true" alt="sigmoid_1.jpg"></p><p>而激活值 a[1] 的计算过程为：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_2.jpg?raw=true" alt="sigmoid_2.jpg"></p><p>于是对权重 w11 求梯度为：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_3.jpg?raw=true" alt="sigmoid_3.jpg"></p><p>（2）<strong>函数的输出不是以0为均值</strong>，这就导致一个后果：若Sigmoid函数的输出全部为正数，那么传入下一层神经网络的值永远大于0，这时参数无论怎么更新梯度都为正</p><p><strong>2.tanh函数</strong></p><p>该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (−1,1)(−1,1) 之间，其公式与图形为：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/tanh.jpg?raw=true" alt="tanh.jpg"></p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/sigmoid_5.jpg?raw=true" alt="sigmoid_5.jpg"></p><p>tanh函数在 00 附近很短一段区域内可看做线性的。由于tanh函数<strong>均值</strong>为 0 ，因此弥补了sigmoid函数均值为 0.5的缺点。</p><p>对于tanh函数的<strong>求导推导</strong>为：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/tanh_2.jpg?raw=true" alt="tanh_2.jpg"></p><p>tanh 函数的<strong>缺点</strong>：</p><p>同sigmoid函数的第一个缺点一样，当 z <strong>很大或很小</strong>时，g′(z)接近于 0，会导致梯度很小，权重更新非常缓慢，即<strong>梯度消失问题</strong>。</p><p><strong>3.ReLU函数</strong></p><p>其弥补了sigmoid函数以及tanh函数的<strong>梯度消失问题</strong>。ReLU函数的公式以及图形如下：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/ReLU_1.jpg?raw=true" alt="ReLU_1.jpg"></p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/Ng_note/tanh_3.jpg?raw=true" alt="tanh_3.jpg"></p><p>从ReLU的函数图像我们可以发现，函数原点左侧的部分，输出值为0，斜率为0；函数原点右侧是斜率为1的直线，且输出值就是输入值。相比于上述的Sigmoid和tanh两种激活函数，ReLU激活函数完美的解决了梯度消失的问题，因为它的线性的、非饱和的。此外，它的计算也更加简单，只需要设置一个特定的阈值就可以计算激活值，这样极大的提高了运算的速度。所以近年来，ReLU激活函数的应用越来越广泛。</p><p>ReLU函数  <strong>缺点</strong>：</p><p>训练的时候不适合大梯度的输入数据，因为在参数更新之后，ReLU的神经元不会再任何数据节点被激活，这就会导致梯度永远为0。比如：输入的数据小于0时，梯度就会为0，这就导致了负的梯度被置0，而且今后也可能不会被任何数据所激活，也就是说ReLU的神经元“坏死”了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;激活函数的作用：&lt;/p&gt;
+&lt;p&gt;激活函数是非线性的，所以激活函数保证了神经网络的非线性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一.常用的几种激活函数：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;sigmoid函数，tanh函数，ReL
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>吴恩达学习笔记-softmax函数</title>
@@ -33,31 +58,6 @@
 &lt;p&gt;因为要用 Keras 实现 MNIST 数据集手写数字识别，在学习的时候用到了 softmax 函数。所以就学习了它。&lt;/p&gt;
 &lt;h2 id=&quot;一-softmax-函数作用&quot;&gt;&lt;strong&gt;一. softmax 函数作用&lt;/strong&gt;&lt;/h2&gt;
 
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>吴恩达学习笔记--神经网络中的常用激活函数及其导数</title>
-    <link href="http://WSCZou.com/2019/01/10/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E5%AF%BC%E6%95%B0/"/>
-    <id>http://WSCZou.com/2019/01/10/吴恩达学习笔记-神经网络中的常用激活函数及其导数/</id>
-    <published>2019-01-10T02:37:29.000Z</published>
-    <updated>2019-01-11T01:12:43.263Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>前言：</strong></p><p>激活函数的作用：</p><p>激活函数是非线性的，所以激活函数保证了神经网络的非线性。</p><p><strong>一.常用的几种激活函数：</strong></p><p>sigmoid函数，tanh函数，ReLU函数</p><p><strong>1.sigmoid函数</strong></p><p>在逻辑回归中我们介绍过sigmoid函数，该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (0,1)(0,1) 之间。sigmoid函数的公式以及图形如下：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_1.jpg" alt="1547088390849"></p><p><img src="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816153629046-1282691739.jpg" alt="img"></p><p>对于sigmoid函数的<strong>求导推导</strong>为：</p><p><img src="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816150209571-870317113.jpg" alt="img"></p><p>sigmoid其实并不被经常使用，缺点如下：</p><p>（1）当 zz 值<strong>非常大</strong>或者<strong>非常小</strong>时，通过上图我们可以看到，sigmoid函数的<strong>导数</strong> g′(z)g′(z) 将接近 00 。这会导致权重 WW 的<strong>梯度</strong>将接近 00 ，使得<strong>梯度更新十分缓慢</strong>，即<strong>梯度消失</strong>。下面我们举例来说明一下，假设我们使用如下一个只有一层隐藏层的简单网络：</p><p><img src="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816151654004-1572592250.jpg" alt="img"></p><p>对于隐藏层第一个节点进行计算，假设该点实际值为 a ，激活值为 a[1]。于是在这个节点处的代价函数为（以一个样本为例）：</p><p><img src="D:%5Cblog%5Csource%5Cimages%5Csigmoid_1.jpg" alt="sigmoid_1"></p><p>而激活值 a[1] 的计算过程为：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_2.jpg" alt="sigmoid_2"></p><p>于是对权重 w11 求梯度为：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/sigmoid_3.jpg" alt="sigmoid_3"></p><p>（2）<strong>函数的输出不是以0为均值</strong>，这就导致一个后果：若Sigmoid函数的输出全部为正数，那么传入下一层神经网络的值永远大于0，这时参数无论怎么更新梯度都为正</p><p><strong>2.tanh函数</strong></p><p>该函数是将取值为 (−∞,+∞)(−∞,+∞) 的数映射到 (−1,1)(−1,1) 之间，其公式与图形为：</p><p><img src="https://pic4.zhimg.com/80/v2-14446800dfe23df62433be9038beda37_hd.jpg" alt="img"></p><p><img src="https://pic4.zhimg.com/80/v2-48616a2fcd3127ad2b095e276ab0c013_hd.jpg" alt="img"></p><p>tanh函数在 00 附近很短一段区域内可看做线性的。由于tanh函数<strong>均值</strong>为 0 ，因此弥补了sigmoid函数均值为 0.5的缺点。</p><p>对于tanh函数的<strong>求导推导</strong>为：</p><p><img src="https://images2018.cnblogs.com/blog/1238724/201808/1238724-20180816154358758-421761003.jpg" alt="img"></p><p>tanh 函数的<strong>缺点</strong>：</p><p>同sigmoid函数的第一个缺点一样，当 z <strong>很大或很小</strong>时，g′(z)接近于 0，会导致梯度很小，权重更新非常缓慢，即<strong>梯度消失问题</strong>。</p><p><strong>3.ReLU函数</strong></p><p>其弥补了sigmoid函数以及tanh函数的<strong>梯度消失问题</strong>。ReLU函数的公式以及图形如下：</p><p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/ReLU_1.jpg" alt="ReLU_1"></p><p><img src="https://pic4.zhimg.com/80/v2-ca375d9699ba6ed8820ceb83d06b74f3_hd.jpg" alt="img"></p><p>从ReLU的函数图像我们可以发现，函数原点左侧的部分，输出值为0，斜率为0；函数原点右侧是斜率为1的直线，且输出值就是输入值。相比于上述的Sigmoid和tanh两种激活函数，ReLU激活函数完美的解决了梯度消失的问题，因为它的线性的、非饱和的。此外，它的计算也更加简单，只需要设置一个特定的阈值就可以计算激活值，这样极大的提高了运算的速度。所以近年来，ReLU激活函数的应用越来越广泛。</p><p>ReLU函数  <strong>缺点</strong>：</p><p>训练的时候不适合大梯度的输入数据，因为在参数更新之后，ReLU的神经元不会再任何数据节点被激活，这就会导致梯度永远为0。比如：输入的数据小于0时，梯度就会为0，这就导致了负的梯度被置0，而且今后也可能不会被任何数据所激活，也就是说ReLU的神经元“坏死”了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;前言：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;激活函数的作用：&lt;/p&gt;
-&lt;p&gt;激活函数是非线性的，所以激活函数保证了神经网络的非线性。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;一.常用的几种激活函数：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;sigmoid函数，tanh函数，ReL
       
     
     </summary>
