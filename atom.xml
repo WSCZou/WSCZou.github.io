@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://WSCZou.com/"/>
-  <updated>2019-01-11T01:12:43.263Z</updated>
+  <updated>2019-01-11T08:39:10.586Z</updated>
   <id>http://WSCZou.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>吴恩达学习笔记-softmax函数</title>
+    <link href="http://WSCZou.com/2019/01/11/%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-softmax%E5%87%BD%E6%95%B0/"/>
+    <id>http://WSCZou.com/2019/01/11/吴恩达学习笔记-softmax函数/</id>
+    <published>2019-01-11T08:31:58.000Z</published>
+    <updated>2019-01-11T08:39:10.586Z</updated>
+    
+    <content type="html"><![CDATA[<p>前言：</p><p>因为要用 Keras 实现 MNIST 数据集手写数字识别，在学习的时候用到了 softmax 函数。所以就学习了它。</p><h2 id="一-softmax-函数作用"><strong>一. softmax 函数作用</strong></h2><p><strong>softmax用于多分类过程中</strong>，它将多个神经元的输出，映射到（0,1）区间内，可以看成概率来理解，从而来进行多分类！</p><p>假设我们有一个数组，V，Vi表示V中的第i个元素，那么这个元素的softmax值就是</p><p><img src="https://pic4.zhimg.com/80/v2-65035de6fdfd8b2f13b930191e9a548b_hd.jpg" alt="img"></p><p><img src="https://pic4.zhimg.com/80/v2-11758fbc2fc5bbbc60106926625b3a4f_hd.jpg" alt="img"></p><p>softmax 直白来说就是将原来输出是3,1,-3通过 softmax 函数一作用，就映射成为(0,1)的值，而这些值的累和为1（满足概率的性质），那么我们就可以将它理解成概率，在最后选取输出结点的时候，我们就可以选取概率最大（也就是值对应最大的）结点，作为我们的预测目标！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;前言：&lt;/p&gt;
+&lt;p&gt;因为要用 Keras 实现 MNIST 数据集手写数字识别，在学习的时候用到了 softmax 函数。所以就学习了它。&lt;/p&gt;
+&lt;h2 id=&quot;一-softmax-函数作用&quot;&gt;&lt;strong&gt;一. softmax 函数作用&lt;/strong&gt;&lt;/h2&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>吴恩达学习笔记--神经网络中的常用激活函数及其导数</title>
