@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
-<meta property="og:updated_time" content="2019-01-10T12:18:38.803Z">
+<meta property="og:updated_time" content="2019-01-11T12:08:41.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -342,6 +342,17 @@
 <li>
 <p>r’C:\Windows’new’不会出错，很多人理解的原始字符串会保留字符本来的意义，所以会认为字符串中r’C:\Windows’已经是一个合法的字符串了，后面还跟着new’使得字符串不合法，其实这个字符串中r’C:\Windows’不合法，应为后面的反斜杠告诉解析器&quot;我后面的引号的意义已经被我转义了，在这里不是字符串的结尾，你可以继续进行解析&quot;。</p>
 </li>
+</ul>
+<h3 id="not-knot-别纠结">&gt; not knot!/别纠结!</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = True</span><br><span class="line">y = False</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; not x == y</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; x == not y</span><br><span class="line">  File &quot;&lt;input&gt;&quot;, line 1</span><br><span class="line">    x == not y</span><br><span class="line">           ^</span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v9">💡 说明:</h4>
+<ul>
+<li>运算符的优先级会影响表达式的求值顺序, 而在 Python 中 <code>==</code> 运算符的优先级要高于 <code>not</code> 运算符.</li>
+<li>所以 <code>not x == y</code> 相当于 <code>not (x == y)</code>, 同时等价于 <code>not (True == False)</code>, 最后的运算结果就是 <code>True</code>.</li>
+<li>之所以 <code>x == not y</code> 会抛一个 <code>SyntaxError</code> 异常, 是因为它会被认为等价于 <code>(x == not) y</code>, 而不是你一开始期望的 <code>x == (not y)</code>.</li>
+<li>解释器期望 <code>not</code> 标记是 <code>not in</code> 操作符的一部分 (因为 <code>==</code> 和 <code>not in</code> 操作符具有相同的优先级), 但是它在 <code>not</code> 标记后面找不到 <code>in</code> 标记, 所以会抛出 <code>SyntaxError</code> 异常.</li>
 </ul>
 
       
