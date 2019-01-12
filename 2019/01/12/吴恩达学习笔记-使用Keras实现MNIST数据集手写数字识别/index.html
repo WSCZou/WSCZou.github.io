@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  
+  <title>吴恩达学习笔记-使用Keras实现MNIST数据集手写数字识别 | WSC_ZOU_Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="添加丢弃层 丢弃是由 Hinton 及其在多伦多大学的学生开发的，是最有效且最常用的神经网络正则化技术之一。丢弃（应用于某个层）是指在训练期间随机“丢弃”（即设置为 0）该层的多个输出特征。假设某个指定的层通常会在训练期间针对给定的输入样本返回一个向量 [0.2, 0.5, 1.3, 0.8, 1.1]；在应用丢弃后，此向量将随机分布几个 0 条目，例如 [0, 0.5, 1.3, 0, 1.1]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="吴恩达学习笔记-使用Keras实现MNIST数据集手写数字识别">
+<meta property="og:url" content="http://WSCZou.com/2019/01/12/吴恩达学习笔记-使用Keras实现MNIST数据集手写数字识别/index.html">
+<meta property="og:site_name" content="WSC_ZOU_Blog">
+<meta property="og:description" content="添加丢弃层 丢弃是由 Hinton 及其在多伦多大学的学生开发的，是最有效且最常用的神经网络正则化技术之一。丢弃（应用于某个层）是指在训练期间随机“丢弃”（即设置为 0）该层的多个输出特征。假设某个指定的层通常会在训练期间针对给定的输入样本返回一个向量 [0.2, 0.5, 1.3, 0.8, 1.1]；在应用丢弃后，此向量将随机分布几个 0 条目，例如 [0, 0.5, 1.3, 0, 1.1]">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-12T09:01:08.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="吴恩达学习笔记-使用Keras实现MNIST数据集手写数字识别">
+<meta name="twitter:description" content="添加丢弃层 丢弃是由 Hinton 及其在多伦多大学的学生开发的，是最有效且最常用的神经网络正则化技术之一。丢弃（应用于某个层）是指在训练期间随机“丢弃”（即设置为 0）该层的多个输出特征。假设某个指定的层通常会在训练期间针对给定的输入样本返回一个向量 [0.2, 0.5, 1.3, 0.8, 1.1]；在应用丢弃后，此向量将随机分布几个 0 条目，例如 [0, 0.5, 1.3, 0, 1.1]">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-吴恩达学习笔记-使用Keras实现MNIST数据集手写数字识别" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav class="mobile-nav">
+    <h1 class="nickname">WSC_Zou</h1>
+    <ul class="mobile-nav-menu">
+      <label for="mobile-menu-toggle"><a>&#9776; Menu</a></label>
+      <input type="checkbox" id="mobile-menu-toggle"/>
+      <ul class="mobile-nav-link">
+        
+        <a href="/">Home</a>
+        
+        <a href="/archives">Archives</a>
+        
+        <a href="/about">About</a>
+        
+      </ul>
+    </ul>
+  </nav>
+	
+		<nav id="main-nav" class="main-nav nav-left">
+	
+	
+	  <a class="main-nav-link" href="/">Home</a>
+	
+	  <a class="main-nav-link" href="/archives">Archives</a>
+	
+	  <a class="main-nav-link" href="/about">About</a>
+	
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      吴恩达学习笔记-使用Keras实现MNIST数据集手写数字识别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <h3 id="添加丢弃层">添加丢弃层</h3>
+<p>丢弃是由 Hinton 及其在多伦多大学的学生开发的，是最有效且最常用的神经网络正则化技术之一。丢弃（应用于某个层）是指在训练期间随机“丢弃”（即设置为 0）该层的多个输出特征。假设某个指定的层通常会在训练期间针对给定的输入样本返回一个向量 [0.2, 0.5, 1.3, 0.8, 1.1]；在应用丢弃后，此向量将随机分布几个 0 条目，例如 [0, 0.5, 1.3, 0, 1.1]。“丢弃率”指变为 0 的特征所占的比例，通常设置在 0.2 和 0.5 之间。在测试时，网络不会丢弃任何单元，而是将层的输出值按等同于丢弃率的比例进行缩减，以便平衡以下事实：测试时的活跃单元数大于训练时的活跃单元数。</p>
+<p>在 tf.keras 中，您可以通过丢弃层将丢弃引入网络中，以便事先将其应用于层的输出。</p>
+<p>使用例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.add(Dropout(<span class="number">0.2</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="在编写模型时-keras-会要求您指定损失函数和优化程序-我们在这里使用的损失函数称为分类交叉熵-并且是一种非常适合比较两个概率分布的损失函数">在编写模型时，Keras 会要求您指定损失函数和优化程序。我们在这里使用的损失函数称为分类交叉熵，并且是一种非常适合比较两个概率分布的损失函数。</h2>
+<h3 id="keras-中的多分类损失函数-categorical-crossentropy">Keras 中的多分类损失函数 categorical_crossentropy</h3>
+<p>当使用 <em>categorical_crossentropy</em> 损失函数时，你的标签应为多类模式，例如如果你有10个类别，每一个样本的标签应该是一个10维的向量，该向量在对应有值的索引位置为1其余为0。</p>
+<h3 id="keras中to-categorical函数-one-hot-encoding-独热编码">keras中to_categorical函数(one_hot encoding(独热编码))</h3>
+<p>to_categorical 的功能：</p>
+<p>简单来说，to_categorical就是将类别向量转换为二进制（只有0和1）的矩阵类型表示。其表现为将原有的类别向量转换为独热编码的形式。先上代码看一下效果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.utils.np_utils <span class="keyword">import</span> *</span><br><span class="line"><span class="comment">#类别向量定义</span></span><br><span class="line">b = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"><span class="comment">#调用to_categorical将b按照9个类别来进行转换</span></span><br><span class="line">b = to_categorical(b, <span class="number">9</span>)</span><br><span class="line">print(b)</span><br><span class="line"> </span><br><span class="line">执行结果如下：</span><br><span class="line">[[<span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span>]]</span><br></pre></td></tr></table></figure>
+<p>to_categorical最为keras中提供的一个工具方法，从以上代码运行可以看出，将原来类别向量中的每个值都转换为矩阵里的一个行向量，从左到右依次是0,1,2，…8个类别。2表示为[0. 0. 1. 0. 0. 0. 0. 0. 0.]，只有第3个为1，作为有效位，其余全部为0。</p>
+
+      
+      
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/2019/01/12/吴恩达学习笔记-使用Keras实现MNIST数据集手写数字识别/" class="article-date">
+  <time datetime="2019-01-12T07:55:32.000Z" itemprop="datePublished">2019-01-12</time>
+</a>
+
+        </li>
+        
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <span id="article-nav-newer" class="article-nav-link-wrap newer"></span>
+  
+  
+    <a href="/2019/01/11/吴恩达学习笔记-神经网络中的常用激活函数及其导数/" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">吴恩达学习笔记-神经网络中的常用激活函数及其导数</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>writing…</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3/dist/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
