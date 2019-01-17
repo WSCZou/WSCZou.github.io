@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
-<meta property="og:updated_time" content="2019-01-11T12:08:41.130Z">
+<meta property="og:updated_time" content="2019-01-17T11:48:31.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -353,6 +353,21 @@
 <li>所以 <code>not x == y</code> 相当于 <code>not (x == y)</code>, 同时等价于 <code>not (True == False)</code>, 最后的运算结果就是 <code>True</code>.</li>
 <li>之所以 <code>x == not y</code> 会抛一个 <code>SyntaxError</code> 异常, 是因为它会被认为等价于 <code>(x == not) y</code>, 而不是你一开始期望的 <code>x == (not y)</code>.</li>
 <li>解释器期望 <code>not</code> 标记是 <code>not in</code> 操作符的一部分 (因为 <code>==</code> 和 <code>not in</code> 操作符具有相同的优先级), 但是它在 <code>not</code> 标记后面找不到 <code>in</code> 标记, 所以会抛出 <code>SyntaxError</code> 异常.</li>
+</ul>
+<h3 id="half-triple-quoted-strings-三个引号">&gt; Half triple-quoted strings/三个引号</h3>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(&apos;wtfpython&apos;&apos;&apos;)</span><br><span class="line">wtfpython</span><br><span class="line">&gt;&gt;&gt; print(&quot;wtfpython&quot;&quot;&quot;)</span><br><span class="line">wtfpython</span><br><span class="line">&gt;&gt;&gt; # 下面的语句会抛出 `SyntaxError` 异常</span><br><span class="line">&gt;&gt;&gt; # print(&apos;&apos;&apos;wtfpython&apos;)</span><br><span class="line">&gt;&gt;&gt; # print(&quot;&quot;&quot;wtfpython&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v10">💡 说明:</h4>
+<ul>
+<li>
+<p>Python 提供隐式的</p>
+<p>字符串链接</p>
+<p>, 例如,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(&quot;wtf&quot; &quot;python&quot;)</span><br><span class="line">wtfpython</span><br><span class="line">&gt;&gt;&gt; print(&quot;wtf&quot; &quot;&quot;) # or &quot;wtf&quot;&quot;&quot;</span><br><span class="line">wtf</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>'''</code> 和 <code>&quot;&quot;&quot;</code> 在 Python中也是字符串定界符, Python 解释器在先遇到三个引号的的时候会尝试再寻找三个终止引号作为定界符, 如果不存在则会导致 <code>SyntaxError</code> 异常.</p>
+</li>
 </ul>
 
       
