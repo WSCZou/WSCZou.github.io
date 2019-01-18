@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
-<meta property="og:updated_time" content="2019-01-17T11:48:31.978Z">
+<meta property="og:updated_time" content="2019-01-18T08:50:12.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -367,6 +367,13 @@
 </li>
 <li>
 <p><code>'''</code> 和 <code>&quot;&quot;&quot;</code> 在 Python中也是字符串定界符, Python 解释器在先遇到三个引号的的时候会尝试再寻找三个终止引号作为定界符, 如果不存在则会导致 <code>SyntaxError</code> 异常.</p>
+<h3 id="midnight-time-doesn-t-exist-不存在的午夜">&gt; Midnight time doesn’t exist?/不存在的午夜?</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line">midnight = datetime(2018, 1, 1, 0, 0)</span><br><span class="line">midnight_time = midnight.time()</span><br><span class="line"></span><br><span class="line">noon = datetime(2018, 1, 1, 12, 0)</span><br><span class="line">noon_time = noon.time()</span><br><span class="line"></span><br><span class="line">if midnight_time:</span><br><span class="line">    print(&quot;Time at midnight is&quot;, midnight_time)</span><br><span class="line"></span><br><span class="line">if noon_time:</span><br><span class="line">    print(&quot;Time at noon is&quot;, noon_time)</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&apos;Time at noon is&apos;, datetime.time(12, 0))</span><br></pre></td></tr></table></figure>
+<p>midnight_time 并没有被输出.</p>
+<h4 id="💡-说明-v11">💡 说明:</h4>
+<p>在Python 3.5之前, 如果 <code>datetime.time</code> 对象存储的UTC的午夜时间(译: 就是 <code>00:00</code>), 那么它的布尔值会被认为是 <code>False</code>. 当使用 <code>if obj:</code> 语句来检查 <code>obj</code> 是否为 <code>null</code> 或者某些“空”值的时候, 很容易出错.</p>
 </li>
 </ul>
 
