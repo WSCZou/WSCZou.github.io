@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
-<meta property="og:updated_time" content="2019-01-18T08:50:12.197Z">
+<meta property="og:updated_time" content="2019-01-20T13:04:39.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -374,6 +374,37 @@
 <p>midnight_time 并没有被输出.</p>
 <h4 id="💡-说明-v11">💡 说明:</h4>
 <p>在Python 3.5之前, 如果 <code>datetime.time</code> 对象存储的UTC的午夜时间(译: 就是 <code>00:00</code>), 那么它的布尔值会被认为是 <code>False</code>. 当使用 <code>if obj:</code> 语句来检查 <code>obj</code> 是否为 <code>null</code> 或者某些“空”值的时候, 很容易出错.</p>
+</li>
+</ul>
+<h3 id="what-s-wrong-with-booleans-布尔你咋了">&gt; What’s wrong with booleans?/布尔你咋了?</h3>
+<ol>
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 一个简单的例子, 统计下面可迭代对象中的布尔型值的个数和整型值的个数</span><br><span class="line">mixed_list = [False, 1.0, &quot;some_string&quot;, 3, True, [], False]</span><br><span class="line">integers_found_so_far = 0</span><br><span class="line">booleans_found_so_far = 0</span><br><span class="line"></span><br><span class="line">for item in mixed_list:</span><br><span class="line">    if isinstance(item, int):</span><br><span class="line">        integers_found_so_far += 1</span><br><span class="line">    elif isinstance(item, bool):</span><br><span class="line">        booleans_found_so_far += 1</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; integers_found_so_far</span><br><span class="line">4</span><br><span class="line">&gt;&gt;&gt; booleans_found_so_far</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">another_dict = &#123;&#125;</span><br><span class="line">another_dict[True] = &quot;JavaScript&quot;</span><br><span class="line">another_dict[1] = &quot;Ruby&quot;</span><br><span class="line">another_dict[1.0] = &quot;Python&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; another_dict[True]</span><br><span class="line">&quot;Python&quot;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; some_bool = True</span><br><span class="line">&gt;&gt;&gt; &quot;wtf&quot;*some_bool</span><br><span class="line">&apos;wtf&apos;</span><br><span class="line">&gt;&gt;&gt; some_bool = False</span><br><span class="line">&gt;&gt;&gt; &quot;wtf&quot;*some_bool</span><br><span class="line">&apos;&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v12">💡 说明:</h4>
+<ul>
+<li>
+<p>布尔值是 <code>int</code> 的子类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; isinstance(True, int)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; isinstance(False, int)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>所以 <code>True</code> 的整数值是 <code>1</code>, 而 <code>False</code> 的整数值是 <code>0</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; True == 1 == 1.0 and False == 0 == 0.0</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>关于其背后的原理, 请看这个 StackOverflow 的<a href="https://stackoverflow.com/a/8169049/4354153" target="_blank" rel="noopener">回答</a>.</p>
 </li>
 </ul>
 

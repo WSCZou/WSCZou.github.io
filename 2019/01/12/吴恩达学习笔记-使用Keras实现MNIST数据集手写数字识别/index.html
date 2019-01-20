@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="WSC_ZOU_Blog">
 <meta property="og:description" content="知识点: 添加丢弃层 丢弃是由 Hinton 及其在多伦多大学的学生开发的，是最有效且最常用的神经网络正则化技术之一。丢弃（应用于某个层）是指在训练期间随机“丢弃”（即设置为 0）该层的多个输出特征。假设某个指定的层通常会在训练期间针对给定的输入样本返回一个向量 [0.2, 0.5, 1.3, 0.8, 1.1]；在应用丢弃后，此向量将随机分布几个 0 条目，例如 [0, 0.5, 1.3, 0,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T10:24:52.388Z">
+<meta property="og:updated_time" content="2019-01-20T07:05:15.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达学习笔记-使用Keras实现MNIST数据集手写数字识别">
 <meta name="twitter:description" content="知识点: 添加丢弃层 丢弃是由 Hinton 及其在多伦多大学的学生开发的，是最有效且最常用的神经网络正则化技术之一。丢弃（应用于某个层）是指在训练期间随机“丢弃”（即设置为 0）该层的多个输出特征。假设某个指定的层通常会在训练期间针对给定的输入样本返回一个向量 [0.2, 0.5, 1.3, 0.8, 1.1]；在应用丢弃后，此向量将随机分布几个 0 条目，例如 [0, 0.5, 1.3, 0,">
@@ -99,6 +99,10 @@
 <h3 id="二-数据准备工作">二.数据准备工作</h3>
 <p>1.导入数据</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(X_train, y_train), (X_test, y_test) = mnist.load_data()</span><br><span class="line">print(<span class="string">"X_train original shape"</span>, X_train.shape)</span><br><span class="line">print(<span class="string">"y_train original shape"</span>, y_train.shape)</span><br></pre></td></tr></table></figure>
+<p>为什么reshape里面有四个参数？</p>
+<p>因为是四维张量</p>
+<p>shape是返回数组几行几列</p>
+<p>reshape第一个参数是有多少行，-1是让计算机自己计算，模糊的</p>
 
       
       
