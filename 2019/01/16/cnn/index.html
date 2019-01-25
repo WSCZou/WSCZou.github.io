@@ -19,7 +19,9 @@
 <meta property="og:image" content="https://github.com/apachecn/hands-on-ml-zh/raw/dev/images/chapter_13/13-5.png">
 <meta property="og:image" content="https://github.com/apachecn/hands-on-ml-zh/raw/dev/images/chapter_13/13-6.png">
 <meta property="og:image" content="https://github.com/apachecn/hands-on-ml-zh/raw/dev/images/chapter_13/13-8.png">
-<meta property="og:updated_time" content="2019-01-17T08:39:23.276Z">
+<meta property="og:image" content="https://github.com/apachecn/hands-on-ml-zh/raw/dev/images/chapter_13/t-13-1.png">
+<meta property="og:image" content="https://github.com/apachecn/hands-on-ml-zh/raw/dev/images/chapter_13/t-13-2.png">
+<meta property="og:updated_time" content="2019-01-22T06:30:25.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cnn">
 <meta name="twitter:description" content="前言： 在做识别 MNIST 中用了 CNN 所以看了CNN。 一.CNN（卷积神经网络） 来历： 视皮层中的许多神经元有一个小的局部感受野，这意味着它们只对位于视野中有限的一部分区域的视觉刺激起作用 用途： 可以进行大型图像处理 特点： 该优点在网络的输入是多维图像时表现的更为明显，使图像可以直接作为网络的输入，避免了传统识别算法中复杂的特征提取和数据重建过程，卷积网络是为识别二维形状而特殊设计">
@@ -132,6 +134,18 @@
 <p>这显然是一个非常具有破坏性的层：即使只有一个<code>2×2</code>的核和 2 的步幅，输出在两个方向上都会减小两倍（所以它的面积将减少四倍），一下减少了 75% 的输入值</p>
 <p>池化层通常独立于每个输入通道工作，因此输出深度与输入深度相同。 接下来可以看到，在这种情况下，图像的空间维度（高度和宽度）保持不变，但是通道数目可以减少。</p>
 <h3 id="五cnn架构">五<code>CNN</code>架构</h3>
+<p><strong>1.LeNet-5</strong></p>
+<p><img src="https://github.com/apachecn/hands-on-ml-zh/raw/dev/images/chapter_13/t-13-1.png" alt="img"></p>
+<ul>
+<li>
+<p><code>Avg Pooing</code>(平均池化层)比平常稍微复杂一些：每个神经元计算输入的平均值，然后将结果乘以一个可学习的系数（每个特征映射一个），并添加一个可学习的偏差项（每个特征映射一个），然后最后应用激活函数。</p>
+</li>
+<li>
+<p>输出层有点特殊：每个神经元不是计算输入和权向量的点积，而是输出其输入向量和其权向量之间的欧几里德距离的平方。每个输出测量图像属于特定数字类别的多少。 交叉熵损失函数现在是首选，因为它更多地惩罚不好的预测，产生更大的梯度，从而更快地收敛。</p>
+</li>
+</ul>
+<p><strong>2.AlexNet</strong></p>
+<p><img src="https://github.com/apachecn/hands-on-ml-zh/raw/dev/images/chapter_13/t-13-2.png" alt="img"></p>
 
       
       

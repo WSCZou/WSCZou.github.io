@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
-<meta property="og:updated_time" content="2019-01-20T13:04:39.440Z">
+<meta property="og:updated_time" content="2019-01-25T12:23:57.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -406,6 +406,24 @@
 <li>
 <p>关于其背后的原理, 请看这个 StackOverflow 的<a href="https://stackoverflow.com/a/8169049/4354153" target="_blank" rel="noopener">回答</a>.</p>
 </li>
+</ul>
+<h3 id="class-attributes-and-instance-attributes-类属性和实例属性">&gt; Class attributes and instance attributes/类属性和实例属性</h3>
+<ol>
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class A:</span><br><span class="line">    x = 1</span><br><span class="line"></span><br><span class="line">class B(A):</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">class C(A):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; A.x, B.x, C.x</span><br><span class="line">(1, 1, 1)</span><br><span class="line">&gt;&gt;&gt; B.x = 2</span><br><span class="line">&gt;&gt;&gt; A.x, B.x, C.x</span><br><span class="line">(1, 2, 1)</span><br><span class="line">&gt;&gt;&gt; A.x = 3</span><br><span class="line">&gt;&gt;&gt; A.x, B.x, C.x</span><br><span class="line">(3, 2, 3)</span><br><span class="line">&gt;&gt;&gt; a = A()</span><br><span class="line">&gt;&gt;&gt; a.x, A.x</span><br><span class="line">(3, 3)</span><br><span class="line">&gt;&gt;&gt; a.x += 1</span><br><span class="line">&gt;&gt;&gt; a.x, A.x</span><br><span class="line">(4, 3)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class SomeClass:</span><br><span class="line">    some_var = 15</span><br><span class="line">    some_list = [5]</span><br><span class="line">    another_list = [5]</span><br><span class="line">    def __init__(self, x):</span><br><span class="line">        self.some_var = x + 1</span><br><span class="line">        self.some_list = self.some_list + [x]</span><br><span class="line">        self.another_list += [x]</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; some_obj = SomeClass(420)</span><br><span class="line">&gt;&gt;&gt; some_obj.some_list</span><br><span class="line">[5, 420]</span><br><span class="line">&gt;&gt;&gt; some_obj.another_list</span><br><span class="line">[5, 420]</span><br><span class="line">&gt;&gt;&gt; another_obj = SomeClass(111)</span><br><span class="line">&gt;&gt;&gt; another_obj.some_list</span><br><span class="line">[5, 111]</span><br><span class="line">&gt;&gt;&gt; another_obj.another_list</span><br><span class="line">[5, 420, 111]</span><br><span class="line">&gt;&gt;&gt; another_obj.another_list is SomeClass.another_list</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; another_obj.another_list is some_obj.another_list</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v13">💡 说明:</h4>
+<ul>
+<li>类变量和实例变量在内部是通过类对象的字典来处理(译: 就是 <code>__dict__</code> 属性). 如果在当前类的字典中找不到的话就去它的父类中寻找.</li>
+<li><code>+=</code> 运算符会在原地修改可变对象, 而不是创建新对象.(即会指向同一块地址) 因此, 修改一个实例的属性会影响其他实例和类属性.</li>
 </ul>
 
       
