@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
-<meta property="og:updated_time" content="2019-01-29T15:18:28.418Z">
+<meta property="og:updated_time" content="2019-02-03T12:10:56.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -472,7 +472,17 @@
 <li>
 <p>在 Python 2.x 中, <code>Exception()</code> 实例被赋值给了变量 <code>e</code>, 所以当你尝试打印结果的时候, 它的输出为空.（译: 正常的Exception实例打印出来就是空）</p>
 <p><strong>Output (Python 2.x):</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>e</span><br><span class="line">Exception()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> e</span><br><span class="line"><span class="comment"># 没有打印任何内容!</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>e</span><br><span class="line">Exception()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> e</span><br><span class="line"><span class="comment"># 没有打印任何内容!</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="when-true-is-actually-false-真亦假">&gt; When True is actually False/真亦假</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">True = False</span><br><span class="line">if True == False:</span><br><span class="line">    print(&quot;I&apos;ve lost faith in truth!&quot;)</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I&apos;ve lost faith in truth!</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v16">💡 说明:</h4>
+<ul>
+<li>最初, Python 并没有 <code>bool</code> 型 (人们用0表示假值, 用非零值比如1作为真值). 后来他们添加了 <code>True</code>, <code>False</code>, 和 <code>bool</code> 型, 但是, 为了向后兼容, 他们没法把 <code>True</code> 和 <code>False</code> 设置为常量, 只是设置成了内置变量.</li>
+<li>Python 3 由于不再需要向后兼容, 终于可以修复这个问题了, 所以这个例子无法在 Python 3.x 中执行! Python 3 中会出现 <code>SyntaxError: can't assign to keyword</code> 错误</li>
 </ul>
 
       
