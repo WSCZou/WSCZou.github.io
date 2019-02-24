@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
-<meta property="og:updated_time" content="2019-02-23T06:03:25.602Z">
+<meta property="og:updated_time" content="2019-02-24T08:37:08.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -521,6 +521,16 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">139974154577824</span>, <span class="number">139974154583408</span>)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#123;<span class="string">'key_1'</span>: <span class="number">1</span>, <span class="string">'key_3'</span>: <span class="number">3</span>, <span class="string">'key_2'</span>: <span class="number">2</span>&#125;</span><br><span class="line">(<span class="number">139974153481728</span>, <span class="number">139974153481728</span>)</span><br><span class="line"><span class="keyword">None</span></span><br><span class="line"><span class="keyword">None</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">&#123;<span class="string">'key_4'</span>: <span class="number">4</span>, <span class="string">'key_1'</span>: <span class="number">1</span>, <span class="string">'key_3'</span>: <span class="number">3</span>, <span class="string">'key_2'</span>: <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="💡-说明-v18">💡 说明:</h4>
 <p>大多数修改序列/映射对象的方法, 比如 <code>list.append</code>, <code>dict.update</code>, <code>list.sort</code> 等等. 都是原地修改对象并返回 <code>None</code>. 这样做的理由是, 如果操作可以原地完成, 就可以避免创建对象的副本来提高性能.</p>
+<h3 id="subclass-relationships-子类关系">&gt; Subclass relationships/子类关系 *</h3>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Hashable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>issubclass(list, object)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>issubclass(object, Hashable)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>issubclass(list, Hashable)</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<p>子类关系应该是可传递的, 对吧? (即, 如果 <code>A</code> 是 <code>B</code> 的子类, <code>B</code> 是 <code>C</code> 的子类, 那么 <code>A</code> <em>应该</em> 是 <code>C</code> 的子类.)</p>
+<h4 id="💡-说明-v19">💡 说明:</h4>
+<ul>
+<li>Python 中的子类关系并不必须是传递的. 任何人都可以在元类中随意定义 <code>__subclasscheck__</code>.</li>
+<li>当 <code>issubclass(cls, Hashable)</code> 被调用时, 它只是在 <code>cls</code> 中寻找 “<code>__hash__</code>” 方法或继承自&quot;<code>__hash__</code>&quot;的方法.</li>
+<li>由于 <code>object</code> is 可散列的(hashable), 但是 <code>list</code> 是不可散列的, 所以它打破了这种传递关系.</li>
+</ul>
 
       
       
