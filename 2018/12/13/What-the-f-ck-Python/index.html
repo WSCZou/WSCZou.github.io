@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/string-intern/string_intern.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
-<meta property="og:updated_time" content="2019-02-24T08:37:08.768Z">
+<meta property="og:updated_time" content="2019-02-25T12:07:47.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -530,6 +530,31 @@
 <li>Python 中的子类关系并不必须是传递的. 任何人都可以在元类中随意定义 <code>__subclasscheck__</code>.</li>
 <li>当 <code>issubclass(cls, Hashable)</code> 被调用时, 它只是在 <code>cls</code> 中寻找 “<code>__hash__</code>” 方法或继承自&quot;<code>__hash__</code>&quot;的方法.</li>
 <li>由于 <code>object</code> is 可散列的(hashable), 但是 <code>list</code> 是不可散列的, 所以它打破了这种传递关系.</li>
+</ul>
+<h3 id="the-mysterious-key-type-conversion-神秘的键型转换">&gt; The mysterious key type conversion/神秘的键型转换 *</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span><span class="params">(str)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">some_dict = &#123;<span class="string">'s'</span>:<span class="number">42</span>&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(list(some_dict.keys())[<span class="number">0</span>])</span><br><span class="line">str</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = SomeClass(<span class="string">'s'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_dict[s] = <span class="number">40</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_dict <span class="comment"># 预期: 两个不同的键值对</span></span><br><span class="line">&#123;<span class="string">'s'</span>: <span class="number">40</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(list(some_dict.keys())[<span class="number">0</span>])</span><br><span class="line">str</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v20">💡 说明:</h4>
+<ul>
+<li>
+<p>由于 <code>SomeClass</code> 会从 <code>str</code> 自动继承 <code>__hash__</code> 方法, 所以 <code>s</code> 对象和 <code>&quot;s&quot;</code> 字符串的哈希值是相同的.</p>
+</li>
+<li>
+<p>而 <code>SomeClass(&quot;s&quot;) == &quot;s&quot;</code> 为 <code>True</code> 是因为 <code>SomeClass</code> 也继承了 <code>str</code> 类 <code>__eq__</code> 方法.</p>
+</li>
+<li>
+<p>可哈希的集合（hashed collections），需要集合的元素实现了eq和hash，而这两个方法可以作一个形象的比喻：<br>
+哈希集合就是很多个桶，但每个桶里面只能放一个球。 hash函数的作用就是找到桶的位置，到底是几号桶。 eq函数的作用就是当桶里面已经有一个球了，但又来了一个球，它声称它也应该装进这个桶里面（hash函数给它说了桶的位置），双方僵持不下，那就得用eq函数来判断这两个球是不是相等的（equal），如果是判断是相等的，那么后来那个球就不应该放进桶里，哈希集合维持现状.</p>
+</li>
+<li>
+<p>由于两者的哈希值相同且相等, 所以它们在字典中表示相同的键.</p>
+</li>
+<li>
+<p>如果想要实现期望的功能, 我们可以重定义 <code>SomeClass</code> 的 <code>__eq__</code> 方法.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span><span class="params">(str)</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(self, other)</span>:</span></span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">          type(self) <span class="keyword">is</span> SomeClass</span><br><span class="line">          <span class="keyword">and</span> type(other) <span class="keyword">is</span> SomeClass</span><br><span class="line">          <span class="keyword">and</span> super().__eq__(other)</span><br><span class="line">      )</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 当我们自定义 __eq__ 方法时, Python 不会再自动继承 __hash__ 方法</span></span><br><span class="line">  <span class="comment"># 所以我们也需要定义它</span></span><br><span class="line">  __hash__ = str.__hash__</span><br><span class="line"></span><br><span class="line">some_dict = &#123;<span class="string">'s'</span>:<span class="number">42</span>&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = SomeClass(<span class="string">'s'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_dict[s] = <span class="number">40</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_dict</span><br><span class="line">&#123;<span class="string">'s'</span>: <span class="number">40</span>, <span class="string">'s'</span>: <span class="number">42</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>keys = list(some_dict.keys())</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(keys[<span class="number">0</span>]), type(keys[<span class="number">1</span>])</span><br><span class="line">(__main__.SomeClass, str)</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
