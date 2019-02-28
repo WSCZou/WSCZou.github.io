@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-02-26T12:53:40.820Z">
+<meta property="og:updated_time" content="2019-02-28T11:04:29.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -593,9 +593,20 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a, b = &#123;&#125;, <span class="number">5</span></span><br><span class="line">a[b] = a, b</span><br></pre></td></tr></table></figure>
 <p>并且可以通过 <code>a[b][0]</code> 与 <code>a</code> 是相同的对象来证明是循环引用</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a[b][<span class="number">0</span>] <span class="keyword">is</span> a</span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure>
-<p>循环引用：<img src="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true" alt="2118879-09fed596c7d95b42.png"></p>
+<p>循环引用：</p>
+<p><img src="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true" alt="2118879-09fed596c7d95b42.png"></p>
 </li>
 </ul>
+<h2 id="section-appearances-are-deceptive-外表是靠不住的">Section: Appearances are deceptive!/外表是靠不住的!</h2>
+<h3 id="skipping-lines-跳过一行">&gt; Skipping lines?/跳过一行?</h3>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; value = 11</span><br><span class="line">&gt;&gt;&gt; valuе = 32</span><br><span class="line">&gt;&gt;&gt; value</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
+<p>什么鬼?</p>
+<p><strong>注意:</strong> 如果你想要重现的话最简单的方法是直接复制上面的代码片段到你的文件或命令行里.</p>
+<h4 id="💡-说明-v22">💡 说明:</h4>
+<p>一些非西方字符虽然看起来和英语字母相同, 但会被解释器识别为不同的字母.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ord(&apos;е&apos;) # 西里尔语的 &apos;e&apos; (Ye)</span><br><span class="line">1077</span><br><span class="line">&gt;&gt;&gt; ord(&apos;e&apos;) # 拉丁语的 &apos;e&apos;, 用于英文并使用标准键盘输入</span><br><span class="line">101</span><br><span class="line">&gt;&gt;&gt; &apos;е&apos; == &apos;e&apos;</span><br><span class="line">False</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; value = 42 # 拉丁语 e</span><br><span class="line">&gt;&gt;&gt; valuе = 23 # 西里尔语 &apos;e&apos;, Python 2.x 的解释器在这会抛出 `SyntaxError` 异常</span><br><span class="line">&gt;&gt;&gt; value</span><br><span class="line">42</span><br></pre></td></tr></table></figure>
+<p>内置的 <code>ord()</code> 函数可以返回一个字符的 Unicode <a href="https://en.wikipedia.org/wiki/Code_point" target="_blank" rel="noopener">代码点</a>, 这里西里尔语 ‘e’ 和拉丁语 ‘e’ 的代码点不同证实了上述例子.</p>
 
       
       
