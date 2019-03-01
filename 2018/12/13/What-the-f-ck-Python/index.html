@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-02-28T11:04:29.481Z">
+<meta property="og:updated_time" content="2019-03-01T11:04:26.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -607,6 +607,19 @@
 <p>一些非西方字符虽然看起来和英语字母相同, 但会被解释器识别为不同的字母.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ord(&apos;е&apos;) # 西里尔语的 &apos;e&apos; (Ye)</span><br><span class="line">1077</span><br><span class="line">&gt;&gt;&gt; ord(&apos;e&apos;) # 拉丁语的 &apos;e&apos;, 用于英文并使用标准键盘输入</span><br><span class="line">101</span><br><span class="line">&gt;&gt;&gt; &apos;е&apos; == &apos;e&apos;</span><br><span class="line">False</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; value = 42 # 拉丁语 e</span><br><span class="line">&gt;&gt;&gt; valuе = 23 # 西里尔语 &apos;e&apos;, Python 2.x 的解释器在这会抛出 `SyntaxError` 异常</span><br><span class="line">&gt;&gt;&gt; value</span><br><span class="line">42</span><br></pre></td></tr></table></figure>
 <p>内置的 <code>ord()</code> 函数可以返回一个字符的 Unicode <a href="https://en.wikipedia.org/wiki/Code_point" target="_blank" rel="noopener">代码点</a>, 这里西里尔语 ‘e’ 和拉丁语 ‘e’ 的代码点不同证实了上述例子.</p>
+<h3 id="teleportation-空间移动">&gt; Teleportation/空间移动 *</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">def energy_send(x):</span><br><span class="line">    # 初始化一个 numpy 数组</span><br><span class="line">    np.array([float(x)])</span><br><span class="line"></span><br><span class="line">def energy_receive():</span><br><span class="line">    # 返回一个空的 numpy 数组</span><br><span class="line">    return np.empty((), dtype=np.float).tolist()</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; energy_send(123.456)</span><br><span class="line">&gt;&gt;&gt; energy_receive()</span><br><span class="line">123.456</span><br></pre></td></tr></table></figure>
+<p>谁来给我发个诺贝尔奖?</p>
+<h4 id="💡-说明-v23">💡 说明:</h4>
+<ul>
+<li>
+<p>注意在 <code>energy_send</code> 函数中创建的 numpy 数组并没有返回, 因此内存空间被释放并可以被重新分配.</p>
+<p>无<code>return</code>函数调用完，就会被释放.</p>
+<p><code>numpy.empty()</code> 直接返回下一段空闲内存，而不重新初始化. 而这个内存点恰好就是刚刚释放的那个(通常情况下, 并不绝对).</p>
+</li>
+</ul>
 
       
       
