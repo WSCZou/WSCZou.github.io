@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-03-01T11:04:26.906Z">
+<meta property="og:updated_time" content="2019-03-04T13:10:52.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -619,6 +619,30 @@
 <p>无<code>return</code>函数调用完，就会被释放.</p>
 <p><code>numpy.empty()</code> 直接返回下一段空闲内存，而不重新初始化. 而这个内存点恰好就是刚刚释放的那个(通常情况下, 并不绝对).</p>
 </li>
+</ul>
+<h3 id="well-something-is-fishy-嗯-有些可疑">&gt; Well, something is fishy…/嗯，有些可疑…</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">square</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    一个通过加法计算平方的简单函数.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    sum_so_far = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> counter <span class="keyword">in</span> range(x):</span><br><span class="line">        sum_so_far = sum_so_far + x</span><br><span class="line">  <span class="keyword">return</span> sum_so_far</span><br></pre></td></tr></table></figure>
+<p><strong>Output (Python 2.x):</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>square(<span class="number">10</span>)</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>难道不应该是100吗?</p>
+<h4 id="💡-说明-v24">💡 说明:</h4>
+<ul>
+<li>
+<p><strong>不要混用制表符(tab)和空格(space)!</strong> 在上面的例子中, return 的前面是&quot;1个制表符&quot;, 而其他部分的代码前面是 “4个空格”.</p>
+</li>
+<li>
+<p>Python是这么处理制表符的:</p>
+<blockquote>
+<p>首先, 制表符会从左到右依次被替换成8个空格, 直到被替换后的字符总数是八的倍数 &lt;…&gt;</p>
+</blockquote>
+</li>
+<li>
+<p>因此, <code>square</code> 函数最后一行的制表符会被替换成8个空格, 导致return语句进入循环语句里面.</p>
+</li>
+<li>
+<p>Python 3 很友好, 在这种情况下会自动抛出错误.</p>
+<p><strong>Output (Python 3.x):</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TabError: inconsistent use of tabs <span class="keyword">and</span> spaces <span class="keyword">in</span> indentation</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
