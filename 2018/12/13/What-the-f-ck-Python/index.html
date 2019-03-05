@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-03-04T13:10:52.668Z">
+<meta property="og:updated_time" content="2019-03-05T13:54:36.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -642,7 +642,19 @@
 <li>
 <p>Python 3 很友好, 在这种情况下会自动抛出错误.</p>
 <p><strong>Output (Python 3.x):</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TabError: inconsistent use of tabs <span class="keyword">and</span> spaces <span class="keyword">in</span> indentation</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TabError: inconsistent use of tabs <span class="keyword">and</span> spaces <span class="keyword">in</span> indentation</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="modifying-a-dictionary-while-iterating-over-it-迭代字典时的修改">&gt; Modifying a dictionary while iterating over it/迭代字典时的修改</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = &#123;<span class="number">0</span>: <span class="keyword">None</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> x:</span><br><span class="line">    <span class="keyword">del</span> x[i]</span><br><span class="line">    x[i+<span class="number">1</span>] = <span class="keyword">None</span></span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+<p><strong>Output (Python 2.7- Python 3.5):</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br></pre></td></tr></table></figure>
+<p>是的, 它运行了<strong>八次</strong>然后才停下来.</p>
+<h4 id="💡-说明-v25">💡 说明:</h4>
+<ul>
+<li>Python不支持对字典进行迭代的同时修改它.</li>
+<li>它之所以运行8次, 应该是因为字典的初始最小值是8, 扩容会导致散列表地址发生变化而中断循环.</li>
+<li>在不同的Python实现中什么时候扩容在不同版本中可能是不同的, 在3.6及3.7的版本中到<a href="https://github.com/python/cpython/blob/v3.6.1/Objects/dictobject.c#L103-L110" target="_blank" rel="noopener">5</a>就会自动扩容了. 以后也有可能再次发生变化. 顺带一提,后面两次扩容会扩展为32和256. 8-&gt;32-&gt;256</li>
 </ul>
 
       
