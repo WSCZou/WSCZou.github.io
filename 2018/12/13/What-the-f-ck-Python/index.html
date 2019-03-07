@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-03-06T13:55:10.165Z">
+<meta property="og:updated_time" content="2019-03-07T12:55:13.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -687,6 +687,28 @@
 <p>当有新的表达式在控制台输出其他非 <code>None</code> 值时， <code>_</code> 就会改为保存新的输出值。</p>
 <p>这时 <code>SomeClass</code> 实例的引用计数器的值就会变成0，GC就会启动调用 <code>__del__</code> 并回收对象。</p>
 </li>
+</ul>
+<h3 id="deleting-a-list-item-while-iterating-迭代列表时删除元素">&gt; Deleting a list item while iterating/迭代列表时删除元素</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">list_1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">list_2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">list_3 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">list_4 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> idx, item <span class="keyword">in</span> enumerate(list_1):</span><br><span class="line">    <span class="keyword">del</span> item</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> idx, item <span class="keyword">in</span> enumerate(list_2):</span><br><span class="line">    list_2.remove(item)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> idx, item <span class="keyword">in</span> enumerate(list_3[:]):</span><br><span class="line">    list_3.remove(item)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> idx, item <span class="keyword">in</span> enumerate(list_4):</span><br><span class="line">    list_4.pop(idx)</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list_1</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list_2</span><br><span class="line">[<span class="number">2</span>, <span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list_3</span><br><span class="line">[]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list_4</span><br><span class="line">[<span class="number">2</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+<p>你能猜到为什么输出是 <code>[2, 4]</code> 吗?</p>
+<h4 id="💡-说明-v27">💡 说明:</h4>
+<ul>
+<li>
+<p>在迭代时修改对象是一个很愚蠢的主意. 正确的做法是迭代对象的副本,然后遍历备份列表，删除的时候就删除原列表<code>list_3[:]</code> 就是这么做的.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(some_list)</span><br><span class="line"><span class="number">139798789457608</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(some_list[:]) <span class="comment"># 注意python为切片列表创建了新对象.</span></span><br><span class="line"><span class="number">139798779601192</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>del, remove 和 pop 的不同:</strong></p>
+<ul>
+<li><code>del var_name</code> 只是从本地或全局命名空间中删除了 <code>var_name</code> (这就是为什么 <code>list_1</code> 没有受到影响).</li>
+<li><code>remove</code> 会删除第一个匹配到的指定值, 而不是特定的索引, 如果找不到值则抛出 <code>ValueError</code> 异常.</li>
+<li><code>pop</code> 则会删除指定索引处的元素并返回它, 如果指定了无效的索引则抛出 <code>IndexError</code> 异常.</li>
+</ul>
+<p><strong>为什么输出是 [2, 4]?</strong></p>
+<ul>
+<li>列表迭代是按索引进行的, 所以当我们从 <code>list_2</code> 或 <code>list_4</code> 中删除 <code>1</code> 时, 列表的内容就变成了 <code>[2, 3, 4]</code>. 剩余元素会依次位移, 也就是说, <code>2</code> 的索引会变为 0, <code>3</code> 会变为 1. 由于下一次迭代将获取索引为 1 的元素 (即 <code>3</code>), 因此 <code>2</code> 将被彻底的跳过. 类似的情况会交替发生在列表中的每个元素上.</li>
 </ul>
 
       
