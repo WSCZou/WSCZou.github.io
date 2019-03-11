@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-03-07T12:55:13.773Z">
+<meta property="og:updated_time" content="2019-03-11T12:59:07.100Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -709,6 +709,40 @@
 <p><strong>为什么输出是 [2, 4]?</strong></p>
 <ul>
 <li>列表迭代是按索引进行的, 所以当我们从 <code>list_2</code> 或 <code>list_4</code> 中删除 <code>1</code> 时, 列表的内容就变成了 <code>[2, 3, 4]</code>. 剩余元素会依次位移, 也就是说, <code>2</code> 的索引会变为 0, <code>3</code> 会变为 1. 由于下一次迭代将获取索引为 1 的元素 (即 <code>3</code>), 因此 <code>2</code> 将被彻底的跳过. 类似的情况会交替发生在列表中的每个元素上.</li>
+</ul>
+<h3 id="loop-variables-leaking-out-循环变量泄漏">&gt; Loop variables leaking out!/循环变量泄漏!</h3>
+<ol>
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for x in range(7):</span><br><span class="line">    if x == 6:</span><br><span class="line">        print(x, &apos;: for x inside loop&apos;)</span><br><span class="line">print(x, &apos;: x in global&apos;)</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6 : for x inside loop</span><br><span class="line">6 : x in global</span><br></pre></td></tr></table></figure>
+<p>但是 <code>x</code> 从未在循环外被定义…</p>
+<ol start="2">
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 这次我们先初始化x</span><br><span class="line">x = -1</span><br><span class="line">for x in range(7):</span><br><span class="line">    if x == 6:</span><br><span class="line">        print(x, &apos;: for x inside loop&apos;)</span><br><span class="line">print(x, &apos;: x in global&apos;)</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6 : for x inside loop</span><br><span class="line">6 : x in global</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = 1</span><br><span class="line">print([x for x in range(5)])</span><br><span class="line">print(x, &apos;: x in global&apos;)</span><br></pre></td></tr></table></figure>
+<p><strong>Output (on Python 2.x):</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[0, 1, 2, 3, 4]</span><br><span class="line">(4, &apos;: x in global&apos;)</span><br></pre></td></tr></table></figure>
+<p><strong>Output (on Python 3.x):</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[0, 1, 2, 3, 4]</span><br><span class="line">1 : x in global</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v28">💡 说明:</h4>
+<ul>
+<li>
+<p>在 Python 中, for 循环使用所在作用域并在结束后保留定义的循环变量. 如果我们曾在全局命名空间中定义过循环变量. 在这种情况下, 它会重新绑定现有变量.</p>
+</li>
+<li>
+<p>Python 2.x 和 Python 3.x 解释器在列表推导式示例中的输出差异:</p>
+<blockquote>
+<p>“列表推导不再支持句法形式 <code>[... for var in item1, item2, ...]</code>. 取而代之的是 <code>[... for var in (item1, item2, ...)]</code>. 另外, 注意列表推导具有不同的语义 特别是循环控制变量不再泄漏到周围的作用域中.”</p>
+</blockquote>
+</li>
 </ul>
 
       
