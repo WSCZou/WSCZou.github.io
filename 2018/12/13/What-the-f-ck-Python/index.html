@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-03-11T12:59:07.100Z">
+<meta property="og:updated_time" content="2019-03-12T13:49:12.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -742,6 +742,24 @@
 <blockquote>
 <p>“列表推导不再支持句法形式 <code>[... for var in item1, item2, ...]</code>. 取而代之的是 <code>[... for var in (item1, item2, ...)]</code>. 另外, 注意列表推导具有不同的语义 特别是循环控制变量不再泄漏到周围的作用域中.”</p>
 </blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="beware-of-default-mutable-arguments-当心默认的可变参数">&gt; Beware of default mutable arguments!/当心默认的可变参数!</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">some_func</span><span class="params">(default_arg=[])</span>:</span></span><br><span class="line">    default_arg.append(<span class="string">"some_string"</span>)</span><br><span class="line">    <span class="keyword">return</span> default_arg</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func()</span><br><span class="line">[<span class="string">'some_string'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func()</span><br><span class="line">[<span class="string">'some_string'</span>, <span class="string">'some_string'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func([])</span><br><span class="line">[<span class="string">'some_string'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func()</span><br><span class="line">[<span class="string">'some_string'</span>, <span class="string">'some_string'</span>, <span class="string">'some_string'</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v29">💡 说明:</h4>
+<ul>
+<li>
+<p>Python中函数的默认可变参数并不是每次调用该函数时都会被初始化. 相反, 它们会使用最近分配的值作为默认值. 当我们明确的将 <code>[]</code> 作为参数传递给 <code>some_func</code> 的时候, 就不会使用 <code>default_arg</code> 的默认值, 所以函数会返回我们所期望的结果.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">some_func</span><span class="params">(default_arg=[])</span>:</span></span><br><span class="line">    default_arg.append(<span class="string">"some_string"</span>)</span><br><span class="line">    <span class="keyword">return</span> default_arg</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func.__defaults__ <span class="comment"># 这里会显示函数的默认参数的值</span></span><br><span class="line">([],)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func.__defaults__</span><br><span class="line">([<span class="string">'some_string'</span>],)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func.__defaults__</span><br><span class="line">([<span class="string">'some_string'</span>, <span class="string">'some_string'</span>],)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func([])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_func.__defaults__</span><br><span class="line">([<span class="string">'some_string'</span>, <span class="string">'some_string'</span>],)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>避免可变参数导致的错误的常见做法是将 <code>None</code> 指定为参数的默认值, 然后检查是否有值传给对应的参数. 例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">some_func</span><span class="params">(default_arg=None)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> default_arg:</span><br><span class="line">        default_arg = []</span><br><span class="line">    default_arg.append(<span class="string">"some_string"</span>)</span><br><span class="line">    <span class="keyword">return</span> default_arg</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
