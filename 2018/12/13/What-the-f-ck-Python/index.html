@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-03-15T11:21:31.141Z">
+<meta property="og:updated_time" content="2019-03-18T13:52:30.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -817,9 +817,40 @@
 <p>想要在 <code>another_func</code> 中修改外部作用域变量 <code>a</code> 的话, 可以使用 <code>global</code> 关键字.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">another_func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    <span class="title">global</span> <span class="title">a</span></span></span><br><span class="line">    a += 1</span><br><span class="line">    <span class="keyword">return</span> a</span><br></pre></td></tr></table></figure>
 <p><strong>Output:</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>another_func()</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>another_func()</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<hr>
+<h3 id="be-careful-with-chained-operations-小心链式操作">&gt; Be careful with chained operations/小心链式操作</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="keyword">False</span> == <span class="keyword">False</span>) <span class="keyword">in</span> [<span class="keyword">False</span>] <span class="comment"># 可以理解</span></span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">False</span> == (<span class="keyword">False</span> <span class="keyword">in</span> [<span class="keyword">False</span>]) <span class="comment"># 可以理解</span></span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">False</span> == <span class="keyword">False</span> <span class="keyword">in</span> [<span class="keyword">False</span>] <span class="comment"># 为毛?</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">True</span> <span class="keyword">is</span> <span class="keyword">False</span> == <span class="keyword">False</span></span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">False</span> <span class="keyword">is</span> <span class="keyword">False</span> <span class="keyword">is</span> <span class="keyword">False</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> &gt; <span class="number">0</span> &lt; <span class="number">1</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>(<span class="number">1</span> &gt; <span class="number">0</span>) &lt; <span class="number">1</span></span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> &gt; (<span class="number">0</span> &lt; <span class="number">1</span>)</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v33">💡 说明:</h4>
+<blockquote>
+<p>形式上, 如果 a, b, c, …, y, z 是表达式, 而 op1, op2, …, opN 是比较运算符, 那么除了每个表达式最多只出现一次以外 a op1 b op2 c … y opN z 就等于 a op1 b and b op2 c and … y opN z.</p>
+</blockquote>
+<p>虽然上面的例子似乎很愚蠢, 但是像 <code>a == b == c</code> 或 <code>0 &lt;= x &lt;= 100</code> 就很棒了.</p>
+<ul>
+<li>
+<p><code>False is False is False</code> 相当于 <code>(False is False) and (False is False)</code></p>
+</li>
+<li>
+<p><code>True is False == False</code> 相当于 <code>True is False and False == False</code>, 由于语句的第一部分 (<code>True is False</code>) 等于 <code>False</code>, 因此整个表达式的结果为 <code>False</code>.</p>
+</li>
+<li>
+<p><code>1 &gt; 0 &lt; 1</code> 相当于 <code>1 &gt; 0 and 0 &lt; 1</code>, 所以最终结果为 <code>True</code>.</p>
+</li>
+<li>
+<p>表达式</p>
+</li>
+</ul>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span> &gt; <span class="number">0</span>) &lt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>相当于</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">True</span> &lt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>且</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="keyword">True</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">True</span> + <span class="number">1</span> <span class="comment"># 与这个例子无关，只是好玩</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>所以,</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> &lt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>等于</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
       
       
     </div>
