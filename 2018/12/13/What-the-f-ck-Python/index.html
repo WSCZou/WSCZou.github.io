@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-03-19T02:04:58.707Z">
+<meta property="og:updated_time" content="2019-03-19T12:54:48.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -850,6 +850,27 @@
 <p>等于</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<h3 id="name-resolution-ignoring-class-scope-忽略类作用域的名称解析">&gt; Name resolution ignoring class scope/忽略类作用域的名称解析</h3>
+<ol>
+<li></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">5</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>:</span></span><br><span class="line">    x = <span class="number">17</span></span><br><span class="line">    y = (x <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>))<span class="comment">#这里是生成器表达式</span></span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(SomeClass.y)[<span class="number">0</span>]</span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">5</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>:</span></span><br><span class="line">    x = <span class="number">17</span></span><br><span class="line">    y = [x <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]<span class="comment">#这里是列表推导式</span></span><br></pre></td></tr></table></figure>
+<p><strong>Output (Python 2.x):</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>SomeClass.y[<span class="number">0</span>]</span><br><span class="line"><span class="number">17</span></span><br></pre></td></tr></table></figure>
+<p><strong>Output (Python 3.x):</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>SomeClass.y[<span class="number">0</span>]</span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v34">💡 说明:</h4>
+<ul>
+<li>类定义中嵌套的作用域会忽略类内的名称绑定.</li>
+<li>生成器表达式有它自己的作用域.</li>
+<li>从 Python 3.X 开始, 列表推导式也有自己的作用域.</li>
 </ul>
 
       
