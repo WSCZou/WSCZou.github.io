@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-03-21T12:47:55.438Z">
+<meta property="og:updated_time" content="2019-03-25T13:26:20.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -908,6 +908,20 @@
 <p>不止如此. 这个<strong>复活节彩蛋里还有一个复活节彩蛋</strong>. 如果你看一下<a href="https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17" target="_blank" rel="noopener">代码</a>, 就会发现还有一个函数实现了 <a href="https://xkcd.com/426/" target="_blank" rel="noopener">XKCD’s geohashing 算法</a>.</p>
 <p><a href="https://www.open-open.com/lib/view/open1417940079964.html" target="_blank" rel="noopener">geohashing算法详细讲解</a>看后真的觉得这些人很聪明！！</p>
 </li>
+</ul>
+<h3 id="yes-it-exists-是的-它存在">&gt; Yes, it exists!/是的, 它存在!</h3>
+<p><strong>循环的 else.</strong> 一个典型的例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">does_exists_num</span><span class="params">(l, to_find)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> l:</span><br><span class="line">        <span class="keyword">if</span> num == to_find:</span><br><span class="line">            print(<span class="string">"Exists!"</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"Does not exist"</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>does_exists_num(some_list, <span class="number">4</span>)</span><br><span class="line">Exists!</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>does_exists_num(some_list, <span class="number">-1</span>)</span><br><span class="line">Does <span class="keyword">not</span> exist</span><br></pre></td></tr></table></figure>
+<p><strong>异常的 else .</strong> 例,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    print(<span class="string">"Exception occurred!!!"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"Try block executed successfully..."</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>Output:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Try block executed successfully...</span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v37">💡 说明:</h4>
+<ul>
+<li>循环后的 <code>else</code> 子句只会在循环没有触发 <code>break</code> 语句, 正常结束的情况下才会执行.</li>
+<li>try 之后的 <code>else</code> 子句也被称为 “完成子句”, 因为在 <code>try</code> 语句中到达 <code>else</code> 子句意味着try块实际上已成功完成.</li>
 </ul>
 
       
