@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-03-26T14:11:23.020Z">
+<meta property="og:updated_time" content="2019-03-27T12:27:06.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -933,6 +933,13 @@
 <li><a href="https://en.wikipedia.org/wiki/Name_mangling" target="_blank" rel="noopener">名字修饰</a> 用于避免不同命名空间之间名称冲突.</li>
 <li>在 Python 中, 解释器会通过给类中以 <code>__</code> (双下划线)开头且结尾最多只有一个下划线的类成员名称加上<code>_NameOfTheClass</code>来修饰(mangles)名称.</li>
 <li>所以, 要访问 <code>__honey</code> 对象,我们需要加上 <code>_Yo</code> 以防止与其他类中定义的相同名称的属性发生冲突.</li>
+</ul>
+<h2 id="section-miscellaneous-杂项">Section: Miscellaneous/杂项</h2>
+<h3 id="is-faster-更快的">&gt; <code>+=</code> is faster/更快的 <code>+=</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用 "+" 连接三个字符串:</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>timeit.timeit(<span class="string">"s1 = s1 + s2 + s3"</span>, setup=<span class="string">"s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000"</span>, number=<span class="number">100</span>)</span><br><span class="line"><span class="number">0.25748300552368164</span></span><br><span class="line"><span class="comment"># 用 "+=" 连接三个字符串:</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>timeit.timeit(<span class="string">"s1 += s2 + s3"</span>, setup=<span class="string">"s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000"</span>, number=<span class="number">100</span>)</span><br><span class="line"><span class="number">0.012188911437988281</span></span><br></pre></td></tr></table></figure>
+<h4 id="💡-说明-v39">💡 说明:</h4>
+<ul>
+<li>连接两个以上的字符串时 <code>+=</code> 比 <code>+</code> 更快, 因为在计算过程中第一个字符串 (例如, <code>s1 += s2 + s3</code> 中的 <code>s1</code>) 不会被销毁.(译: 就是 <code>+=</code> 执行的是追加操作，少了一个销毁新建的动作.)</li>
 </ul>
 
       
