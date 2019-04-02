@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-04-01T13:09:24.917Z">
+<meta property="og:updated_time" content="2019-04-02T11:27:30.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -981,6 +981,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">inf</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line">nan</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c</span><br><span class="line">-inf</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>float(<span class="string">'some_other_string'</span>)</span><br><span class="line">ValueError: could <span class="keyword">not</span> convert string to float: some_other_string</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a == -c <span class="comment">#inf==inf</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">None</span> == <span class="keyword">None</span> <span class="comment"># None==None</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b == d <span class="comment">#但是 nan!=nan</span></span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">50</span>/a</span><br><span class="line"><span class="number">0.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a/a</span><br><span class="line">nan</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">23</span> + b</span><br><span class="line">nan</span><br></pre></td></tr></table></figure>
 <h4 id="💡-说明-v41">💡 说明:</h4>
 <p><code>'inf'</code> 和 <code>'nan'</code> 是特殊的字符串(不区分大小写), 当显示转换成 <code>float</code> 型时, 它们分别用于表示数学意义上的 “无穷大” 和 “非数字”.</p>
+<h3 id="minor-ones-小知识点">&gt; Minor Ones/小知识点</h3>
+<ul>
+<li>
+<p><code>join()</code> 是一个字符串操作而不是列表操作. (第一次接触会觉得有点违反直觉)</p>
+<p><strong>💡 说明:</strong> 如果 <code>join()</code> 是字符串方法 那么它就可以处理任何可迭代的对象(列表，元组，迭代器). 如果它是列表方法, 则必须在每种类型中单独实现. 另外, 在 <code>list</code> 对象的通用API中实现一个专用于字符串的方法没有太大的意义.</p>
+</li>
+</ul>
 
       
       
