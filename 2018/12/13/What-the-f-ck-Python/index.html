@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-04-02T11:27:30.302Z">
+<meta property="og:updated_time" content="2019-04-03T12:43:20.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -983,9 +983,15 @@
 <p><code>'inf'</code> 和 <code>'nan'</code> 是特殊的字符串(不区分大小写), 当显示转换成 <code>float</code> 型时, 它们分别用于表示数学意义上的 “无穷大” 和 “非数字”.</p>
 <h3 id="minor-ones-小知识点">&gt; Minor Ones/小知识点</h3>
 <ul>
-<li>
-<p><code>join()</code> 是一个字符串操作而不是列表操作. (第一次接触会觉得有点违反直觉)</p>
+<li><code>join()</code> 是一个字符串操作而不是列表操作. (第一次接触会觉得有点违反直觉)</li>
+</ul>
 <p><strong>💡 说明:</strong> 如果 <code>join()</code> 是字符串方法 那么它就可以处理任何可迭代的对象(列表，元组，迭代器). 如果它是列表方法, 则必须在每种类型中单独实现. 另外, 在 <code>list</code> 对象的通用API中实现一个专用于字符串的方法没有太大的意义.</p>
+<ul>
+<li>
+<p>看着奇怪但能正确运行的语句:</p>
+<p><code>[] = ()</code> 语句在语义上是正确的 (解包一个空的 <code>tuple</code> 并赋值给 <code>list</code>)</p>
+<p><code>'a'[0][0][0][0][0]</code> 在语义上也是正确的, 因为在 Python 中字符串同时也是<a href="https://docs.python.org/3/glossary.html#term-sequence" target="_blank" rel="noopener">序列</a>(可迭代对象支持使用整数索引访问元素).</p>
+<p><code>3 --0-- 5 == 8</code> 和 <code>--5 == 5</code> 在语义上都是正确的, 且结果等于 <code>True</code>.(译: 3减负0等于3，再减负5相当于加5等于8；负的负5等于5.)</p>
 </li>
 </ul>
 
