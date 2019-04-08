@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_row_initialized.png">
 <meta property="og:image" content="https://github.com/leisurelicht/wtfpython-cn/raw/master/images/tic-tac-toe/after_board_initialized.png">
 <meta property="og:image" content="https://github.com/WSCZou/Markdown-pic/blob/master/2118879-09fed596c7d95b42.png?raw=true">
-<meta property="og:updated_time" content="2019-04-04T08:12:56.099Z">
+<meta property="og:updated_time" content="2019-04-08T12:06:15.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What the f*ck Python">
 <meta name="twitter:description" content="What the f*ck Python 🐍 —— 一些Python的特性 ​														参考(https://github.com/leisurelicht/wtfpython-cn)  😎start your Journey： Strings can be tricky sometimes/微妙的字符串*  123456&amp;gt; &amp;gt;&amp;gt;&amp;gt; a = &quot;some">
@@ -1001,7 +1001,8 @@
 <li>python 里没有 <code>++</code> 操作符. 这其实是两个 <code>+</code> 操作符.</li>
 <li><code>++a</code> 被解析为 <code>+(+a)</code> 最后等于 <code>a</code>. <code>--a</code> 同理.</li>
 </ul>
-
+<p>Python 使用 2个字节存储函数中的本地变量. 理论上, 这意味着函数中只能定义65536个变量. 但是，Python 内置了一个方便的解决方案，可用于存储超过2^16个变量名. 下面的代码演示了当定义了超过65536个局部变量时堆栈中发生的情况 (警告: 这段代码会打印大约2^18行文本, 请做好准备!):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dis</span><br><span class="line">exec(<span class="string">"""</span></span><br><span class="line"><span class="string">def f():</span></span><br><span class="line"><span class="string">    """</span> + <span class="string">"""</span></span><br><span class="line"><span class="string">    """</span>.join([<span class="string">"X"</span>+str(x)+<span class="string">"="</span> + str(x) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">65539</span>)]))</span><br><span class="line"></span><br><span class="line">f()</span><br><span class="line"></span><br><span class="line">print(dis.dis(f))</span><br></pre></td></tr></table></figure>
       
       
     </div>
